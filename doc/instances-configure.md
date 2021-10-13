@@ -1,5 +1,18 @@
-# Profiles
-## Introduction
+# Configure instances
+
+From Getting started & demo.
+
+See [Instance configuration](instances.md) for all available configuration options.
+
+## Specify configuration when launching an instance
+
+## Update configuration at runtime
+
+## Use profiles
+
+!!! Note
+    Extend with information from the Advanced guide.
+
 Profiles can store any configuration that an instance can (key/value or devices)
 and any number of profiles can be applied to an instance.
 
@@ -9,18 +22,16 @@ specify a specific key wins.
 In any case, instance-specific configuration always overrides that coming from
 the profiles.
 
-## Default profile
+### Default profile
 If not present, LXD will create a `default` profile.
 The `default` profile cannot be renamed or removed.
 The `default` profile is set for any new instance created which doesn't
 specify a different profiles list.
 
-## Configuration
+### Configuration
 As profiles aren't specific to containers or virtual machines, they may
 contain configuration and devices that are valid for either type.
 
 This differs from the behavior when applying those config/devices
 directly to an instance where its type is then taken into consideration
 and keys that aren't allowed result in an error.
-
-See [instance configuration](instances.md) for valid configuration options.

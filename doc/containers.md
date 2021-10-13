@@ -1,9 +1,12 @@
 # Containers
-## Introduction
+
 Containers are the default type for LXD and currently the most
 featureful and complete implementation of LXD instances.
 
 They are implemented through the use of `liblxc` (LXC).
+
+!!! Note
+    Add some information from [https://linuxcontainers.org/lxd/#containers-and-virtual-machines](https://linuxcontainers.org/lxd/#containers-and-virtual-machines).
 
 ## Configuration
 See [instance configuration](instances.md) for valid configuration options.

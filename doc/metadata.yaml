@@ -16,11 +16,36 @@ navigation:
         - title: Contributing
           location: contributing.md
 
-    - title: Configuration
-      location: configuration.md
+    - title: Instances
+      location: instances-landing.md
       children:
         - title: Containers
           location: containers.md
+
+        - title: Virtual machines
+          location: virtual-machines.md
+
+        - title: Launch instances
+          location: instances-launch.md
+
+        - title: Manage instances
+          location: instances-manage.md
+
+        - title: Configure instances
+          location: instances-configure.md
+
+        - title: Run commands
+          location: instances-commands.md
+
+        - title: Access files
+          location: instances-files.md
+
+        - title: Collect metrics
+          location: metrics.md
+
+    - title: Configuration
+      location: configuration.md
+      children:
 
         - title: Instances
           location: instances.md
@@ -37,9 +62,6 @@ navigation:
         - title: Preseed files
           location: preseed.md
 
-        - title: Profiles
-          location: profiles.md
-
         - title: Projects
           location: projects.md
 
@@ -48,12 +70,6 @@ navigation:
 
         - title: Storage pools
           location: storage.md
-
-        - title: Virtual machines
-          location: virtual-machines.md
-
-        - title: Instance metrics exporter
-          location: metrics.md
 
     - title: Images
       children:
