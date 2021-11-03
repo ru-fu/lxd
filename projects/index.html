@@ -1,0 +1,1668 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>Projects - LXD documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ubuntu:300,400,400i,700%7C&display=fallback">
+        <style>:root{--md-text-font-family:"ubuntu";--md-code-font-family:""}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../stylesheets/style.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#project-configuration" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="LXD documentation" class="md-header__button md-logo" aria-label="LXD documentation" data-md-component="logo">
+      
+  <img src="../img/containers.small.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LXD documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Projects
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <div class="md-header__option">
+        <div class="md-select">
+          
+          <button class="md-header__button md-icon" aria-label="Select language">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24z"/></svg>
+          </button>
+          <div class="md-select__inner">
+            <ul class="md-select__list">
+              
+                <li class="md-select__item">
+                  <a href="/" hreflang="en" class="md-select__link">
+                    English
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="/lang/" hreflang="ja" class="md-select__link">
+                    Another language
+                  </a>
+                </li>
+                
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/lxc/lxd/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link md-tabs__link--active">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../test/" class="md-tabs__link">
+        Tab test
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="LXD documentation" class="md-nav__button md-logo" aria-label="LXD documentation" data-md-component="logo">
+      
+  <img src="../img/containers.small.png" alt="logo">
+
+    </a>
+    LXD documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/lxc/lxd/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          Home
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_2" type="checkbox" id="__nav_1_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_2">
+          Getting started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting started" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Getting started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        Requirements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        Frequently asked
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
+        Security
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_3" type="checkbox" id="__nav_1_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_3">
+          Configuration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Configuration" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../containers/" class="md-nav__link">
+        Containers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../instances/" class="md-nav__link">
+        Instances
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../networks/" class="md-nav__link">
+        Networks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network-acls/" class="md-nav__link">
+        Network ACLs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network-forwards/" class="md-nav__link">
+        Network Forwards
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../preseed/" class="md-nav__link">
+        Preseed files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../profiles/" class="md-nav__link">
+        Profiles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Projects
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Projects
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#project-limits" class="md-nav__link">
+    Project limits
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-restrictions" class="md-nav__link">
+    Project restrictions
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../server/" class="md-nav__link">
+        Server settings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../storage/" class="md-nav__link">
+        Storage pools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../virtual-machines/" class="md-nav__link">
+        Virtual machines
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metrics/" class="md-nav__link">
+        Instance metrics exporter
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_4" type="checkbox" id="__nav_1_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_4">
+          Images
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Images" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Images
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architectures/" class="md-nav__link">
+        Architectures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud-init/" class="md-nav__link">
+        Cloud-init
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image-handling/" class="md-nav__link">
+        Handling
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_5" type="checkbox" id="__nav_1_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_5">
+          Operation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Operation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          Operation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backup/" class="md-nav__link">
+        Backups
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clustering/" class="md-nav__link">
+        Clustering
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../production-setup/" class="md-nav__link">
+        Production setup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../remotes/" class="md-nav__link">
+        Remotes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_6" type="checkbox" id="__nav_1_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_6">
+          REST API
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="REST API" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_6">
+          <span class="md-nav__icon md-icon"></span>
+          REST API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rest-api/" class="md-nav__link">
+        Main API documentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-extensions/" class="md-nav__link">
+        Main API extensions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev-lxd/" class="md-nav__link">
+        Instance API documentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        Events API documentation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_7" type="checkbox" id="__nav_1_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_7">
+          Internals & debugging
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Internals & debugging" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_7">
+          <span class="md-nav__icon md-icon"></span>
+          Internals & debugging
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container-environment/" class="md-nav__link">
+        Container environment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migration/" class="md-nav__link">
+        Instance migration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../daemon-behavior/" class="md-nav__link">
+        Daemon behavior
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        Database
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debugging/" class="md-nav__link">
+        Debugging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environment/" class="md-nav__link">
+        Environment variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../syscall-interception/" class="md-nav__link">
+        System call interception
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../userns-idmap/" class="md-nav__link">
+        User namespace setup
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_8" type="checkbox" id="__nav_1_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_8">
+          External resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="External resources" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_8">
+          <span class="md-nav__icon md-icon"></span>
+          External resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/lxc/lxd" class="md-nav__link">
+        Project repository
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://images.linuxcontainers.org" class="md-nav__link">
+        Image server
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Tab test
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tab test" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Tab test
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test/" class="md-nav__link">
+        Testing stuff
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#project-limits" class="md-nav__link">
+    Project limits
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-restrictions" class="md-nav__link">
+    Project restrictions
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/lxc/lxd/edit/master/docs/projects.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="project-configuration">Project configuration<a class="headerlink" href="#project-configuration" title="Permanent link">&para;</a></h1>
+<p>LXD supports projects as a way to split your LXD server.
+Each project holds its own set of instances and may also have its own images and profiles.</p>
+<p>What a project contains is defined through the <code>features</code> configuration keys.
+When a feature is disabled, the project inherits from the <code>default</code> project.</p>
+<p>By default all new projects get the entire feature set, on upgrade,
+existing projects do not get new features enabled.</p>
+<p>The key/value configuration is namespaced with the following namespaces
+currently supported:</p>
+<ul>
+<li><code>features</code> (What part of the project featureset is in use)</li>
+<li><code>limits</code> (Resource limits applied on containers and VMs belonging to the project)</li>
+<li><code>user</code> (free form key/value for user metadata)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Type</th>
+<th align="left">Condition</th>
+<th align="left">Default</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">backups.compression_algorithm</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Compression algorithm to use for backups (bzip2, gzip, lzma, xz or none) in the project</td>
+</tr>
+<tr>
+<td align="left">features.images</td>
+<td align="left">boolean</td>
+<td align="left">-</td>
+<td align="left">true</td>
+<td align="left">Separate set of images and image aliases for the project</td>
+</tr>
+<tr>
+<td align="left">features.networks</td>
+<td align="left">boolean</td>
+<td align="left">-</td>
+<td align="left">false</td>
+<td align="left">Separate set of networks for the project</td>
+</tr>
+<tr>
+<td align="left">features.profiles</td>
+<td align="left">boolean</td>
+<td align="left">-</td>
+<td align="left">true</td>
+<td align="left">Separate set of profiles for the project</td>
+</tr>
+<tr>
+<td align="left">features.storage.volumes</td>
+<td align="left">boolean</td>
+<td align="left">-</td>
+<td align="left">true</td>
+<td align="left">Separate set of storage volumes for the project</td>
+</tr>
+<tr>
+<td align="left">images.auto_update_cached</td>
+<td align="left">boolean</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Whether to automatically update any image that LXD caches</td>
+</tr>
+<tr>
+<td align="left">images.auto_update_interval</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Interval in hours at which to look for update to cached images (0 disables it)</td>
+</tr>
+<tr>
+<td align="left">images.compression_algorithm</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Compression algorithm to use for images (bzip2, gzip, lzma, xz or none) in the project</td>
+</tr>
+<tr>
+<td align="left">images.default_architecture</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Default architecture which should be used in mixed architecture cluster</td>
+</tr>
+<tr>
+<td align="left">images.remote_cache_expiry</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Number of days after which an unused cached remote image will be flushed in the project</td>
+</tr>
+<tr>
+<td align="left">limits.containers</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Maximum number of containers that can be created in the project</td>
+</tr>
+<tr>
+<td align="left">limits.cpu</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Maximum value for the sum of individual "limits.cpu" configs set on the instances of the project</td>
+</tr>
+<tr>
+<td align="left">limits.disk</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Maximum value of aggregate disk space used by all instances volumes, custom volumes and images of the project</td>
+</tr>
+<tr>
+<td align="left">limits.instances</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Maximum number of total instances that can be created in the project</td>
+</tr>
+<tr>
+<td align="left">limits.memory</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Maximum value for the sum of individual "limits.memory" configs set on the instances of the project</td>
+</tr>
+<tr>
+<td align="left">limits.networks</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Maximum value for the number of networks this project can have</td>
+</tr>
+<tr>
+<td align="left">limits.processes</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Maximum value for the sum of individual "limits.processes" configs set on the instances of the project</td>
+</tr>
+<tr>
+<td align="left">limits.virtual-machines</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Maximum number of VMs that can be created in the project</td>
+</tr>
+<tr>
+<td align="left">restricted</td>
+<td align="left">boolean</td>
+<td align="left">-</td>
+<td align="left">false</td>
+<td align="left">Block access to security-sensitive features</td>
+</tr>
+<tr>
+<td align="left">restricted.backups</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">block</td>
+<td align="left">Prevents the creation of any instance or volume backups.</td>
+</tr>
+<tr>
+<td align="left">restricted.cluster.target</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">block</td>
+<td align="left">Prevents direct targeting of cluster members when creating or moving instances.</td>
+</tr>
+<tr>
+<td align="left">restricted.containers.lowlevel</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">block</td>
+<td align="left">Prevents use of low-level container options like raw.lxc, raw.idmap, volatile, etc.</td>
+</tr>
+<tr>
+<td align="left">restricted.containers.nesting</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">block</td>
+<td align="left">Prevents setting security.nesting=true.</td>
+</tr>
+<tr>
+<td align="left">restricted.containers.privilege</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">unpriviliged</td>
+<td align="left">If "unpriviliged", prevents setting security.privileged=true. If "isolated", prevents setting security.privileged=true and also security.idmap.isolated=true. If "allow", no restriction apply.</td>
+</tr>
+<tr>
+<td align="left">restricted.devices.disk</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">managed</td>
+<td align="left">If "block" prevent use of disk devices except the root one. If "managed" allow use of disk devices only if "pool=" is set. If "allow", no restrictions apply.</td>
+</tr>
+<tr>
+<td align="left">restricted.devices.gpu</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">block</td>
+<td align="left">Prevents use of devices of type "gpu"</td>
+</tr>
+<tr>
+<td align="left">restricted.devices.infiniband</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">block</td>
+<td align="left">Prevents use of devices of type "infiniband"</td>
+</tr>
+<tr>
+<td align="left">restricted.devices.nic</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">managed</td>
+<td align="left">If "block" prevent use of all network devices. If "managed" allow use of network devices only if "network=" is set. If "allow", no restrictions apply.</td>
+</tr>
+<tr>
+<td align="left">restricted.devices.pci</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">block</td>
+<td align="left">Prevents use of devices of type "pci"</td>
+</tr>
+<tr>
+<td align="left">restricted.devices.proxy</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">block</td>
+<td align="left">Prevents use of devices of type "proxy"</td>
+</tr>
+<tr>
+<td align="left">restricted.devices.unix-block</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">block</td>
+<td align="left">Prevents use of devices of type "unix-block"</td>
+</tr>
+<tr>
+<td align="left">restricted.devices.unix-char</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">block</td>
+<td align="left">Prevents use of devices of type "unix-char"</td>
+</tr>
+<tr>
+<td align="left">restricted.devices.unix-hotplug</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">block</td>
+<td align="left">Prevents use of devices of type "unix-hotplug"</td>
+</tr>
+<tr>
+<td align="left">restricted.devices.usb</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">block</td>
+<td align="left">Prevents use of devices of type "usb"</td>
+</tr>
+<tr>
+<td align="left">restricted.networks.subnets</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">block</td>
+<td align="left">Comma delimited list of network subnets from the uplink networks (in the form <code>&lt;uplink&gt;:&lt;subnet&gt;</code>) that are allocated for use in this project</td>
+</tr>
+<tr>
+<td align="left">restricted.networks.uplinks</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">block</td>
+<td align="left">Comma delimited list of network names that can be used as uplinks for networks in this project</td>
+</tr>
+<tr>
+<td align="left">restricted.snapshots</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">block</td>
+<td align="left">Prevents the creation of any instance or volume snapshots.</td>
+</tr>
+<tr>
+<td align="left">restricted.virtual-machines.lowlevel</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">block</td>
+<td align="left">Prevents use of low-level virtual-machine options like raw.qemu, volatile, etc.</td>
+</tr>
+</tbody>
+</table>
+<p>Those keys can be set using the lxc tool with:</p>
+<div class="highlight"><pre><span></span><code>lxc project <span class="nb">set</span> &lt;project&gt; &lt;key&gt; &lt;value&gt;
+</code></pre></div>
+<h2 id="project-limits">Project limits<a class="headerlink" href="#project-limits" title="Permanent link">&para;</a></h2>
+<p>Note that to be able to set one of the <code>limits.*</code> config keys, <strong>all</strong> instances
+in the project <strong>must</strong> have that same config key defined, either directly or
+via a profile.</p>
+<p>In addition to that:</p>
+<ul>
+<li>The <code>limits.cpu</code> config key also requires that CPU pinning is <strong>not</strong> used.</li>
+<li>The <code>limits.memory</code> config key must be set to an absolute value, <strong>not</strong> a percentage.</li>
+</ul>
+<p>The <code>limits.*</code> config keys defined on a project act as a hard upper bound for
+the <strong>aggregate</strong> value of the individual <code>limits.*</code> config keys defined on the
+project's instances, either directly or via profiles.</p>
+<p>For example, setting the project's <code>limits.memory</code> config key to <code>50GB</code> means
+that the sum of the individual values of all <code>limits.memory</code> config keys defined
+on the project's instances will be kept under <code>50GB</code>. Trying to create or modify
+an instance assigning it a <code>limits.memory</code> value that would make the total sum
+exceed <code>50GB</code>, will result in an error.</p>
+<p>Similarly, setting the project's <code>limits.cpu</code> config key to <code>100</code>, means that
+the <strong>sum</strong> of individual <code>limits.cpu</code> values will be kept below <code>100</code>.</p>
+<h2 id="project-restrictions">Project restrictions<a class="headerlink" href="#project-restrictions" title="Permanent link">&para;</a></h2>
+<p>If the <code>restricted</code> config key is set to <code>true</code>, then the instances of the
+project won't be able to access security-sensitive features, such as container
+nesting, raw LXC configuration, etc.</p>
+<p>The exact set of features that the <code>restricted</code> config key blocks may grow
+across LXD releases, as more features are added that are considered
+security-sensitive.</p>
+<p>Using the various <code>restricted.*</code> sub-keys, it's possible to pick individual
+features which would be normally blocked by <code>restricted</code> and allow them, so
+they can be used by instances of the project.</p>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>lxc project <span class="nb">set</span> &lt;project&gt; <span class="nv">restricted</span><span class="o">=</span><span class="nb">true</span>
+lxc project <span class="nb">set</span> &lt;project&gt; restricted.containers.nesting<span class="o">=</span>allow
+</code></pre></div>
+<p>will block all security-sensitive features <strong>except</strong> container nesting.</p>
+<p>Each security-sensitive feature has an associated <code>restricted.*</code> project config
+sub-key whose default value needs to be explicitly changed if you want for that
+feature to be allowed it in the project.</p>
+<p>Note that changing the value of a specific <code>restricted.*</code> config key has an
+effect only if the top-level <code>restricted</code> key itself is currently set to
+<code>true</code>. If <code>restricted</code> is set to <code>false</code>, changing a <code>restricted.*</code> sub-key is
+effectively a no-op.</p>
+<p>Most <code>'restricted.*</code> config keys are binary switches that can be set to either
+<code>block</code> (the default) or <code>allow</code>. However some of them support other values for
+more fine-grained control.</p>
+<p>Setting all <code>restricted.*</code> keys to <code>allow</code> is effectively equivalent to setting
+<code>restricted</code> itself to <code>false</code>.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../profiles/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Profiles" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Profiles
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../server/" class="md-footer__link md-footer__link--next" aria-label="Next: Server settings" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Server settings
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "header.autohide"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+    
+  </body>
+</html>

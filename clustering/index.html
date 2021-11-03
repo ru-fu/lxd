@@ -1,0 +1,2013 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>Clustering - LXD documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ubuntu:300,400,400i,700%7C&display=fallback">
+        <style>:root{--md-text-font-family:"ubuntu";--md-code-font-family:""}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../stylesheets/style.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#clustering" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="LXD documentation" class="md-header__button md-logo" aria-label="LXD documentation" data-md-component="logo">
+      
+  <img src="../img/containers.small.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LXD documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Clustering
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <div class="md-header__option">
+        <div class="md-select">
+          
+          <button class="md-header__button md-icon" aria-label="Select language">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24z"/></svg>
+          </button>
+          <div class="md-select__inner">
+            <ul class="md-select__list">
+              
+                <li class="md-select__item">
+                  <a href="/" hreflang="en" class="md-select__link">
+                    English
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="/lang/" hreflang="ja" class="md-select__link">
+                    Another language
+                  </a>
+                </li>
+                
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/lxc/lxd/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link md-tabs__link--active">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../test/" class="md-tabs__link">
+        Tab test
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="LXD documentation" class="md-nav__button md-logo" aria-label="LXD documentation" data-md-component="logo">
+      
+  <img src="../img/containers.small.png" alt="logo">
+
+    </a>
+    LXD documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/lxc/lxd/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          Home
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_2" type="checkbox" id="__nav_1_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_2">
+          Getting started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting started" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Getting started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        Requirements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        Frequently asked
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
+        Security
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_3" type="checkbox" id="__nav_1_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_3">
+          Configuration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Configuration" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../containers/" class="md-nav__link">
+        Containers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../instances/" class="md-nav__link">
+        Instances
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../networks/" class="md-nav__link">
+        Networks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network-acls/" class="md-nav__link">
+        Network ACLs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network-forwards/" class="md-nav__link">
+        Network Forwards
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../preseed/" class="md-nav__link">
+        Preseed files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../profiles/" class="md-nav__link">
+        Profiles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../projects/" class="md-nav__link">
+        Projects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../server/" class="md-nav__link">
+        Server settings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../storage/" class="md-nav__link">
+        Storage pools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../virtual-machines/" class="md-nav__link">
+        Virtual machines
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metrics/" class="md-nav__link">
+        Instance metrics exporter
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_4" type="checkbox" id="__nav_1_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_4">
+          Images
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Images" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Images
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architectures/" class="md-nav__link">
+        Architectures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud-init/" class="md-nav__link">
+        Cloud-init
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image-handling/" class="md-nav__link">
+        Handling
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_5" type="checkbox" id="__nav_1_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_5">
+          Operation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Operation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          Operation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backup/" class="md-nav__link">
+        Backups
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Clustering
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Clustering
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#forming-a-cluster" class="md-nav__link">
+    Forming a cluster
+  </a>
+  
+    <nav class="md-nav" aria-label="Forming a cluster">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interactively" class="md-nav__link">
+    Interactively
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preseed" class="md-nav__link">
+    Preseed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managing-a-cluster" class="md-nav__link">
+    Managing a cluster
+  </a>
+  
+    <nav class="md-nav" aria-label="Managing a cluster">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#voting-and-stand-by-members" class="md-nav__link">
+    Voting and stand-by members
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deleting-nodes" class="md-nav__link">
+    Deleting nodes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#offline-nodes-and-fault-tolerance" class="md-nav__link">
+    Offline nodes and fault tolerance
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upgrading-nodes" class="md-nav__link">
+    Upgrading nodes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evacuating-and-restoring-cluster-members" class="md-nav__link">
+    Evacuating and restoring cluster members
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#failure-domains" class="md-nav__link">
+    Failure domains
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recover-from-quorum-loss" class="md-nav__link">
+    Recover from quorum loss
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recover-cluster-members-with-changed-addresses" class="md-nav__link">
+    Recover cluster members with changed addresses
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instances" class="md-nav__link">
+    Instances
+  </a>
+  
+    <nav class="md-nav" aria-label="Instances">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manually-altering-raft-membership" class="md-nav__link">
+    Manually altering Raft membership
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#images" class="md-nav__link">
+    Images
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage-pools" class="md-nav__link">
+    Storage pools
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage-volumes" class="md-nav__link">
+    Storage volumes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#networks" class="md-nav__link">
+    Networks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#separate-rest-api-and-clustering-networks" class="md-nav__link">
+    Separate REST API and clustering networks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-the-cluster-certificate" class="md-nav__link">
+    Updating the cluster certificate
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../production-setup/" class="md-nav__link">
+        Production setup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../remotes/" class="md-nav__link">
+        Remotes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_6" type="checkbox" id="__nav_1_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_6">
+          REST API
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="REST API" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_6">
+          <span class="md-nav__icon md-icon"></span>
+          REST API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rest-api/" class="md-nav__link">
+        Main API documentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-extensions/" class="md-nav__link">
+        Main API extensions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev-lxd/" class="md-nav__link">
+        Instance API documentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        Events API documentation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_7" type="checkbox" id="__nav_1_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_7">
+          Internals & debugging
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Internals & debugging" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_7">
+          <span class="md-nav__icon md-icon"></span>
+          Internals & debugging
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container-environment/" class="md-nav__link">
+        Container environment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migration/" class="md-nav__link">
+        Instance migration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../daemon-behavior/" class="md-nav__link">
+        Daemon behavior
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        Database
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debugging/" class="md-nav__link">
+        Debugging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environment/" class="md-nav__link">
+        Environment variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../syscall-interception/" class="md-nav__link">
+        System call interception
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../userns-idmap/" class="md-nav__link">
+        User namespace setup
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_8" type="checkbox" id="__nav_1_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_8">
+          External resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="External resources" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_8">
+          <span class="md-nav__icon md-icon"></span>
+          External resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/lxc/lxd" class="md-nav__link">
+        Project repository
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://images.linuxcontainers.org" class="md-nav__link">
+        Image server
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Tab test
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tab test" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Tab test
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test/" class="md-nav__link">
+        Testing stuff
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#forming-a-cluster" class="md-nav__link">
+    Forming a cluster
+  </a>
+  
+    <nav class="md-nav" aria-label="Forming a cluster">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interactively" class="md-nav__link">
+    Interactively
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preseed" class="md-nav__link">
+    Preseed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managing-a-cluster" class="md-nav__link">
+    Managing a cluster
+  </a>
+  
+    <nav class="md-nav" aria-label="Managing a cluster">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#voting-and-stand-by-members" class="md-nav__link">
+    Voting and stand-by members
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deleting-nodes" class="md-nav__link">
+    Deleting nodes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#offline-nodes-and-fault-tolerance" class="md-nav__link">
+    Offline nodes and fault tolerance
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upgrading-nodes" class="md-nav__link">
+    Upgrading nodes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evacuating-and-restoring-cluster-members" class="md-nav__link">
+    Evacuating and restoring cluster members
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#failure-domains" class="md-nav__link">
+    Failure domains
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recover-from-quorum-loss" class="md-nav__link">
+    Recover from quorum loss
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recover-cluster-members-with-changed-addresses" class="md-nav__link">
+    Recover cluster members with changed addresses
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instances" class="md-nav__link">
+    Instances
+  </a>
+  
+    <nav class="md-nav" aria-label="Instances">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manually-altering-raft-membership" class="md-nav__link">
+    Manually altering Raft membership
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#images" class="md-nav__link">
+    Images
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage-pools" class="md-nav__link">
+    Storage pools
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage-volumes" class="md-nav__link">
+    Storage volumes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#networks" class="md-nav__link">
+    Networks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#separate-rest-api-and-clustering-networks" class="md-nav__link">
+    Separate REST API and clustering networks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-the-cluster-certificate" class="md-nav__link">
+    Updating the cluster certificate
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/lxc/lxd/edit/master/docs/clustering.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="clustering">Clustering<a class="headerlink" href="#clustering" title="Permanent link">&para;</a></h1>
+<p>LXD can be run in clustering mode, where any number of LXD servers
+share the same distributed database and can be managed uniformly using
+the lxc client or the REST API.</p>
+<p>Note that this feature was introduced as part of the API extension 
+"clustering".</p>
+<h2 id="forming-a-cluster">Forming a cluster<a class="headerlink" href="#forming-a-cluster" title="Permanent link">&para;</a></h2>
+<p>First you need to choose a bootstrap LXD node. It can be an existing
+LXD server or a brand new one. Then you need to initialize the
+bootstrap node and join further nodes to the cluster. This can be done
+interactively or with a preseed file.</p>
+<p>Note that all further nodes joining the cluster must have identical
+configuration to the bootstrap node, in terms of storage pools and
+networks. The only configuration that can be node-specific are the
+<code>source</code> and <code>size</code> keys for storage pools and the
+<code>bridge.external_interfaces</code> key for networks.</p>
+<p>It is strongly recommended that the number of nodes in the cluster be 
+at least three, so the cluster can survive the loss of at least one node 
+and still be able to establish quorum for its distributed state (which is
+kept in a SQLite database replicated using the Raft algorithm). If the 
+number of nodes is less than three, then only one node in the cluster
+will store the SQLite database. When the third node joins the cluster,
+both the second and third nodes will receive a replica of the database.</p>
+<h3 id="interactively">Interactively<a class="headerlink" href="#interactively" title="Permanent link">&para;</a></h3>
+<p>Run <code>lxd init</code> and answer <code>yes</code> to the very first question ("Would you
+like to use LXD clustering?"). Then choose a name for identifying the
+node, and an IP or DNS address that other nodes can use to connect to
+it, and answer <code>no</code> to the question about whether you're joining an
+existing cluster. Finally, optionally create a storage pool and a
+network bridge. At this point your first cluster node should be up and
+available on your network.</p>
+<p>You can now join further nodes to the cluster. Note however that these
+nodes should be brand new LXD servers, or alternatively you should
+clear their contents before joining, since any existing data on them
+will be lost.</p>
+<p>There are two ways to add a member to an existing cluster; using the trust password or using a join token.
+A join token for a new member is generated in advance on the existing cluster using the command:</p>
+<div class="highlight"><pre><span></span><code>lxc cluster add &lt;new member name&gt;
+</code></pre></div>
+<p>This will return a single-use join token which can then be used in the join token question stage of <code>lxd init</code>.
+The join token contains the addresses of the existing online members, as well as a single-use secret and the
+fingerprint of the cluster certificate. This reduces the amount of questions you have to answer during <code>lxd init</code>
+as the join token can be used to answer these questions automatically.</p>
+<p>Alternatively you can use the trust password instead of using a join token.</p>
+<p>To add an additional node, run <code>lxd init</code> and answer <code>yes</code> to the question about whether to use clustering.
+Choose a node name that is different from the one chosen for the bootstrap node or any other nodes you have joined
+so far. Then pick an IP or DNS address for the node and answer <code>yes</code> to the question about whether you're joining
+an existing cluster.</p>
+<p>If you have a join token then answer <code>yes</code> to the question that asks if you have a join token and then copy it in
+when it asks for it.</p>
+<p>If you do not have a join token, but have a trust password instead then, then answer <code>no</code> to the question that asks
+if you have a join token. Then pick an address of an existing node in the cluster and check the fingerprint that
+gets printed matches the cluster certificate of the existing members.</p>
+<h3 id="preseed">Preseed<a class="headerlink" href="#preseed" title="Permanent link">&para;</a></h3>
+<p>Create a preseed file for the bootstrap node with the configuration
+you want, for example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">config</span><span class="p">:</span>
+  <span class="nt">core.trust_password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sekret</span>
+  <span class="nt">core.https_address</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10.55.60.171:8443</span>
+  <span class="nt">images.auto_update_interval</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">15</span>
+<span class="nt">storage_pools</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">default</span>
+  <span class="nt">driver</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dir</span>
+<span class="nt">networks</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">lxdbr0</span>
+  <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bridge</span>
+  <span class="nt">config</span><span class="p">:</span>
+    <span class="nt">ipv4.address</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">192.168.100.14/24</span>
+    <span class="nt">ipv6.address</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="nt">profiles</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">default</span>
+  <span class="nt">devices</span><span class="p">:</span>
+    <span class="nt">root</span><span class="p">:</span>
+      <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/</span>
+      <span class="nt">pool</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">default</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">disk</span>
+    <span class="nt">eth0</span><span class="p">:</span>
+      <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">eth0</span>
+      <span class="nt">nictype</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bridged</span>
+      <span class="nt">parent</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">lxdbr0</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nic</span>
+<span class="nt">cluster</span><span class="p">:</span>
+  <span class="nt">server_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node1</span>
+  <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<p>Then run <code>cat &lt;preseed-file&gt; | lxd init --preseed</code> and your first node
+should be bootstrapped.</p>
+<p>Now create a bootstrap file for another node. You only need to fill in the
+<code>cluster</code> section with data and config values that are specific to the joining
+node.</p>
+<p>Be sure to include the address and certificate of the target bootstrap node. To
+create a YAML-compatible entry for the <code>cluster_certificate</code> key you can use a
+command like <code>sed ':a;N;$!ba;s/\n/\n\n/g' /var/lib/lxd/cluster.crt</code> (or
+<code>sed ':a;N;$!ba;s/\n/\n\n/g' /var/snap/lxd/common/lxd/cluster.crt</code> for snap users), which you
+have to run on the bootstrap node. <code>cluster_certificate_path</code> key (which should
+contain valid path to cluster certificate) can be used instead of <code>cluster_certificate</code> key.</p>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+  <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="nt">server_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node2</span>
+  <span class="nt">server_address</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10.55.60.155:8443</span>
+  <span class="nt">cluster_address</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10.55.60.171:8443</span>
+  <span class="nt">cluster_certificate</span><span class="p">:</span> <span class="s">&quot;-----BEGIN</span><span class="nv"> </span><span class="s">CERTIFICATE-----</span>
+
+<span class="s">opyQ1VRpAg2sV2C4W8irbNqeUsTeZZxhLqp4vNOXXBBrSqUCdPu1JXADV0kavg1l</span>
+
+<span class="s">2sXYoMobyV3K+RaJgsr1OiHjacGiGCQT3YyNGGY/n5zgT/8xI0Dquvja0bNkaf6f</span>
+
+<span class="s">...</span>
+
+<span class="s">-----END</span><span class="nv"> </span><span class="s">CERTIFICATE-----</span>
+<span class="s">&quot;</span>
+  <span class="nt">cluster_password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sekret</span>
+  <span class="nt">member_config</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">entity</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">storage-pool</span>
+    <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">default</span>
+    <span class="nt">key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">source</span>
+    <span class="nt">value</span><span class="p">:</span> <span class="s">&quot;&quot;</span>
+</code></pre></div>
+<p>When joining a cluster using a cluster join token, the following fields can be omitted:</p>
+<ul>
+<li>server_name</li>
+<li>cluster_address</li>
+<li>cluster_certificate</li>
+<li>cluster_password</li>
+</ul>
+<p>And instead the full token be passed through the <code>cluster_token</code> field.</p>
+<h2 id="managing-a-cluster">Managing a cluster<a class="headerlink" href="#managing-a-cluster" title="Permanent link">&para;</a></h2>
+<p>Once your cluster is formed you can see a list of its nodes and their
+status by running <code>lxc cluster list</code>. More detailed information about
+an individual node is available with <code>lxc cluster show &lt;node name&gt;</code>.</p>
+<h3 id="voting-and-stand-by-members">Voting and stand-by members<a class="headerlink" href="#voting-and-stand-by-members" title="Permanent link">&para;</a></h3>
+<p>The cluster uses a distributed <a href="../database/">database</a> to store its state. All
+nodes in the cluster need to access such distributed database in order to serve
+user requests.</p>
+<p>If the cluster has many nodes, only some of them will be picked to replicate
+database data. Each node that is picked can replicate data either as "voter" or
+as "stand-by". The database (and hence the cluster) will remain available as
+long as a majority of voters is online. A stand-by node will automatically be
+promoted to voter when another voter is shutdown gracefully or when its detected
+to be offline.</p>
+<p>The default number of voting nodes is 3 and the default number of stand-by nodes
+is 2. This means that your cluster will remain operation as long as you switch
+off at most one voting node at a time.</p>
+<p>You can change the desired number of voting and stand-by nodes with:</p>
+<div class="highlight"><pre><span></span><code>lxc config <span class="nb">set</span> cluster.max_voters &lt;n&gt;
+</code></pre></div>
+<p>and</p>
+<div class="highlight"><pre><span></span><code>lxc config <span class="nb">set</span> cluster.max_standby &lt;n&gt;
+</code></pre></div>
+<p>with the constraint that the maximum number of voters must be odd and must be
+least 3, while the maximum number of stand-by nodes must be between 0 and 5.</p>
+<h3 id="deleting-nodes">Deleting nodes<a class="headerlink" href="#deleting-nodes" title="Permanent link">&para;</a></h3>
+<p>To cleanly delete a node from the cluster use <code>lxc cluster remove &lt;node name&gt;</code>.</p>
+<h3 id="offline-nodes-and-fault-tolerance">Offline nodes and fault tolerance<a class="headerlink" href="#offline-nodes-and-fault-tolerance" title="Permanent link">&para;</a></h3>
+<p>At each time there will be an elected cluster leader that will monitor
+the health of the other nodes. If a node is down for more than 20
+seconds, its status will be marked as OFFLINE and no operation will be
+possible on it, as well as operations that require a state change
+across all nodes.</p>
+<p>If the node that goes offline is the leader itself, the other nodes
+will elect a new leader.</p>
+<p>As soon as the offline node comes back online, operations will be
+available again.</p>
+<p>If you can't or don't want to bring the node back online, you can
+delete it from the cluster using <code>lxc cluster remove --force &lt;node name&gt;</code>.</p>
+<p>You can tweak the amount of seconds after which a non-responding node will be
+considered offline by running:</p>
+<div class="highlight"><pre><span></span><code>lxc config <span class="nb">set</span> cluster.offline_threshold &lt;n seconds&gt;
+</code></pre></div>
+<p>The minimum value is 10 seconds.</p>
+<h3 id="upgrading-nodes">Upgrading nodes<a class="headerlink" href="#upgrading-nodes" title="Permanent link">&para;</a></h3>
+<p>To upgrade a cluster you need to upgrade all of its nodes, making sure
+that they all upgrade to the same version of LXD.</p>
+<p>To upgrade a single node, simply upgrade the lxd/lxc binaries on the
+host (via snap or other packaging systems) and restart the lxd daemon.</p>
+<p>If the new version of the daemon has database schema or API changes,
+the restarted node might transition into a Blocked state. That happens
+if there are still nodes in the cluster that have not been upgraded
+and that are running an older version. When a node is in the
+Blocked state it will not serve any LXD API requests (in particular,
+lxc commands on that node will not work, although any running
+instance will continue to run).</p>
+<p>You can see if some nodes are blocked by running <code>lxc cluster list</code> on
+a node which is not blocked.</p>
+<p>As you proceed upgrading the rest of the nodes, they will all
+transition to the Blocked state, until you upgrade the very last
+one. At that point the blocked nodes will notice that there is no
+out-of-date node left and will become operational again.</p>
+<h3 id="evacuating-and-restoring-cluster-members">Evacuating and restoring cluster members<a class="headerlink" href="#evacuating-and-restoring-cluster-members" title="Permanent link">&para;</a></h3>
+<p>Whether it's for routine maintenance like applying system updates requiring
+a reboot or to perform hardware changes, you may sometimes want to empty a
+given server of all its instances.</p>
+<p>This can be done using <code>lxc cluster evacuate &lt;NAME&gt;</code> which will migrate all
+instances on that server, moving them to other cluster members. The evacuated
+cluster member will be transitioned to an "evacuated" state which will prevent
+the creation of any instances on it.</p>
+<p>Once maintenance is complete, <code>lxc cluster restore &lt;NAME&gt;</code> will move the server
+back into a normal running state and will move its instances back from the servers
+that were temporarily holding them.</p>
+<p>The behavior for a given instance can be configured through the <code>cluster.evacuate</code>
+instance configuration key. Instances will be shutdown cleanly, respecting the
+<code>boot.host_shutdown_timeout</code> configuration key.</p>
+<h3 id="failure-domains">Failure domains<a class="headerlink" href="#failure-domains" title="Permanent link">&para;</a></h3>
+<p>Failure domains can be used to indicate which nodes should be given preference
+when trying to assign roles to a cluster member that has been shutdown or has
+crashed. For example, if a cluster member that currently has the database role
+gets shutdown, LXD will try to assign its database role to another cluster
+member in the same failure domain, if one is available.</p>
+<p>To change the failure domain of a cluster member you can use the <code>lxc cluster
+edit &lt;member&gt;</code> command line tool, or the <code>PUT /1.0/cluster/&lt;member&gt;</code> REST API.</p>
+<h3 id="recover-from-quorum-loss">Recover from quorum loss<a class="headerlink" href="#recover-from-quorum-loss" title="Permanent link">&para;</a></h3>
+<p>Every LXD cluster has up to 3 members that serve as database nodes. If you
+permanently lose a majority of the cluster members that are serving as database
+nodes (for example you have a 3-member cluster and you lose 2 members), the
+cluster will become unavailable. However, if at least one database node has
+survived, you will be able to recover the cluster.</p>
+<p>In order to check which cluster members are configured as database nodes, log on
+any survived member of your cluster and run the command:</p>
+<div class="highlight"><pre><span></span><code>lxd cluster list-database
+</code></pre></div>
+<p>This will work even if the LXD daemon is not running.</p>
+<p>Among the listed members, pick the one that has survived and log into it (if it
+differs from the one you have run the command on).</p>
+<p>Now make sure the LXD daemon is not running and then issue the command:</p>
+<div class="highlight"><pre><span></span><code>lxd cluster recover-from-quorum-loss
+</code></pre></div>
+<p>At this point you can restart the LXD daemon and the database should be back
+online.</p>
+<p>Note that no information has been deleted from the database, in particular all
+information about the cluster members that you have lost is still there,
+including the metadata about their instances. This can help you with further
+recovery steps in case you need to re-create the lost instances.</p>
+<p>In order to permanently delete the cluster members that you have lost, you can
+run the command:</p>
+<div class="highlight"><pre><span></span><code>lxc cluster remove &lt;name&gt; --force
+</code></pre></div>
+<p>Note that this time you have to use the regular <code>lxc</code> command line tool, not
+<code>lxd</code>.</p>
+<h3 id="recover-cluster-members-with-changed-addresses">Recover cluster members with changed addresses<a class="headerlink" href="#recover-cluster-members-with-changed-addresses" title="Permanent link">&para;</a></h3>
+<p>If some members of your cluster are no longer reachable, or if the cluster itself
+is unreachable due to a change in IP address or listening port number, the
+cluster can be reconfigured.</p>
+<p>On each member of the cluster, with LXD not running, run the following command:</p>
+<div class="highlight"><pre><span></span><code>lxd cluster edit
+</code></pre></div>
+<p>Note that all commands in this section will use <code>lxd</code> instead of <code>lxc</code>.</p>
+<p>This will present a YAML representation of this node's last recorded information
+about the rest of the cluster:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Latest dqlite segment ID: 1234</span>
+
+<span class="nt">members</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>             <span class="c1"># Internal ID of the node (Read-only)</span>
+    <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node1</span>       <span class="c1"># Name of the cluster member (Read-only)</span>
+    <span class="nt">address</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10.0.0.10:8443</span> <span class="c1"># Last known address of the node (Writeable)</span>
+    <span class="nt">role</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">voter</span>             <span class="c1"># Last known role of the node (Writeable)</span>
+  <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+  <span class=" -Error"> </span><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node2</span>
+    <span class="l l-Scalar l-Scalar-Plain">address</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10.0.0.11:8443</span>
+    <span class="l l-Scalar l-Scalar-Plain">role</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">stand-by</span>
+  <span class="p p-Indicator">-</span> <span class="nt">id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3</span>
+  <span class=" -Error"> </span><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node3</span>
+    <span class="l l-Scalar l-Scalar-Plain">address</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10.0.0.12:8443</span>
+    <span class="l l-Scalar l-Scalar-Plain">role</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">spare</span>
+</code></pre></div>
+<p>Members may not be removed from this configuration, and a spare node cannot become
+a voter, as it may lack a global database. Importantly, keep in mind that at least
+2 nodes must remain voters (except in the case of a 2-member cluster, where 1 voter
+suffices), or there will be no quorum.</p>
+<p>Once the necessary changes have been made, repeat the process on each member of the
+cluster. Upon reloading LXD on each member, the cluster in its entirety should be
+back online with all nodes reporting in.</p>
+<p>Note that no information has been deleted from the database, all information
+about the cluster members and their instances is still there.</p>
+<h2 id="instances">Instances<a class="headerlink" href="#instances" title="Permanent link">&para;</a></h2>
+<p>You can launch an instance on any node in the cluster from any node in
+the cluster. For example, from node1:</p>
+<div class="highlight"><pre><span></span><code>lxc launch --target node2 ubuntu:18.04 bionic
+</code></pre></div>
+<p>will launch an Ubuntu 18.04 container on node2.</p>
+<p>When you launch an instance without defining a target, the instance will be 
+launched on the server which has the lowest number of instances.
+If all the servers have the same amount of instances, it will choose one at random.</p>
+<p>You can list all instances in the cluster with:</p>
+<div class="highlight"><pre><span></span><code>lxc list
+</code></pre></div>
+<p>The NODE column will indicate on which node they are running.</p>
+<p>After an instance is launched, you can operate it from any node. For
+example, from node1:</p>
+<div class="highlight"><pre><span></span><code>lxc <span class="nb">exec</span> bionic ls /
+lxc stop bionic
+lxc delete bionic
+lxc pull file bionic/etc/hosts .
+</code></pre></div>
+<h3 id="manually-altering-raft-membership">Manually altering Raft membership<a class="headerlink" href="#manually-altering-raft-membership" title="Permanent link">&para;</a></h3>
+<p>There might be situations in which you need to manually alter the Raft
+membership configuration of the cluster because some unexpected behavior
+occurred.</p>
+<p>For example if you have a cluster member that was removed uncleanly it might not
+show up in <code>lxc cluster list</code> but still be part of the Raft configuration (you
+can see that with `lxd sql local "SELECT * FROM raft_nodes").</p>
+<p>In that case you can run:</p>
+<div class="highlight"><pre><span></span><code>lxd cluster remove-raft-node &lt;address&gt;
+</code></pre></div>
+<p>to remove the leftover node.</p>
+<h2 id="images">Images<a class="headerlink" href="#images" title="Permanent link">&para;</a></h2>
+<p>By default, LXD will replicate images on as many cluster members as you
+have database members. This typically means up to 3 copies within the cluster.</p>
+<p>That number can be increased to improve fault tolerance and likelihood
+of the image being locally available.</p>
+<p>The special value of "-1" may be used to have the image copied on all nodes.</p>
+<p>You can disable the image replication in the cluster by setting the count down to 1:</p>
+<div class="highlight"><pre><span></span><code>lxc config <span class="nb">set</span> cluster.images_minimal_replica <span class="m">1</span>
+</code></pre></div>
+<h2 id="storage-pools">Storage pools<a class="headerlink" href="#storage-pools" title="Permanent link">&para;</a></h2>
+<p>As mentioned above, all nodes must have identical storage pools. The
+only difference between pools on different nodes might be their
+<code>source</code>, <code>size</code> or <code>zfs.pool\_name</code> configuration keys.</p>
+<p>To create a new storage pool, you first have to define it across all
+nodes, for example:</p>
+<div class="highlight"><pre><span></span><code>lxc storage create --target node1 data zfs <span class="nv">source</span><span class="o">=</span>/dev/vdb1
+lxc storage create --target node2 data zfs <span class="nv">source</span><span class="o">=</span>/dev/vdc1
+</code></pre></div>
+<p>Note that when defining a new storage pool on a node the only valid
+configuration keys you can pass are the node-specific ones mentioned above.</p>
+<p>At this point the pool hasn't been actually created yet, but just
+defined (it's state is marked as Pending if you run <code>lxc storage list</code>).</p>
+<p>Now run:</p>
+<div class="highlight"><pre><span></span><code>lxc storage create data zfs
+</code></pre></div>
+<p>and the storage will be instantiated on all nodes. If you didn't
+define it on a particular node, or a node is down, an error will be
+returned.</p>
+<p>You can pass to this final <code>storage create</code> command any configuration key
+which is not node-specific (see above).</p>
+<h2 id="storage-volumes">Storage volumes<a class="headerlink" href="#storage-volumes" title="Permanent link">&para;</a></h2>
+<p>Each volume lives on a specific node. The <code>lxc storage volume list</code>
+includes a <code>NODE</code> column to indicate on which node a certain volume
+resides.</p>
+<p>Different volumes can have the same name as long as they live on
+different nodes (for example image volumes). You can manage storage
+volumes in the same way you do in non-clustered deployments, except
+that you'll have to pass a <code>--target &lt;node name&gt;</code> parameter to volume
+commands if more than one node has a volume with the given name.</p>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create a volume on the node this client is pointing at</span>
+lxc storage volume create default web
+
+<span class="c1"># Create a volume with the same node on another node</span>
+lxc storage volume create default web --target node2
+
+<span class="c1"># Show the two volumes defined</span>
+lxc storage volume show default web --target node1
+lxc storage volume show default web --target node2
+</code></pre></div>
+<h2 id="networks">Networks<a class="headerlink" href="#networks" title="Permanent link">&para;</a></h2>
+<p>As mentioned above, all nodes must have identical networks defined.</p>
+<p>The only difference between networks on different nodes might be their optional configuration keys.
+When defining a new network on a specific clustered node the only valid optional configuration keys you can pass
+are <code>bridge.external_interfaces</code> and <code>parent</code>, as these can be different on each node (see documentation about
+<a href="../networks/">network configuration</a> for a definition of each).</p>
+<p>To create a new network, you first have to define it across all nodes, for example:</p>
+<div class="highlight"><pre><span></span><code>lxc network create --target node1 my-network
+lxc network create --target node2 my-network
+</code></pre></div>
+<p>At this point the network hasn't been actually created yet, but just defined
+(it's state is marked as Pending if you run <code>lxc network list</code>).</p>
+<p>Now run:</p>
+<div class="highlight"><pre><span></span><code>lxc network create my-network
+</code></pre></div>
+<p>The network will be instantiated on all nodes. If you didn't define it on a particular node, or a node is down,
+an error will be returned.</p>
+<p>You can pass to this final <code>network create</code> command any configuration key which is not node-specific (see above).</p>
+<h2 id="separate-rest-api-and-clustering-networks">Separate REST API and clustering networks<a class="headerlink" href="#separate-rest-api-and-clustering-networks" title="Permanent link">&para;</a></h2>
+<p>You can configure different networks for the REST API endpoint of your clients
+and for internal traffic between the nodes of your cluster (for example in order
+to use a virtual address for your REST API, with DNS round robin).</p>
+<p>To do that, you need to bootstrap the first node of the cluster using the
+<code>cluster.https_address</code> config key. For example, when using preseed:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">config</span><span class="p">:</span>
+  <span class="nt">core.trust_password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sekret</span>
+  <span class="nt">core.https_address</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">my.lxd.cluster:8443</span>
+  <span class="nt">cluster.https_address</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10.55.60.171:8443</span>
+<span class="nn">...</span>
+</code></pre></div>
+<p>(the rest of the preseed YAML is the same as above).</p>
+<p>To join a new node, first set its REST API address, for instance using the
+<code>lxc</code> client:</p>
+<div class="highlight"><pre><span></span><code>lxc config <span class="nb">set</span> core.https_address my.lxd.cluster:8443
+</code></pre></div>
+<p>and then use the <code>PUT /1.0/cluster</code> API endpoint as usual, specifying the
+address of the joining node with the <code>server_address</code> field. If you use
+preseed, the YAML payload would be exactly like the one above.</p>
+<h2 id="updating-the-cluster-certificate">Updating the cluster certificate<a class="headerlink" href="#updating-the-cluster-certificate" title="Permanent link">&para;</a></h2>
+<p>In a LXD cluster, all servers respond with the same shared certificate. This
+is usually a standard self-signed certificate with an expiry set to 10 years.</p>
+<p>If you wish to replace it with something else, for example a valid certificate
+obtained through Let's Encrypt, <code>lxc cluster update-certificate</code> can be used
+to replace the certificate on all servers in your cluster.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../backup/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Backups" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Backups
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../production-setup/" class="md-footer__link md-footer__link--next" aria-label="Next: Production setup" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Production setup
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "header.autohide"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+    
+  </body>
+</html>

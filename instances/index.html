@@ -1,0 +1,4681 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>Instances - LXD documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ubuntu:300,400,400i,700%7C&display=fallback">
+        <style>:root{--md-text-font-family:"ubuntu";--md-code-font-family:""}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../stylesheets/style.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#instance-configuration" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="LXD documentation" class="md-header__button md-logo" aria-label="LXD documentation" data-md-component="logo">
+      
+  <img src="../img/containers.small.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LXD documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Instances
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <div class="md-header__option">
+        <div class="md-select">
+          
+          <button class="md-header__button md-icon" aria-label="Select language">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24z"/></svg>
+          </button>
+          <div class="md-select__inner">
+            <ul class="md-select__list">
+              
+                <li class="md-select__item">
+                  <a href="/" hreflang="en" class="md-select__link">
+                    English
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="/lang/" hreflang="ja" class="md-select__link">
+                    Another language
+                  </a>
+                </li>
+                
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/lxc/lxd/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link md-tabs__link--active">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../test/" class="md-tabs__link">
+        Tab test
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="LXD documentation" class="md-nav__button md-logo" aria-label="LXD documentation" data-md-component="logo">
+      
+  <img src="../img/containers.small.png" alt="logo">
+
+    </a>
+    LXD documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/lxc/lxd/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          Home
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_2" type="checkbox" id="__nav_1_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_2">
+          Getting started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting started" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Getting started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        Requirements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        Frequently asked
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
+        Security
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_3" type="checkbox" id="__nav_1_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_3">
+          Configuration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Configuration" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../containers/" class="md-nav__link">
+        Containers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Instances
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Instances
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    Properties
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keyvalue-configuration" class="md-nav__link">
+    Key/value configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Key/value configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu-limits" class="md-nav__link">
+    CPU limits
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#devices-configuration" class="md-nav__link">
+    Devices configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#device-types" class="md-nav__link">
+    Device types
+  </a>
+  
+    <nav class="md-nav" aria-label="Device types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type-none" class="md-nav__link">
+    Type: none
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-nic" class="md-nav__link">
+    Type: nic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-infiniband" class="md-nav__link">
+    Type: infiniband
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-disk" class="md-nav__link">
+    Type: disk
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-unix-char" class="md-nav__link">
+    Type: unix-char
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-unix-block" class="md-nav__link">
+    Type: unix-block
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-usb" class="md-nav__link">
+    Type: usb
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-gpu" class="md-nav__link">
+    Type: gpu
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-proxy" class="md-nav__link">
+    Type: proxy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-unix-hotplug" class="md-nav__link">
+    Type: unix-hotplug
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-tpm" class="md-nav__link">
+    Type: tpm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-pci" class="md-nav__link">
+    Type: pci
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#units-for-storage-and-network-limits" class="md-nav__link">
+    Units for storage and network limits
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instance-types" class="md-nav__link">
+    Instance types
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hugepage-limits-via-limitshugepagessize" class="md-nav__link">
+    Hugepage limits via limits.hugepages.[size]
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resource-limits-via-limitskernellimit-name" class="md-nav__link">
+    Resource limits via limits.kernel.[limit name]
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#snapshot-scheduling" class="md-nav__link">
+    Snapshot scheduling
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../networks/" class="md-nav__link">
+        Networks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network-acls/" class="md-nav__link">
+        Network ACLs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network-forwards/" class="md-nav__link">
+        Network Forwards
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../preseed/" class="md-nav__link">
+        Preseed files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../profiles/" class="md-nav__link">
+        Profiles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../projects/" class="md-nav__link">
+        Projects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../server/" class="md-nav__link">
+        Server settings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../storage/" class="md-nav__link">
+        Storage pools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../virtual-machines/" class="md-nav__link">
+        Virtual machines
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metrics/" class="md-nav__link">
+        Instance metrics exporter
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_4" type="checkbox" id="__nav_1_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_4">
+          Images
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Images" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Images
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architectures/" class="md-nav__link">
+        Architectures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud-init/" class="md-nav__link">
+        Cloud-init
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image-handling/" class="md-nav__link">
+        Handling
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_5" type="checkbox" id="__nav_1_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_5">
+          Operation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Operation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          Operation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backup/" class="md-nav__link">
+        Backups
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clustering/" class="md-nav__link">
+        Clustering
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../production-setup/" class="md-nav__link">
+        Production setup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../remotes/" class="md-nav__link">
+        Remotes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_6" type="checkbox" id="__nav_1_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_6">
+          REST API
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="REST API" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_6">
+          <span class="md-nav__icon md-icon"></span>
+          REST API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rest-api/" class="md-nav__link">
+        Main API documentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-extensions/" class="md-nav__link">
+        Main API extensions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev-lxd/" class="md-nav__link">
+        Instance API documentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        Events API documentation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_7" type="checkbox" id="__nav_1_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_7">
+          Internals & debugging
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Internals & debugging" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_7">
+          <span class="md-nav__icon md-icon"></span>
+          Internals & debugging
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container-environment/" class="md-nav__link">
+        Container environment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migration/" class="md-nav__link">
+        Instance migration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../daemon-behavior/" class="md-nav__link">
+        Daemon behavior
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        Database
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debugging/" class="md-nav__link">
+        Debugging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environment/" class="md-nav__link">
+        Environment variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../syscall-interception/" class="md-nav__link">
+        System call interception
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../userns-idmap/" class="md-nav__link">
+        User namespace setup
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_8" type="checkbox" id="__nav_1_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_8">
+          External resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="External resources" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_8">
+          <span class="md-nav__icon md-icon"></span>
+          External resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/lxc/lxd" class="md-nav__link">
+        Project repository
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://images.linuxcontainers.org" class="md-nav__link">
+        Image server
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Tab test
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tab test" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Tab test
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test/" class="md-nav__link">
+        Testing stuff
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    Properties
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keyvalue-configuration" class="md-nav__link">
+    Key/value configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Key/value configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu-limits" class="md-nav__link">
+    CPU limits
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#devices-configuration" class="md-nav__link">
+    Devices configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#device-types" class="md-nav__link">
+    Device types
+  </a>
+  
+    <nav class="md-nav" aria-label="Device types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type-none" class="md-nav__link">
+    Type: none
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-nic" class="md-nav__link">
+    Type: nic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-infiniband" class="md-nav__link">
+    Type: infiniband
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-disk" class="md-nav__link">
+    Type: disk
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-unix-char" class="md-nav__link">
+    Type: unix-char
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-unix-block" class="md-nav__link">
+    Type: unix-block
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-usb" class="md-nav__link">
+    Type: usb
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-gpu" class="md-nav__link">
+    Type: gpu
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-proxy" class="md-nav__link">
+    Type: proxy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-unix-hotplug" class="md-nav__link">
+    Type: unix-hotplug
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-tpm" class="md-nav__link">
+    Type: tpm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-pci" class="md-nav__link">
+    Type: pci
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#units-for-storage-and-network-limits" class="md-nav__link">
+    Units for storage and network limits
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instance-types" class="md-nav__link">
+    Instance types
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hugepage-limits-via-limitshugepagessize" class="md-nav__link">
+    Hugepage limits via limits.hugepages.[size]
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resource-limits-via-limitskernellimit-name" class="md-nav__link">
+    Resource limits via limits.kernel.[limit name]
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#snapshot-scheduling" class="md-nav__link">
+    Snapshot scheduling
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/lxc/lxd/edit/master/docs/instances.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="instance-configuration">Instance configuration<a class="headerlink" href="#instance-configuration" title="Permanent link">&para;</a></h1>
+<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
+<p>The following are direct instance properties and can't be part of a profile:</p>
+<ul>
+<li><code>name</code></li>
+<li><code>architecture</code></li>
+</ul>
+<p>Name is the instance name and can only be changed by renaming the instance.</p>
+<p>Valid instance names must:</p>
+<ul>
+<li>Be between 1 and 63 characters long</li>
+<li>Be made up exclusively of letters, numbers and dashes from the ASCII table</li>
+<li>Not start with a digit or a dash</li>
+<li>Not end with a dash</li>
+</ul>
+<p>This requirement is so that the instance name may properly be used in
+DNS records, on the filesystem, in various security profiles as well as
+the hostname of the instance itself.</p>
+<h2 id="keyvalue-configuration">Key/value configuration<a class="headerlink" href="#keyvalue-configuration" title="Permanent link">&para;</a></h2>
+<p>The key/value configuration is namespaced with the following namespaces
+currently supported:</p>
+<ul>
+<li><code>boot</code> (boot related options, timing, dependencies, ...)</li>
+<li><code>environment</code> (environment variables)</li>
+<li><code>image</code> (copy of the image properties at time of creation)</li>
+<li><code>limits</code> (resource limits)</li>
+<li><code>nvidia</code> (NVIDIA and CUDA configuration)</li>
+<li><code>raw</code> (raw instance configuration overrides)</li>
+<li><code>security</code> (security policies)</li>
+<li><code>user</code> (storage for user properties, searchable)</li>
+<li><code>volatile</code> (used internally by LXD to store internal data specific to an instance)</li>
+</ul>
+<p>The currently supported keys are:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Type</th>
+<th align="left">Default</th>
+<th align="left">Live update</th>
+<th align="left">Condition</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">boot.autostart</td>
+<td align="left">boolean</td>
+<td align="left">-</td>
+<td align="left">n/a</td>
+<td align="left">-</td>
+<td align="left">Always start the instance when LXD starts (if not set, restore last state)</td>
+</tr>
+<tr>
+<td align="left">boot.autostart.delay</td>
+<td align="left">integer</td>
+<td align="left">0</td>
+<td align="left">n/a</td>
+<td align="left">-</td>
+<td align="left">Number of seconds to wait after the instance started before starting the next one</td>
+</tr>
+<tr>
+<td align="left">boot.autostart.priority</td>
+<td align="left">integer</td>
+<td align="left">0</td>
+<td align="left">n/a</td>
+<td align="left">-</td>
+<td align="left">What order to start the instances in (starting with highest)</td>
+</tr>
+<tr>
+<td align="left">boot.host_shutdown_timeout</td>
+<td align="left">integer</td>
+<td align="left">30</td>
+<td align="left">yes</td>
+<td align="left">-</td>
+<td align="left">Seconds to wait for instance to shutdown before it is force stopped</td>
+</tr>
+<tr>
+<td align="left">boot.stop.priority</td>
+<td align="left">integer</td>
+<td align="left">0</td>
+<td align="left">n/a</td>
+<td align="left">-</td>
+<td align="left">What order to shutdown the instances (starting with highest)</td>
+</tr>
+<tr>
+<td align="left">cluster.evacuate</td>
+<td align="left">string</td>
+<td align="left">auto</td>
+<td align="left">n/a</td>
+<td align="left">-</td>
+<td align="left">What to do when evacuating the instance (auto, migrate, or stop)</td>
+</tr>
+<tr>
+<td align="left">environment.*</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">yes (exec)</td>
+<td align="left">-</td>
+<td align="left">key/value environment variables to export to the instance and set on exec</td>
+</tr>
+<tr>
+<td align="left">limits.cpu</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">yes</td>
+<td align="left">-</td>
+<td align="left">Number or range of CPUs to expose to the instance (defaults to 1 CPU for VMs)</td>
+</tr>
+<tr>
+<td align="left">limits.cpu.allowance</td>
+<td align="left">string</td>
+<td align="left">100%</td>
+<td align="left">yes</td>
+<td align="left">container</td>
+<td align="left">How much of the CPU can be used. Can be a percentage (e.g. 50%) for a soft limit or hard a chunk of time (25ms/100ms)</td>
+</tr>
+<tr>
+<td align="left">limits.cpu.priority</td>
+<td align="left">integer</td>
+<td align="left">10 (maximum)</td>
+<td align="left">yes</td>
+<td align="left">container</td>
+<td align="left">CPU scheduling priority compared to other instances sharing the same CPUs (overcommit) (integer between 0 and 10)</td>
+</tr>
+<tr>
+<td align="left">limits.disk.priority</td>
+<td align="left">integer</td>
+<td align="left">5 (medium)</td>
+<td align="left">yes</td>
+<td align="left">-</td>
+<td align="left">When under load, how much priority to give to the instance's I/O requests (integer between 0 and 10)</td>
+</tr>
+<tr>
+<td align="left">limits.hugepages.64KB</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">yes</td>
+<td align="left">container</td>
+<td align="left">Fixed value in bytes (various suffixes supported, see below) to limit number of 64 KB hugepages (Available hugepage sizes are architecture dependent.)</td>
+</tr>
+<tr>
+<td align="left">limits.hugepages.1MB</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">yes</td>
+<td align="left">container</td>
+<td align="left">Fixed value in bytes (various suffixes supported, see below) to limit number of 1 MB hugepages (Available hugepage sizes are architecture dependent.)</td>
+</tr>
+<tr>
+<td align="left">limits.hugepages.2MB</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">yes</td>
+<td align="left">container</td>
+<td align="left">Fixed value in bytes (various suffixes supported, see below) to limit number of 2 MB hugepages (Available hugepage sizes are architecture dependent.)</td>
+</tr>
+<tr>
+<td align="left">limits.hugepages.1GB</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">yes</td>
+<td align="left">container</td>
+<td align="left">Fixed value in bytes (various suffixes supported, see below) to limit number of 1 GB hugepages (Available hugepage sizes are architecture dependent.)</td>
+</tr>
+<tr>
+<td align="left">limits.kernel.*</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">container</td>
+<td align="left">This limits kernel resources per instance (e.g. number of open files)</td>
+</tr>
+<tr>
+<td align="left">limits.memory</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">yes</td>
+<td align="left">-</td>
+<td align="left">Percentage of the host's memory or fixed value in bytes (various suffixes supported, see below) (defaults to 1GiB for VMs)</td>
+</tr>
+<tr>
+<td align="left">limits.memory.enforce</td>
+<td align="left">string</td>
+<td align="left">hard</td>
+<td align="left">yes</td>
+<td align="left">container</td>
+<td align="left">If hard, instance can't exceed its memory limit. If soft, the instance can exceed its memory limit when extra host memory is available</td>
+</tr>
+<tr>
+<td align="left">limits.memory.hugepages</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">no</td>
+<td align="left">virtual-machine</td>
+<td align="left">Controls whether to back the instance using hugepages rather than regular system memory</td>
+</tr>
+<tr>
+<td align="left">limits.memory.swap</td>
+<td align="left">boolean</td>
+<td align="left">true</td>
+<td align="left">yes</td>
+<td align="left">container</td>
+<td align="left">Controls whether to encourage/discourage swapping less used pages for this instance</td>
+</tr>
+<tr>
+<td align="left">limits.memory.swap.priority</td>
+<td align="left">integer</td>
+<td align="left">10 (maximum)</td>
+<td align="left">yes</td>
+<td align="left">container</td>
+<td align="left">The higher this is set, the least likely the instance is to be swapped to disk (integer between 0 and 10)</td>
+</tr>
+<tr>
+<td align="left">limits.network.priority</td>
+<td align="left">integer</td>
+<td align="left">0 (minimum)</td>
+<td align="left">yes</td>
+<td align="left">-</td>
+<td align="left">When under load, how much priority to give to the instance's network requests (integer between 0 and 10)</td>
+</tr>
+<tr>
+<td align="left">limits.processes</td>
+<td align="left">integer</td>
+<td align="left">- (max)</td>
+<td align="left">yes</td>
+<td align="left">container</td>
+<td align="left">Maximum number of processes that can run in the instance</td>
+</tr>
+<tr>
+<td align="left">linux.kernel_modules</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">yes</td>
+<td align="left">container</td>
+<td align="left">Comma separated list of kernel modules to load before starting the instance</td>
+</tr>
+<tr>
+<td align="left">migration.incremental.memory</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">yes</td>
+<td align="left">container</td>
+<td align="left">Incremental memory transfer of the instance's memory to reduce downtime</td>
+</tr>
+<tr>
+<td align="left">migration.incremental.memory.goal</td>
+<td align="left">integer</td>
+<td align="left">70</td>
+<td align="left">yes</td>
+<td align="left">container</td>
+<td align="left">Percentage of memory to have in sync before stopping the instance</td>
+</tr>
+<tr>
+<td align="left">migration.incremental.memory.iterations</td>
+<td align="left">integer</td>
+<td align="left">10</td>
+<td align="left">yes</td>
+<td align="left">container</td>
+<td align="left">Maximum number of transfer operations to go through before stopping the instance</td>
+</tr>
+<tr>
+<td align="left">migration.stateful</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">no</td>
+<td align="left">virtual-machine</td>
+<td align="left">Allow for stateful stop/start and snapshots. This will prevent the use of some features that are incompatible with it</td>
+</tr>
+<tr>
+<td align="left">nvidia.driver.capabilities</td>
+<td align="left">string</td>
+<td align="left">compute,utility</td>
+<td align="left">no</td>
+<td align="left">container</td>
+<td align="left">What driver capabilities the instance needs (sets libnvidia-container NVIDIA_DRIVER_CAPABILITIES)</td>
+</tr>
+<tr>
+<td align="left">nvidia.runtime</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">no</td>
+<td align="left">container</td>
+<td align="left">Pass the host NVIDIA and CUDA runtime libraries into the instance</td>
+</tr>
+<tr>
+<td align="left">nvidia.require.cuda</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">container</td>
+<td align="left">Version expression for the required CUDA version (sets libnvidia-container NVIDIA_REQUIRE_CUDA)</td>
+</tr>
+<tr>
+<td align="left">nvidia.require.driver</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">container</td>
+<td align="left">Version expression for the required driver version (sets libnvidia-container NVIDIA_REQUIRE_DRIVER)</td>
+</tr>
+<tr>
+<td align="left">raw.apparmor</td>
+<td align="left">blob</td>
+<td align="left">-</td>
+<td align="left">yes</td>
+<td align="left">-</td>
+<td align="left">Apparmor profile entries to be appended to the generated profile</td>
+</tr>
+<tr>
+<td align="left">raw.idmap</td>
+<td align="left">blob</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">unprivileged container</td>
+<td align="left">Raw idmap configuration (e.g. "both 1000 1000")</td>
+</tr>
+<tr>
+<td align="left">raw.lxc</td>
+<td align="left">blob</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">container</td>
+<td align="left">Raw LXC configuration to be appended to the generated one</td>
+</tr>
+<tr>
+<td align="left">raw.qemu</td>
+<td align="left">blob</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">virtual-machine</td>
+<td align="left">Raw Qemu configuration to be appended to the generated command line</td>
+</tr>
+<tr>
+<td align="left">raw.seccomp</td>
+<td align="left">blob</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">container</td>
+<td align="left">Raw Seccomp configuration</td>
+</tr>
+<tr>
+<td align="left">security.devlxd</td>
+<td align="left">boolean</td>
+<td align="left">true</td>
+<td align="left">no</td>
+<td align="left">-</td>
+<td align="left">Controls the presence of /dev/lxd in the instance</td>
+</tr>
+<tr>
+<td align="left">security.devlxd.images</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">no</td>
+<td align="left">container</td>
+<td align="left">Controls the availability of the /1.0/images API over devlxd</td>
+</tr>
+<tr>
+<td align="left">security.idmap.base</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">unprivileged container</td>
+<td align="left">The base host ID to use for the allocation (overrides auto-detection)</td>
+</tr>
+<tr>
+<td align="left">security.idmap.isolated</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">no</td>
+<td align="left">unprivileged container</td>
+<td align="left">Use an idmap for this instance that is unique among instances with isolated set</td>
+</tr>
+<tr>
+<td align="left">security.idmap.size</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">unprivileged container</td>
+<td align="left">The size of the idmap to use</td>
+</tr>
+<tr>
+<td align="left">security.nesting</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">yes</td>
+<td align="left">container</td>
+<td align="left">Support running lxd (nested) inside the instance</td>
+</tr>
+<tr>
+<td align="left">security.privileged</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">no</td>
+<td align="left">container</td>
+<td align="left">Runs the instance in privileged mode</td>
+</tr>
+<tr>
+<td align="left">security.protection.delete</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">yes</td>
+<td align="left">-</td>
+<td align="left">Prevents the instance from being deleted</td>
+</tr>
+<tr>
+<td align="left">security.protection.shift</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">yes</td>
+<td align="left">container</td>
+<td align="left">Prevents the instance's filesystem from being uid/gid shifted on startup</td>
+</tr>
+<tr>
+<td align="left">security.secureboot</td>
+<td align="left">boolean</td>
+<td align="left">true</td>
+<td align="left">no</td>
+<td align="left">virtual-machine</td>
+<td align="left">Controls whether UEFI secure boot is enabled with the default Microsoft keys</td>
+</tr>
+<tr>
+<td align="left">security.syscalls.allow</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">container</td>
+<td align="left">A '\n' separated list of syscalls to allow (mutually exclusive with security.syscalls.deny*)</td>
+</tr>
+<tr>
+<td align="left">security.syscalls.deny</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">container</td>
+<td align="left">A '\n' separated list of syscalls to deny</td>
+</tr>
+<tr>
+<td align="left">security.syscalls.deny_compat</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">no</td>
+<td align="left">container</td>
+<td align="left">On x86_64 this enables blocking of compat_* syscalls, it is a no-op on other arches</td>
+</tr>
+<tr>
+<td align="left">security.syscalls.deny_default</td>
+<td align="left">boolean</td>
+<td align="left">true</td>
+<td align="left">no</td>
+<td align="left">container</td>
+<td align="left">Enables the default syscall deny</td>
+</tr>
+<tr>
+<td align="left">security.syscalls.intercept.bpf</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">no</td>
+<td align="left">container</td>
+<td align="left">Handles the <code>bpf</code> system call</td>
+</tr>
+<tr>
+<td align="left">security.syscalls.intercept.bpf.devices</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">no</td>
+<td align="left">container</td>
+<td align="left">Allows <code>bpf</code> programs for the devices cgroup in the unified hierarchy to be loaded.</td>
+</tr>
+<tr>
+<td align="left">security.syscalls.intercept.mknod</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">no</td>
+<td align="left">container</td>
+<td align="left">Handles the <code>mknod</code> and <code>mknodat</code> system calls (allows creation of a limited subset of char/block devices)</td>
+</tr>
+<tr>
+<td align="left">security.syscalls.intercept.mount</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">no</td>
+<td align="left">container</td>
+<td align="left">Handles the <code>mount</code> system call</td>
+</tr>
+<tr>
+<td align="left">security.syscalls.intercept.mount.allowed</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">yes</td>
+<td align="left">container</td>
+<td align="left">Specify a comma-separated list of filesystems that are safe to mount for processes inside the instance</td>
+</tr>
+<tr>
+<td align="left">security.syscalls.intercept.mount.fuse</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">yes</td>
+<td align="left">container</td>
+<td align="left">Whether to redirect mounts of a given filesystem to their fuse implemenation (e.g. ext4=fuse2fs)</td>
+</tr>
+<tr>
+<td align="left">security.syscalls.intercept.mount.shift</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">yes</td>
+<td align="left">container</td>
+<td align="left">Whether to mount shiftfs on top of filesystems handled through mount syscall interception</td>
+</tr>
+<tr>
+<td align="left">security.syscalls.intercept.setxattr</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">no</td>
+<td align="left">container</td>
+<td align="left">Handles the <code>setxattr</code> system call (allows setting a limited subset of restricted extended attributes)</td>
+</tr>
+<tr>
+<td align="left">snapshots.schedule</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">-</td>
+<td align="left">Cron expression (<code>&lt;minute&gt; &lt;hour&gt; &lt;dom&gt; &lt;month&gt; &lt;dow&gt;</code>), or a comma separated list of schedule aliases <code>&lt;@hourly&gt; &lt;@daily&gt; &lt;@midnight&gt; &lt;@weekly&gt; &lt;@monthly&gt; &lt;@annually&gt; &lt;@yearly&gt; &lt;@startup&gt;</code></td>
+</tr>
+<tr>
+<td align="left">snapshots.schedule.stopped</td>
+<td align="left">bool</td>
+<td align="left">false</td>
+<td align="left">no</td>
+<td align="left">-</td>
+<td align="left">Controls whether or not stopped instances are to be snapshoted automatically</td>
+</tr>
+<tr>
+<td align="left">snapshots.pattern</td>
+<td align="left">string</td>
+<td align="left">snap%d</td>
+<td align="left">no</td>
+<td align="left">-</td>
+<td align="left">Pongo2 template string which represents the snapshot name (used for scheduled snapshots and unnamed snapshots)</td>
+</tr>
+<tr>
+<td align="left">snapshots.expiry</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">-</td>
+<td align="left">Controls when snapshots are to be deleted (expects expression like <code>1M 2H 3d 4w 5m 6y</code>)</td>
+</tr>
+<tr>
+<td align="left">user.*</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">n/a</td>
+<td align="left">-</td>
+<td align="left">Free form user key/value storage (can be used in search)</td>
+</tr>
+</tbody>
+</table>
+<p>The following volatile keys are currently internally used by LXD:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Type</th>
+<th align="left">Default</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">volatile.apply_template</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">The name of a template hook which should be triggered upon next startup</td>
+</tr>
+<tr>
+<td align="left">volatile.base_image</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">The hash of the image the instance was created from, if any</td>
+</tr>
+<tr>
+<td align="left">volatile.evacuate.origin</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">The origin (cluster member) of the evacuated instance</td>
+</tr>
+<tr>
+<td align="left">volatile.idmap.base</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">The first id in the instance's primary idmap range</td>
+</tr>
+<tr>
+<td align="left">volatile.idmap.current</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">The idmap currently in use by the instance</td>
+</tr>
+<tr>
+<td align="left">volatile.idmap.next</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">The idmap to use next time the instance starts</td>
+</tr>
+<tr>
+<td align="left">volatile.last_state.idmap</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">Serialized instance uid/gid map</td>
+</tr>
+<tr>
+<td align="left">volatile.last_state.power</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">Instance state as of last host shutdown</td>
+</tr>
+<tr>
+<td align="left">volatile.vsock_id</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">Instance vsock ID used as of last start</td>
+</tr>
+<tr>
+<td align="left">volatile.uuid</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">Instance UUID (globally unique across all servers and projects)</td>
+</tr>
+<tr>
+<td align="left">volatile.\&lt;name>.apply_quota</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">Disk quota to be applied on next instance start</td>
+</tr>
+<tr>
+<td align="left">volatile.\&lt;name>.ceph_rbd</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">RBD device path for Ceph disk devices</td>
+</tr>
+<tr>
+<td align="left">volatile.\&lt;name>.host_name</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">Network device name on the host</td>
+</tr>
+<tr>
+<td align="left">volatile.\&lt;name>.hwaddr</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">Network device MAC address (when no hwaddr property is set on the device itself)</td>
+</tr>
+<tr>
+<td align="left">volatile.\&lt;name>.last_state.created</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">Whether or not the network device physical device was created ("true" or "false")</td>
+</tr>
+<tr>
+<td align="left">volatile.\&lt;name>.last_state.mtu</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">Network device original MTU used when moving a physical device into an instance</td>
+</tr>
+<tr>
+<td align="left">volatile.\&lt;name>.last_state.hwaddr</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">Network device original MAC used when moving a physical device into an instance</td>
+</tr>
+<tr>
+<td align="left">volatile.\&lt;name>.last_state.vf.id</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">SR-IOV Virtual function ID used when moving a VF into an instance</td>
+</tr>
+<tr>
+<td align="left">volatile.\&lt;name>.last_state.vf.hwaddr</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">SR-IOV Virtual function original MAC used when moving a VF into an instance</td>
+</tr>
+<tr>
+<td align="left">volatile.\&lt;name>.last_state.vf.vlan</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">SR-IOV Virtual function original VLAN used when moving a VF into an instance</td>
+</tr>
+<tr>
+<td align="left">volatile.\&lt;name>.last_state.vf.spoofcheck</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">SR-IOV Virtual function original spoof check setting used when moving a VF into an instance</td>
+</tr>
+</tbody>
+</table>
+<p>Additionally, those user keys have become common with images (support isn't guaranteed):</p>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Type</th>
+<th align="left">Default</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">user.meta-data</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">Cloud-init meta-data, content is appended to seed value</td>
+</tr>
+<tr>
+<td align="left">user.network-config</td>
+<td align="left">string</td>
+<td align="left">DHCP on eth0</td>
+<td align="left">Cloud-init network-config, content is used as seed value</td>
+</tr>
+<tr>
+<td align="left">user.network_mode</td>
+<td align="left">string</td>
+<td align="left">dhcp</td>
+<td align="left">One of "dhcp" or "link-local". Used to configure network in supported images</td>
+</tr>
+<tr>
+<td align="left">user.user-data</td>
+<td align="left">string</td>
+<td align="left">#!cloud-config</td>
+<td align="left">Cloud-init user-data, content is used as seed value</td>
+</tr>
+<tr>
+<td align="left">user.vendor-data</td>
+<td align="left">string</td>
+<td align="left">#!cloud-config</td>
+<td align="left">Cloud-init vendor-data, content is used as seed value</td>
+</tr>
+</tbody>
+</table>
+<p>Note that while a type is defined above as a convenience, all values are
+stored as strings and should be exported over the REST API as strings
+(which makes it possible to support any extra values without breaking
+backward compatibility).</p>
+<p>Those keys can be set using the lxc tool with:</p>
+<div class="highlight"><pre><span></span><code>lxc config <span class="nb">set</span> &lt;instance&gt; &lt;key&gt; &lt;value&gt;
+</code></pre></div>
+<p>Volatile keys can't be set by the user and can only be set directly against an instance.</p>
+<p>The raw keys allow direct interaction with the backend features that LXD
+itself uses, setting those may very well break LXD in non-obvious ways
+and should whenever possible be avoided.</p>
+<h3 id="cpu-limits">CPU limits<a class="headerlink" href="#cpu-limits" title="Permanent link">&para;</a></h3>
+<p>The CPU limits are implemented through a mix of the <code>cpuset</code> and <code>cpu</code> CGroup controllers.</p>
+<p><code>limits.cpu</code> results in CPU pinning through the <code>cpuset</code> controller.
+A set of CPUs (e.g. <code>1,2,3</code>) or a CPU range (e.g. <code>0-3</code>) can be specified.</p>
+<p>When a number of CPUs is specified instead (e.g. <code>4</code>), LXD will do
+dynamic load-balancing of all instances that aren't pinned to specific
+CPUs, trying to spread the load on the machine. Instances will then be
+re-balanced every time an instance starts or stops as well as whenever a
+CPU is added to the system.</p>
+<p>To pin to a single CPU, you have to use the range syntax (e.g. <code>1-1</code>) to
+differentiate it from a number of CPUs.</p>
+<p><code>limits.cpu.allowance</code> drives either the CFS scheduler quotas when
+passed a time constraint, or the generic CPU shares mechanism when
+passed a percentage value.</p>
+<p>The time constraint (e.g. <code>20ms/50ms</code>) is relative to one CPU worth of
+time, so to restrict to two CPUs worth of time, something like
+100ms/50ms should be used.</p>
+<p>When using a percentage value, the limit will only be applied when under
+load and will be used to calculate the scheduler priority for the
+instance, relative to any other instance which is using the same CPU(s).</p>
+<p><code>limits.cpu.priority</code> is another knob which is used to compute that
+scheduler priority score when a number of instances sharing a set of
+CPUs have the same percentage of CPU assigned to them.</p>
+<h2 id="devices-configuration">Devices configuration<a class="headerlink" href="#devices-configuration" title="Permanent link">&para;</a></h2>
+<p>LXD will always provide the instance with the basic devices which are required
+for a standard POSIX system to work. These aren't visible in instance or
+profile configuration and may not be overridden.</p>
+<p>Those include:</p>
+<ul>
+<li><code>/dev/null</code> (character device)</li>
+<li><code>/dev/zero</code> (character device)</li>
+<li><code>/dev/full</code> (character device)</li>
+<li><code>/dev/console</code> (character device)</li>
+<li><code>/dev/tty</code> (character device)</li>
+<li><code>/dev/random</code> (character device)</li>
+<li><code>/dev/urandom</code> (character device)</li>
+<li><code>/dev/net/tun</code> (character device)</li>
+<li><code>/dev/fuse</code> (character device)</li>
+<li><code>lo</code> (network interface)</li>
+</ul>
+<p>Anything else has to be defined in the instance configuration or in one of its
+profiles. The default profile will typically contain a network interface to
+become <code>eth0</code> in the instance.</p>
+<p>To add extra devices to an instance, device entries can be added directly to an
+instance, or to a profile.</p>
+<p>Devices may be added or removed while the instance is running.</p>
+<p>Every device entry is identified by a unique name. If the same name is used in
+a subsequent profile or in the instance's own configuration, the whole entry
+is overridden by the new definition.</p>
+<p>Device entries are added to an instance through:</p>
+<div class="highlight"><pre><span></span><code>lxc config device add &lt;instance&gt; &lt;name&gt; &lt;type&gt; <span class="o">[</span><span class="nv">key</span><span class="o">=</span>value<span class="o">]</span>...
+</code></pre></div>
+<p>or to a profile with:</p>
+<div class="highlight"><pre><span></span><code>lxc profile device add &lt;profile&gt; &lt;name&gt; &lt;type&gt; <span class="o">[</span><span class="nv">key</span><span class="o">=</span>value<span class="o">]</span>...
+</code></pre></div>
+<h2 id="device-types">Device types<a class="headerlink" href="#device-types" title="Permanent link">&para;</a></h2>
+<p>LXD supports the following device types:</p>
+<table>
+<thead>
+<tr>
+<th align="left">ID (database)</th>
+<th align="left">Name</th>
+<th align="left">Condition</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">0</td>
+<td align="left"><a href="#type-none">none</a></td>
+<td align="left">-</td>
+<td align="left">Inheritance blocker</td>
+</tr>
+<tr>
+<td align="left">1</td>
+<td align="left"><a href="#type-nic">nic</a></td>
+<td align="left">-</td>
+<td align="left">Network interface</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left"><a href="#type-disk">disk</a></td>
+<td align="left">-</td>
+<td align="left">Mountpoint inside the instance</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left"><a href="#type-unix-char">unix-char</a></td>
+<td align="left">container</td>
+<td align="left">Unix character device</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left"><a href="#type-unix-block">unix-block</a></td>
+<td align="left">container</td>
+<td align="left">Unix block device</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left"><a href="#type-usb">usb</a></td>
+<td align="left">-</td>
+<td align="left">USB device</td>
+</tr>
+<tr>
+<td align="left">6</td>
+<td align="left"><a href="#type-gpu">gpu</a></td>
+<td align="left">-</td>
+<td align="left">GPU device</td>
+</tr>
+<tr>
+<td align="left">7</td>
+<td align="left"><a href="#type-infiniband">infiniband</a></td>
+<td align="left">container</td>
+<td align="left">Infiniband device</td>
+</tr>
+<tr>
+<td align="left">8</td>
+<td align="left"><a href="#type-proxy">proxy</a></td>
+<td align="left">container</td>
+<td align="left">Proxy device</td>
+</tr>
+<tr>
+<td align="left">9</td>
+<td align="left"><a href="#type-unix-hotplug">unix-hotplug</a></td>
+<td align="left">container</td>
+<td align="left">Unix hotplug device</td>
+</tr>
+<tr>
+<td align="left">10</td>
+<td align="left"><a href="#type-tpm">tpm</a></td>
+<td align="left">-</td>
+<td align="left">TPM device</td>
+</tr>
+<tr>
+<td align="left">11</td>
+<td align="left"><a href="#type-pci">pci</a></td>
+<td align="left">VM</td>
+<td align="left">PCI device</td>
+</tr>
+</tbody>
+</table>
+<h3 id="type-none">Type: none<a class="headerlink" href="#type-none" title="Permanent link">&para;</a></h3>
+<p>Supported instance types: container, VM</p>
+<p>A none type device doesn't have any property and doesn't create anything inside the instance.</p>
+<p>It's only purpose it to stop inheritance of devices coming from profiles.</p>
+<p>To do so, just add a none type device with the same name of the one you wish to skip inheriting.
+It can be added in a profile being applied after the profile it originated from or directly on the instance.</p>
+<h3 id="type-nic">Type: nic<a class="headerlink" href="#type-nic" title="Permanent link">&para;</a></h3>
+<p>LXD supports several different kinds of network devices (referred to as Network Interface Controller or NIC).</p>
+<p>When adding a network device to an instance, there are two ways to specify the type of device you want to add;
+either by specifying the <code>nictype</code> property or using the <code>network</code> property.</p>
+<h4 id="specifying-a-nic-using-the-network-property">Specifying a NIC using the <code>network</code> property<a class="headerlink" href="#specifying-a-nic-using-the-network-property" title="Permanent link">&para;</a></h4>
+<p>When specifying the <code>network</code> property, the NIC is linked to an existing managed network and the <code>nictype</code> is
+automatically detected based on the network's type.</p>
+<p>Some of the NICs properties are inherited from the network rather than being customisable for each NIC.</p>
+<p>These are detailed in the "Managed" column in the NIC specific sections below.</p>
+<h4 id="nics-available">NICs Available:<a class="headerlink" href="#nics-available" title="Permanent link">&para;</a></h4>
+<p>See the NIC's settings below for details about which properties are available.</p>
+<p>The following NICs can be specified using the <code>nictype</code> or <code>network</code> properties:</p>
+<ul>
+<li><a href="#nic-bridged">bridged</a>: Uses an existing bridge on the host and creates a virtual device pair to connect the host bridge to the instance.</li>
+<li><a href="#nic-macvlan">macvlan</a>: Sets up a new network device based on an existing one but using a different MAC address.</li>
+<li><a href="#nic-sriov">sriov</a>: Passes a virtual function of an SR-IOV enabled physical network device into the instance.</li>
+</ul>
+<p>The following NICs can be specified using only the <code>network</code> property:</p>
+<ul>
+<li><a href="#nic-ovn">ovn</a>: Uses an existing OVN network and creates a virtual device pair to connect the instance to it.</li>
+</ul>
+<p>The following NICs can be specified using only the <code>nictype</code> property:</p>
+<ul>
+<li><a href="#nic-physical">physical</a>: Straight physical device passthrough from the host. The targeted device will vanish from the host and appear in the instance.</li>
+<li><a href="#nic-ipvlan">ipvlan</a>: Sets up a new network device based on an existing one using the same MAC address but a different IP.</li>
+<li><a href="#nic-p2p">p2p</a>: Creates a virtual device pair, putting one side in the instance and leaving the other side on the host.</li>
+<li><a href="#nic-routed">routed</a>: Creates a virtual device pair to connect the host to the instance and sets up static routes and proxy ARP/NDP entries to allow the instance to join the network of a designated parent interface.</li>
+</ul>
+<h4 id="nic-bridged">nic: bridged<a class="headerlink" href="#nic-bridged" title="Permanent link">&para;</a></h4>
+<p>Supported instance types: container, VM</p>
+<p>Selected using: <code>nictype</code>, <code>network</code></p>
+<p>Uses an existing bridge on the host and creates a virtual device pair to connect the host bridge to the instance.</p>
+<p>Device configuration properties:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Type</th>
+<th align="left">Default</th>
+<th align="left">Required</th>
+<th align="left">Managed</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">parent</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+<td align="left">The name of the host device</td>
+</tr>
+<tr>
+<td align="left">network</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">yes</td>
+<td align="left">no</td>
+<td align="left">The LXD network to link device to (instead of parent)</td>
+</tr>
+<tr>
+<td align="left">name</td>
+<td align="left">string</td>
+<td align="left">kernel assigned</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">The name of the interface inside the instance</td>
+</tr>
+<tr>
+<td align="left">mtu</td>
+<td align="left">integer</td>
+<td align="left">parent MTU</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+<td align="left">The MTU of the new interface</td>
+</tr>
+<tr>
+<td align="left">hwaddr</td>
+<td align="left">string</td>
+<td align="left">randomly assigned</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">The MAC address of the new interface</td>
+</tr>
+<tr>
+<td align="left">host_name</td>
+<td align="left">string</td>
+<td align="left">randomly assigned</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">The name of the interface inside the host</td>
+</tr>
+<tr>
+<td align="left">limits.ingress</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">I/O limit in bit/s for incoming traffic (various suffixes supported, see below)</td>
+</tr>
+<tr>
+<td align="left">limits.egress</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">I/O limit in bit/s for outgoing traffic (various suffixes supported, see below)</td>
+</tr>
+<tr>
+<td align="left">limits.max</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">Same as modifying both limits.ingress and limits.egress</td>
+</tr>
+<tr>
+<td align="left">ipv4.address</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">An IPv4 address to assign to the instance through DHCP</td>
+</tr>
+<tr>
+<td align="left">ipv6.address</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">An IPv6 address to assign to the instance through DHCP</td>
+</tr>
+<tr>
+<td align="left">ipv4.routes</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">Comma delimited list of IPv4 static routes to add on host to NIC</td>
+</tr>
+<tr>
+<td align="left">ipv6.routes</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">Comma delimited list of IPv6 static routes to add on host to NIC</td>
+</tr>
+<tr>
+<td align="left">ipv4.routes.external</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">Comma delimited list of IPv4 static routes to route to the NIC and publish on uplink network (BGP)</td>
+</tr>
+<tr>
+<td align="left">ipv6.routes.external</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">Comma delimited list of IPv6 static routes to route to the NIC and publish on uplink network (BGP)</td>
+</tr>
+<tr>
+<td align="left">security.mac_filtering</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">Prevent the instance from spoofing another's MAC address</td>
+</tr>
+<tr>
+<td align="left">security.ipv4_filtering</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">Prevent the instance from spoofing another's IPv4 address (enables mac_filtering)</td>
+</tr>
+<tr>
+<td align="left">security.ipv6_filtering</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">Prevent the instance from spoofing another's IPv6 address (enables mac_filtering)</td>
+</tr>
+<tr>
+<td align="left">maas.subnet.ipv4</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+<td align="left">MAAS IPv4 subnet to register the instance in</td>
+</tr>
+<tr>
+<td align="left">maas.subnet.ipv6</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+<td align="left">MAAS IPv6 subnet to register the instance in</td>
+</tr>
+<tr>
+<td align="left">boot.priority</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">Boot priority for VMs (higher boots first)</td>
+</tr>
+<tr>
+<td align="left">vlan</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">The VLAN ID to use for untagged traffic (Can be <code>none</code> to remove port from default VLAN)</td>
+</tr>
+<tr>
+<td align="left">vlan.tagged</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">Comma delimited list of VLAN IDs to join for tagged traffic</td>
+</tr>
+<tr>
+<td align="left">security.port_isolation</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">Prevent the NIC from communicating with other NICs in the network that have port isolation enabled</td>
+</tr>
+</tbody>
+</table>
+<h4 id="nic-macvlan">nic: macvlan<a class="headerlink" href="#nic-macvlan" title="Permanent link">&para;</a></h4>
+<p>Supported instance types: container, VM</p>
+<p>Selected using: <code>nictype</code>, <code>network</code></p>
+<p>Sets up a new network device based on an existing one but using a different MAC address.</p>
+<p>Device configuration properties:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Type</th>
+<th align="left">Default</th>
+<th align="left">Required</th>
+<th align="left">Managed</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">parent</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+<td align="left">The name of the host device</td>
+</tr>
+<tr>
+<td align="left">network</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">yes</td>
+<td align="left">no</td>
+<td align="left">The LXD network to link device to (instead of parent)</td>
+</tr>
+<tr>
+<td align="left">name</td>
+<td align="left">string</td>
+<td align="left">kernel assigned</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">The name of the interface inside the instance</td>
+</tr>
+<tr>
+<td align="left">mtu</td>
+<td align="left">integer</td>
+<td align="left">parent MTU</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+<td align="left">The MTU of the new interface</td>
+</tr>
+<tr>
+<td align="left">hwaddr</td>
+<td align="left">string</td>
+<td align="left">randomly assigned</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">The MAC address of the new interface</td>
+</tr>
+<tr>
+<td align="left">vlan</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">The VLAN ID to attach to</td>
+</tr>
+<tr>
+<td align="left">gvrp</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">Register VLAN using GARP VLAN Registration Protocol</td>
+</tr>
+<tr>
+<td align="left">maas.subnet.ipv4</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+<td align="left">MAAS IPv4 subnet to register the instance in</td>
+</tr>
+<tr>
+<td align="left">maas.subnet.ipv6</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+<td align="left">MAAS IPv6 subnet to register the instance in</td>
+</tr>
+<tr>
+<td align="left">boot.priority</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">Boot priority for VMs (higher boots first)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="nic-sriov">nic: sriov<a class="headerlink" href="#nic-sriov" title="Permanent link">&para;</a></h4>
+<p>Supported instance types: container, VM</p>
+<p>Selected using: <code>nictype</code>, <code>network</code></p>
+<p>Passes a virtual function of an SR-IOV enabled physical network device into the instance.</p>
+<p>Device configuration properties:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Type</th>
+<th align="left">Default</th>
+<th align="left">Required</th>
+<th align="left">Managed</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">parent</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+<td align="left">The name of the host device</td>
+</tr>
+<tr>
+<td align="left">network</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">yes</td>
+<td align="left">no</td>
+<td align="left">The LXD network to link device to (instead of parent)</td>
+</tr>
+<tr>
+<td align="left">name</td>
+<td align="left">string</td>
+<td align="left">kernel assigned</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">The name of the interface inside the instance</td>
+</tr>
+<tr>
+<td align="left">mtu</td>
+<td align="left">integer</td>
+<td align="left">kernel assigned</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+<td align="left">The MTU of the new interface</td>
+</tr>
+<tr>
+<td align="left">hwaddr</td>
+<td align="left">string</td>
+<td align="left">randomly assigned</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">The MAC address of the new interface</td>
+</tr>
+<tr>
+<td align="left">security.mac_filtering</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">Prevent the instance from spoofing another's MAC address</td>
+</tr>
+<tr>
+<td align="left">vlan</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">The VLAN ID to attach to</td>
+</tr>
+<tr>
+<td align="left">maas.subnet.ipv4</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+<td align="left">MAAS IPv4 subnet to register the instance in</td>
+</tr>
+<tr>
+<td align="left">maas.subnet.ipv6</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+<td align="left">MAAS IPv6 subnet to register the instance in</td>
+</tr>
+<tr>
+<td align="left">boot.priority</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">Boot priority for VMs (higher boots first)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="nic-ovn">nic: ovn<a class="headerlink" href="#nic-ovn" title="Permanent link">&para;</a></h4>
+<p>Supported instance types: container, VM</p>
+<p>Selected using: <code>network</code></p>
+<p>Uses an existing OVN network and creates a virtual device pair to connect the instance to it.</p>
+<p>Device configuration properties:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Type</th>
+<th align="left">Default</th>
+<th align="left">Required</th>
+<th align="left">Managed</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">network</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+<td align="left">The LXD network to link device to</td>
+</tr>
+<tr>
+<td align="left">name</td>
+<td align="left">string</td>
+<td align="left">kernel assigned</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">The name of the interface inside the instance</td>
+</tr>
+<tr>
+<td align="left">host_name</td>
+<td align="left">string</td>
+<td align="left">randomly assigned</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">The name of the interface inside the host</td>
+</tr>
+<tr>
+<td align="left">hwaddr</td>
+<td align="left">string</td>
+<td align="left">randomly assigned</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">The MAC address of the new interface</td>
+</tr>
+<tr>
+<td align="left">ipv4.address</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">An IPv4 address to assign to the instance through DHCP</td>
+</tr>
+<tr>
+<td align="left">ipv6.address</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">An IPv6 address to assign to the instance through DHCP</td>
+</tr>
+<tr>
+<td align="left">ipv4.routes</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">Comma delimited list of IPv4 static routes to route to the NIC</td>
+</tr>
+<tr>
+<td align="left">ipv6.routes</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">Comma delimited list of IPv6 static routes to route to the NIC</td>
+</tr>
+<tr>
+<td align="left">ipv4.routes.external</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">Comma delimited list of IPv4 static routes to route to the NIC and publish on uplink network</td>
+</tr>
+<tr>
+<td align="left">ipv6.routes.external</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">Comma delimited list of IPv6 static routes to route to the NIC and publish on uplink network</td>
+</tr>
+<tr>
+<td align="left">boot.priority</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">Boot priority for VMs (higher boots first)</td>
+</tr>
+<tr>
+<td align="left">security.acls</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">Comma separated list of Network ACLs to apply</td>
+</tr>
+<tr>
+<td align="left">security.acls.default.ingress.action</td>
+<td align="left">string</td>
+<td align="left">reject</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">Action to use for ingress traffic that doesn't match any ACL rule</td>
+</tr>
+<tr>
+<td align="left">security.acls.default.egress.action</td>
+<td align="left">string</td>
+<td align="left">reject</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">Action to use for egress traffic that doesn't match any ACL rule</td>
+</tr>
+<tr>
+<td align="left">security.acls.default.ingress.logged</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">Whether to log ingress traffic that doesn't match any ACL rule</td>
+</tr>
+<tr>
+<td align="left">security.acls.default.egress.logged</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">Whether to log egress traffic that doesn't match any ACL rule</td>
+</tr>
+</tbody>
+</table>
+<h4 id="nic-physical">nic: physical<a class="headerlink" href="#nic-physical" title="Permanent link">&para;</a></h4>
+<p>Supported instance types: container, VM</p>
+<p>Selected using: <code>nictype</code></p>
+<p>Straight physical device passthrough from the host. The targeted device will vanish from the host and appear in the instance.</p>
+<p>Device configuration properties:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Type</th>
+<th align="left">Default</th>
+<th align="left">Required</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">parent</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">yes</td>
+<td align="left">The name of the host device</td>
+</tr>
+<tr>
+<td align="left">name</td>
+<td align="left">string</td>
+<td align="left">kernel assigned</td>
+<td align="left">no</td>
+<td align="left">The name of the interface inside the instance</td>
+</tr>
+<tr>
+<td align="left">mtu</td>
+<td align="left">integer</td>
+<td align="left">parent MTU</td>
+<td align="left">no</td>
+<td align="left">The MTU of the new interface</td>
+</tr>
+<tr>
+<td align="left">hwaddr</td>
+<td align="left">string</td>
+<td align="left">randomly assigned</td>
+<td align="left">no</td>
+<td align="left">The MAC address of the new interface</td>
+</tr>
+<tr>
+<td align="left">vlan</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">The VLAN ID to attach to</td>
+</tr>
+<tr>
+<td align="left">gvrp</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">no</td>
+<td align="left">Register VLAN using GARP VLAN Registration Protocol</td>
+</tr>
+<tr>
+<td align="left">maas.subnet.ipv4</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">MAAS IPv4 subnet to register the instance in</td>
+</tr>
+<tr>
+<td align="left">maas.subnet.ipv6</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">MAAS IPv6 subnet to register the instance in</td>
+</tr>
+<tr>
+<td align="left">boot.priority</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">Boot priority for VMs (higher boots first)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="nic-ipvlan">nic: ipvlan<a class="headerlink" href="#nic-ipvlan" title="Permanent link">&para;</a></h4>
+<p>Supported instance types: container</p>
+<p>Selected using: <code>nictype</code></p>
+<p>Sets up a new network device based on an existing one using the same MAC address but a different IP.</p>
+<p>LXD currently supports IPVLAN in L2 and L3S mode.</p>
+<p>In this mode, the gateway is automatically set by LXD, however IP addresses must be manually specified using either one or both of <code>ipv4.address</code> and <code>ipv6.address</code> settings before instance is started.</p>
+<p>For DNS, the nameservers need to be configured inside the instance, as these will not automatically be set.</p>
+<p>It requires the following sysctls to be set:</p>
+<p>If using IPv4 addresses:</p>
+<div class="highlight"><pre><span></span><code>net.ipv4.conf.&lt;parent&gt;.forwarding=1
+</code></pre></div>
+<p>If using IPv6 addresses:</p>
+<div class="highlight"><pre><span></span><code>net.ipv6.conf.&lt;parent&gt;.forwarding=1
+net.ipv6.conf.&lt;parent&gt;.proxy_ndp=1
+</code></pre></div>
+<p>Device configuration properties:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Type</th>
+<th align="left">Default</th>
+<th align="left">Required</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">parent</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">yes</td>
+<td align="left">The name of the host device</td>
+</tr>
+<tr>
+<td align="left">name</td>
+<td align="left">string</td>
+<td align="left">kernel assigned</td>
+<td align="left">no</td>
+<td align="left">The name of the interface inside the instance</td>
+</tr>
+<tr>
+<td align="left">mtu</td>
+<td align="left">integer</td>
+<td align="left">parent MTU</td>
+<td align="left">no</td>
+<td align="left">The MTU of the new interface</td>
+</tr>
+<tr>
+<td align="left">mode</td>
+<td align="left">string</td>
+<td align="left">l3s</td>
+<td align="left">no</td>
+<td align="left">The IPVLAN mode (either <code>l2</code> or <code>l3s</code>)</td>
+</tr>
+<tr>
+<td align="left">hwaddr</td>
+<td align="left">string</td>
+<td align="left">randomly assigned</td>
+<td align="left">no</td>
+<td align="left">The MAC address of the new interface</td>
+</tr>
+<tr>
+<td align="left">ipv4.address</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">Comma delimited list of IPv4 static addresses to add to the instance. In <code>l2</code> mode these can be specified as CIDR values or singular addresses (if singular a subnet of /24 is used).</td>
+</tr>
+<tr>
+<td align="left">ipv4.gateway</td>
+<td align="left">string</td>
+<td align="left">auto</td>
+<td align="left">no</td>
+<td align="left">In <code>l3s</code> mode, whether to add an automatic default IPv4 gateway, can be <code>auto</code> or <code>none</code>. In <code>l2</code> mode specifies the IPv4 address of the gateway.</td>
+</tr>
+<tr>
+<td align="left">ipv4.host_table</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">The custom policy routing table ID to add IPv4 static routes to (in addition to main routing table).</td>
+</tr>
+<tr>
+<td align="left">ipv6.address</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">Comma delimited list of IPv6 static addresses to add to the instance. In <code>l2</code> mode these can be specified as CIDR values or singular addresses (if singular a subnet of /64 is used).</td>
+</tr>
+<tr>
+<td align="left">ipv6.gateway</td>
+<td align="left">string</td>
+<td align="left">auto (l3s), - (l2)</td>
+<td align="left">no</td>
+<td align="left">In <code>l3s</code> mode, whether to add an automatic default IPv6 gateway, can be <code>auto</code> or <code>none</code>. In <code>l2</code> mode specifies the IPv6 address of the gateway.</td>
+</tr>
+<tr>
+<td align="left">ipv6.host_table</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">The custom policy routing table ID to add IPv6 static routes to (in addition to main routing table).</td>
+</tr>
+<tr>
+<td align="left">vlan</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">The VLAN ID to attach to</td>
+</tr>
+<tr>
+<td align="left">gvrp</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">no</td>
+<td align="left">Register VLAN using GARP VLAN Registration Protocol</td>
+</tr>
+</tbody>
+</table>
+<h4 id="nic-p2p">nic: p2p<a class="headerlink" href="#nic-p2p" title="Permanent link">&para;</a></h4>
+<p>Supported instance types: container, VM</p>
+<p>Selected using: <code>nictype</code></p>
+<p>Creates a virtual device pair, putting one side in the instance and leaving the other side on the host.</p>
+<p>Device configuration properties:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Type</th>
+<th align="left">Default</th>
+<th align="left">Required</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">name</td>
+<td align="left">string</td>
+<td align="left">kernel assigned</td>
+<td align="left">no</td>
+<td align="left">The name of the interface inside the instance</td>
+</tr>
+<tr>
+<td align="left">mtu</td>
+<td align="left">integer</td>
+<td align="left">kernel assigned</td>
+<td align="left">no</td>
+<td align="left">The MTU of the new interface</td>
+</tr>
+<tr>
+<td align="left">hwaddr</td>
+<td align="left">string</td>
+<td align="left">randomly assigned</td>
+<td align="left">no</td>
+<td align="left">The MAC address of the new interface</td>
+</tr>
+<tr>
+<td align="left">host_name</td>
+<td align="left">string</td>
+<td align="left">randomly assigned</td>
+<td align="left">no</td>
+<td align="left">The name of the interface inside the host</td>
+</tr>
+<tr>
+<td align="left">limits.ingress</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">I/O limit in bit/s for incoming traffic (various suffixes supported, see below)</td>
+</tr>
+<tr>
+<td align="left">limits.egress</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">I/O limit in bit/s for outgoing traffic (various suffixes supported, see below)</td>
+</tr>
+<tr>
+<td align="left">limits.max</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">Same as modifying both limits.ingress and limits.egress</td>
+</tr>
+<tr>
+<td align="left">ipv4.routes</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">Comma delimited list of IPv4 static routes to add on host to NIC</td>
+</tr>
+<tr>
+<td align="left">ipv6.routes</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">Comma delimited list of IPv6 static routes to add on host to NIC</td>
+</tr>
+<tr>
+<td align="left">boot.priority</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">Boot priority for VMs (higher boots first)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="nic-routed">nic: routed<a class="headerlink" href="#nic-routed" title="Permanent link">&para;</a></h4>
+<p>Supported instance types: container</p>
+<p>Selected using: <code>nictype</code></p>
+<p>This NIC type is similar in operation to IPVLAN, in that it allows an instance to join an external network without needing to configure a bridge and shares the host's MAC address.</p>
+<p>However it differs from IPVLAN because it does not need IPVLAN support in the kernel and the host and instance can communicate with each other.</p>
+<p>It will also respect netfilter rules on the host and will use the host's routing table to route packets which can be useful if the host is connected to multiple networks.</p>
+<p>IP addresses must be manually specified using either one or both of <code>ipv4.address</code> and <code>ipv6.address</code> settings before the instance is started.</p>
+<p>It sets up a veth pair between host and instance and then configures the following link-local gateway IPs on the host end which are then set as the default gateways in the instance:</p>
+<p>169.254.0.1
+  fe80::1</p>
+<p>It then configures static routes on the host pointing to the instance's veth interface for all of the instance's IPs.</p>
+<p>This nic can operate with and without a <code>parent</code> network interface set.</p>
+<p>With the <code>parent</code> network interface set proxy ARP/NDP entries of the instance's IPs are added to the parent interface allowing the instance to join the parent interface's network at layer 2.</p>
+<p>For DNS, the nameservers need to be configured inside the instance, as these will not automatically be set.</p>
+<p>It requires the following sysctls to be set:</p>
+<p>If using IPv4 addresses:</p>
+<div class="highlight"><pre><span></span><code>net.ipv4.conf.&lt;parent&gt;.forwarding=1
+</code></pre></div>
+<p>If using IPv6 addresses:</p>
+<div class="highlight"><pre><span></span><code>net.ipv6.conf.all.forwarding=1
+net.ipv6.conf.&lt;parent&gt;.forwarding=1
+net.ipv6.conf.all.proxy_ndp=1
+net.ipv6.conf.&lt;parent&gt;.proxy_ndp=1
+</code></pre></div>
+<p>Each NIC device can have multiple IP addresses added to them. However it may be desirable to utilise multiple <code>routed</code> NIC interfaces.
+In these cases one should set the <code>ipv4.gateway</code> and <code>ipv6.gateway</code> values to "none" on any subsequent interfaces to avoid default gateway conflicts.
+It may also be useful to specify a different host-side address for these subsequent interfaces using <code>ipv4.host_address</code> and <code>ipv6.host_address</code> respectively.</p>
+<p>Device configuration properties:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Type</th>
+<th align="left">Default</th>
+<th align="left">Required</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">parent</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">The name of the host device to join the instance to</td>
+</tr>
+<tr>
+<td align="left">name</td>
+<td align="left">string</td>
+<td align="left">kernel assigned</td>
+<td align="left">no</td>
+<td align="left">The name of the interface inside the instance</td>
+</tr>
+<tr>
+<td align="left">host_name</td>
+<td align="left">string</td>
+<td align="left">randomly assigned</td>
+<td align="left">no</td>
+<td align="left">The name of the interface inside the host</td>
+</tr>
+<tr>
+<td align="left">mtu</td>
+<td align="left">integer</td>
+<td align="left">parent MTU</td>
+<td align="left">no</td>
+<td align="left">The MTU of the new interface</td>
+</tr>
+<tr>
+<td align="left">hwaddr</td>
+<td align="left">string</td>
+<td align="left">randomly assigned</td>
+<td align="left">no</td>
+<td align="left">The MAC address of the new interface</td>
+</tr>
+<tr>
+<td align="left">limits.ingress</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">I/O limit in bit/s for incoming traffic (various suffixes supported, see below)</td>
+</tr>
+<tr>
+<td align="left">limits.egress</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">I/O limit in bit/s for outgoing traffic (various suffixes supported, see below)</td>
+</tr>
+<tr>
+<td align="left">limits.max</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">Same as modifying both limits.ingress and limits.egress</td>
+</tr>
+<tr>
+<td align="left">ipv4.address</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">Comma delimited list of IPv4 static addresses to add to the instance</td>
+</tr>
+<tr>
+<td align="left">ipv4.gateway</td>
+<td align="left">string</td>
+<td align="left">auto</td>
+<td align="left">no</td>
+<td align="left">Whether to add an automatic default IPv4 gateway, can be "auto" or "none"</td>
+</tr>
+<tr>
+<td align="left">ipv4.host_address</td>
+<td align="left">string</td>
+<td align="left">169.254.0.1</td>
+<td align="left">no</td>
+<td align="left">The IPv4 address to add to the host-side veth interface.</td>
+</tr>
+<tr>
+<td align="left">ipv4.host_table</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">The custom policy routing table ID to add IPv4 static routes to (in addition to main routing table).</td>
+</tr>
+<tr>
+<td align="left">ipv6.address</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">Comma delimited list of IPv6 static addresses to add to the instance</td>
+</tr>
+<tr>
+<td align="left">ipv6.gateway</td>
+<td align="left">string</td>
+<td align="left">auto</td>
+<td align="left">no</td>
+<td align="left">Whether to add an automatic default IPv6 gateway, can be "auto" or "none"</td>
+</tr>
+<tr>
+<td align="left">ipv6.host_address</td>
+<td align="left">string</td>
+<td align="left">fe80::1</td>
+<td align="left">no</td>
+<td align="left">The IPv6 address to add to the host-side veth interface.</td>
+</tr>
+<tr>
+<td align="left">ipv6.host_table</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">The custom policy routing table ID to add IPv6 static routes to (in addition to main routing table).</td>
+</tr>
+<tr>
+<td align="left">vlan</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">The VLAN ID to attach to</td>
+</tr>
+<tr>
+<td align="left">gvrp</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">no</td>
+<td align="left">Register VLAN using GARP VLAN Registration Protocol</td>
+</tr>
+</tbody>
+</table>
+<h4 id="bridged-macvlan-or-ipvlan-for-connection-to-physical-network">bridged, macvlan or ipvlan for connection to physical network<a class="headerlink" href="#bridged-macvlan-or-ipvlan-for-connection-to-physical-network" title="Permanent link">&para;</a></h4>
+<p>The <code>bridged</code>, <code>macvlan</code> and <code>ipvlan</code> interface types can be used to connect to an existing physical network.</p>
+<p><code>macvlan</code> effectively lets you fork your physical NIC, getting a second interface that's then used by the instance.
+This saves you from creating a bridge device and veth pairs and usually offers better performance than a bridge.</p>
+<p>The downside to this is that macvlan devices while able to communicate between themselves and to the outside, aren't able to talk to their parent device.
+This means that you can't use macvlan if you ever need your instances to talk to the host itself.</p>
+<p>In such case, a bridge is preferable. A bridge will also let you use mac filtering and I/O limits which cannot be applied to a macvlan device.</p>
+<p><code>ipvlan</code> is similar to <code>macvlan</code>, with the difference being that the forked device has IPs statically assigned to it and inherits the parent's MAC address on the network.</p>
+<h4 id="sr-iov">SR-IOV<a class="headerlink" href="#sr-iov" title="Permanent link">&para;</a></h4>
+<p>The <code>sriov</code> interface type supports SR-IOV enabled network devices.
+These devices associate a set of virtual functions (VFs) with the single physical function (PF) of the network device.
+PFs are standard PCIe functions. VFs on the other hand are very lightweight PCIe functions that are optimized for data movement.
+They come with a limited set of configuration capabilities to prevent changing properties of the PF.
+Given that VFs appear as regular PCIe devices to the system they can be passed to instances just like a regular physical device.
+The <code>sriov</code> interface type expects to be passed the name of an SR-IOV enabled network device on the system via the <code>parent</code> property.
+LXD will then check for any available VFs on the system. By default LXD will allocate the first free VF it finds.
+If it detects that either none are enabled or all currently enabled VFs are in use it will bump the number of supported VFs to the maximum value and use the first free VF.
+If all possible VFs are in use or the kernel or card doesn't support incrementing the number of VFs LXD will return an error.</p>
+<p>To create a <code>sriov</code> network device use:</p>
+<div class="highlight"><pre><span></span><code>lxc config device add &lt;instance&gt; &lt;device-name&gt; nic nictype=sriov parent=&lt;sriov-enabled-device&gt;
+</code></pre></div>
+<p>To tell LXD to use a specific unused VF add the <code>host_name</code> property and pass
+it the name of the enabled VF.</p>
+<h4 id="maas-integration">MAAS integration<a class="headerlink" href="#maas-integration" title="Permanent link">&para;</a></h4>
+<p>If you're using MAAS to manage the physical network under your LXD host
+and want to attach your instances directly to a MAAS managed network,
+LXD can be configured to interact with MAAS so that it can track your
+instances.</p>
+<p>At the daemon level, you must configure <code>maas.api.url</code> and
+<code>maas.api.key</code>, then set the <code>maas.subnet.ipv4</code> and/or
+<code>maas.subnet.ipv6</code> keys on the instance or profile's <code>nic</code> entry.</p>
+<p>This will have LXD register all your instances with MAAS, giving them
+proper DHCP leases and DNS records.</p>
+<p>If you set the <code>ipv4.address</code> or <code>ipv6.address</code> keys on the nic, then
+those will be registered as static assignments in MAAS too.</p>
+<h3 id="type-infiniband">Type: infiniband<a class="headerlink" href="#type-infiniband" title="Permanent link">&para;</a></h3>
+<p>Supported instance types: container</p>
+<p>LXD supports two different kind of network types for infiniband devices:</p>
+<ul>
+<li><code>physical</code>: Straight physical device passthrough from the host. The targeted device will vanish from the host and appear in the instance.</li>
+<li><code>sriov</code>: Passes a virtual function of an SR-IOV enabled physical network device into the instance.</li>
+</ul>
+<p>Different network interface types have different additional properties, the current list is:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Type</th>
+<th align="left">Default</th>
+<th align="left">Required</th>
+<th align="left">Used by</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">nictype</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">yes</td>
+<td align="left">all</td>
+<td align="left">The device type, one of "physical", or "sriov"</td>
+</tr>
+<tr>
+<td align="left">name</td>
+<td align="left">string</td>
+<td align="left">kernel assigned</td>
+<td align="left">no</td>
+<td align="left">all</td>
+<td align="left">The name of the interface inside the instance</td>
+</tr>
+<tr>
+<td align="left">hwaddr</td>
+<td align="left">string</td>
+<td align="left">randomly assigned</td>
+<td align="left">no</td>
+<td align="left">all</td>
+<td align="left">The MAC address of the new interface. Can be either full 20 byte variant or short 8 byte variant (which will only modify the last 8 bytes of the parent device)</td>
+</tr>
+<tr>
+<td align="left">mtu</td>
+<td align="left">integer</td>
+<td align="left">parent MTU</td>
+<td align="left">no</td>
+<td align="left">all</td>
+<td align="left">The MTU of the new interface</td>
+</tr>
+<tr>
+<td align="left">parent</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">yes</td>
+<td align="left">physical, sriov</td>
+<td align="left">The name of the host device or bridge</td>
+</tr>
+</tbody>
+</table>
+<p>To create a <code>physical</code> <code>infiniband</code> device use:</p>
+<div class="highlight"><pre><span></span><code>lxc config device add &lt;instance&gt; &lt;device-name&gt; infiniband nictype=physical parent=&lt;device&gt;
+</code></pre></div>
+<h4 id="sr-iov-with-infiniband-devices">SR-IOV with infiniband devices<a class="headerlink" href="#sr-iov-with-infiniband-devices" title="Permanent link">&para;</a></h4>
+<p>Infiniband devices do support SR-IOV but in contrast to other SR-IOV enabled
+devices infiniband does not support dynamic device creation in SR-IOV mode.
+This means users need to pre-configure the number of virtual functions by
+configuring the corresponding kernel module.</p>
+<p>To create a <code>sriov</code> <code>infiniband</code> device use:</p>
+<div class="highlight"><pre><span></span><code>lxc config device add &lt;instance&gt; &lt;device-name&gt; infiniband nictype=sriov parent=&lt;sriov-enabled-device&gt;
+</code></pre></div>
+<h3 id="type-disk">Type: disk<a class="headerlink" href="#type-disk" title="Permanent link">&para;</a></h3>
+<p>Supported instance types: container, VM</p>
+<p>Disk entries are essentially mountpoints inside the instance. They can
+either be a bind-mount of an existing file or directory on the host, or
+if the source is a block device, a regular mount.</p>
+<p>LXD supports the following additional source types:</p>
+<ul>
+<li>Ceph-rbd: Mount from existing ceph RBD device that is externally managed. LXD can use ceph to manage an internal file system for the instance, but in the event that a user has a previously existing ceph RBD that they would like use for this instance, they can use this command.
+Example command
+<div class="highlight"><pre><span></span><code>lxc config device add &lt;instance&gt; ceph-rbd1 disk source=ceph:&lt;my_pool&gt;/&lt;my-volume&gt; ceph.user_name=&lt;username&gt; ceph.cluster_name=&lt;username&gt; path=/ceph
+</code></pre></div></li>
+<li>Ceph-fs: Mount from existing ceph FS device that is externally managed. LXD can use ceph to manage an internal file system for the instance, but in the event that a user has a previously existing ceph file sys that they would like use for this instancer, they can use this command.
+Example command.
+<div class="highlight"><pre><span></span><code>lxc config device add &lt;instance&gt; ceph-fs1 disk source=cephfs:&lt;my-fs&gt;/&lt;some-path&gt; ceph.user_name=&lt;username&gt; ceph.cluster_name=&lt;username&gt; path=/cephfs
+</code></pre></div></li>
+<li>VM cloud-init: Generate a cloud-init config ISO from the user.vendor-data, user.user-data and user.meta-data config keys and attach to the VM so that cloud-init running inside the VM guest will detect the drive on boot and apply the config. Only applicable to virtual-machine instances.
+Example command.
+<div class="highlight"><pre><span></span><code>lxc config device add &lt;instance&gt; config disk source=cloud-init:config
+</code></pre></div></li>
+</ul>
+<p>Currently only the root disk (path=/) and config drive (source=cloud-init:config) are supported with virtual machines.</p>
+<p>The following properties exist:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Type</th>
+<th align="left">Default</th>
+<th align="left">Required</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">limits.read</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">I/O limit in byte/s (various suffixes supported, see below) or in iops (must be suffixed with "iops")</td>
+</tr>
+<tr>
+<td align="left">limits.write</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">I/O limit in byte/s (various suffixes supported, see below) or in iops (must be suffixed with "iops")</td>
+</tr>
+<tr>
+<td align="left">limits.max</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">Same as modifying both limits.read and limits.write</td>
+</tr>
+<tr>
+<td align="left">path</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">yes</td>
+<td align="left">Path inside the instance where the disk will be mounted (only for containers).</td>
+</tr>
+<tr>
+<td align="left">source</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">yes</td>
+<td align="left">Path on the host, either to a file/directory or to a block device</td>
+</tr>
+<tr>
+<td align="left">required</td>
+<td align="left">boolean</td>
+<td align="left">true</td>
+<td align="left">no</td>
+<td align="left">Controls whether to fail if the source doesn't exist</td>
+</tr>
+<tr>
+<td align="left">readonly</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">no</td>
+<td align="left">Controls whether to make the mount read-only</td>
+</tr>
+<tr>
+<td align="left">size</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">Disk size in bytes (various suffixes supported, see below). This is only supported for the rootfs (/)</td>
+</tr>
+<tr>
+<td align="left">size.state</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">Same as size above but applies to the filesystem volume used for saving runtime state in virtual machines.</td>
+</tr>
+<tr>
+<td align="left">recursive</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">no</td>
+<td align="left">Whether or not to recursively mount the source path</td>
+</tr>
+<tr>
+<td align="left">pool</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">The storage pool the disk device belongs to. This is only applicable for storage volumes managed by LXD</td>
+</tr>
+<tr>
+<td align="left">propagation</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">Controls how a bind-mount is shared between the instance and the host. (Can be one of <code>private</code>, the default, or <code>shared</code>, <code>slave</code>, <code>unbindable</code>,  <code>rshared</code>, <code>rslave</code>, <code>runbindable</code>,  <code>rprivate</code>. Please see the Linux Kernel <a href="https://www.kernel.org/doc/Documentation/filesystems/sharedsubtree.txt">shared subtree</a> documentation for a full explanation)</td>
+</tr>
+<tr>
+<td align="left">shift</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">no</td>
+<td align="left">Setup a shifting overlay to translate the source uid/gid to match the instance</td>
+</tr>
+<tr>
+<td align="left">raw.mount.options</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">Filesystem specific mount options</td>
+</tr>
+<tr>
+<td align="left">ceph.user_name</td>
+<td align="left">string</td>
+<td align="left">admin</td>
+<td align="left">no</td>
+<td align="left">If source is ceph or cephfs then ceph user_name must be specified by user for proper mount</td>
+</tr>
+<tr>
+<td align="left">ceph.cluster_name</td>
+<td align="left">string</td>
+<td align="left">ceph</td>
+<td align="left">no</td>
+<td align="left">If source is ceph or cephfs then ceph cluster_name must be specified by user for proper mount</td>
+</tr>
+<tr>
+<td align="left">boot.priority</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">Boot priority for VMs (higher boots first)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="type-unix-char">Type: unix-char<a class="headerlink" href="#type-unix-char" title="Permanent link">&para;</a></h3>
+<p>Supported instance types: container</p>
+<p>Unix character device entries simply make the requested character device
+appear in the instance's <code>/dev</code> and allow read/write operations to it.</p>
+<p>The following properties exist:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Type</th>
+<th align="left">Default</th>
+<th align="left">Required</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">source</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">Path on the host</td>
+</tr>
+<tr>
+<td align="left">path</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">Path inside the instance (one of "source" and "path" must be set)</td>
+</tr>
+<tr>
+<td align="left">major</td>
+<td align="left">int</td>
+<td align="left">device on host</td>
+<td align="left">no</td>
+<td align="left">Device major number</td>
+</tr>
+<tr>
+<td align="left">minor</td>
+<td align="left">int</td>
+<td align="left">device on host</td>
+<td align="left">no</td>
+<td align="left">Device minor number</td>
+</tr>
+<tr>
+<td align="left">uid</td>
+<td align="left">int</td>
+<td align="left">0</td>
+<td align="left">no</td>
+<td align="left">UID of the device owner in the instance</td>
+</tr>
+<tr>
+<td align="left">gid</td>
+<td align="left">int</td>
+<td align="left">0</td>
+<td align="left">no</td>
+<td align="left">GID of the device owner in the instance</td>
+</tr>
+<tr>
+<td align="left">mode</td>
+<td align="left">int</td>
+<td align="left">0660</td>
+<td align="left">no</td>
+<td align="left">Mode of the device in the instance</td>
+</tr>
+<tr>
+<td align="left">required</td>
+<td align="left">boolean</td>
+<td align="left">true</td>
+<td align="left">no</td>
+<td align="left">Whether or not this device is required to start the instance</td>
+</tr>
+</tbody>
+</table>
+<h3 id="type-unix-block">Type: unix-block<a class="headerlink" href="#type-unix-block" title="Permanent link">&para;</a></h3>
+<p>Supported instance types: container</p>
+<p>Unix block device entries simply make the requested block device
+appear in the instance's <code>/dev</code> and allow read/write operations to it.</p>
+<p>The following properties exist:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Type</th>
+<th align="left">Default</th>
+<th align="left">Required</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">source</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">Path on the host</td>
+</tr>
+<tr>
+<td align="left">path</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">Path inside the instance (one of "source" and "path" must be set)</td>
+</tr>
+<tr>
+<td align="left">major</td>
+<td align="left">int</td>
+<td align="left">device on host</td>
+<td align="left">no</td>
+<td align="left">Device major number</td>
+</tr>
+<tr>
+<td align="left">minor</td>
+<td align="left">int</td>
+<td align="left">device on host</td>
+<td align="left">no</td>
+<td align="left">Device minor number</td>
+</tr>
+<tr>
+<td align="left">uid</td>
+<td align="left">int</td>
+<td align="left">0</td>
+<td align="left">no</td>
+<td align="left">UID of the device owner in the instance</td>
+</tr>
+<tr>
+<td align="left">gid</td>
+<td align="left">int</td>
+<td align="left">0</td>
+<td align="left">no</td>
+<td align="left">GID of the device owner in the instance</td>
+</tr>
+<tr>
+<td align="left">mode</td>
+<td align="left">int</td>
+<td align="left">0660</td>
+<td align="left">no</td>
+<td align="left">Mode of the device in the instance</td>
+</tr>
+<tr>
+<td align="left">required</td>
+<td align="left">boolean</td>
+<td align="left">true</td>
+<td align="left">no</td>
+<td align="left">Whether or not this device is required to start the instance</td>
+</tr>
+</tbody>
+</table>
+<h3 id="type-usb">Type: usb<a class="headerlink" href="#type-usb" title="Permanent link">&para;</a></h3>
+<p>Supported instance types: container, VM</p>
+<p>USB device entries simply make the requested USB device appear in the
+instance.</p>
+<p>The following properties exist:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Type</th>
+<th align="left">Default</th>
+<th align="left">Required</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">vendorid</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">The vendor id of the USB device</td>
+</tr>
+<tr>
+<td align="left">productid</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">The product id of the USB device</td>
+</tr>
+<tr>
+<td align="left">uid</td>
+<td align="left">int</td>
+<td align="left">0</td>
+<td align="left">no</td>
+<td align="left">UID of the device owner in the instance</td>
+</tr>
+<tr>
+<td align="left">gid</td>
+<td align="left">int</td>
+<td align="left">0</td>
+<td align="left">no</td>
+<td align="left">GID of the device owner in the instance</td>
+</tr>
+<tr>
+<td align="left">mode</td>
+<td align="left">int</td>
+<td align="left">0660</td>
+<td align="left">no</td>
+<td align="left">Mode of the device in the instance</td>
+</tr>
+<tr>
+<td align="left">required</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">no</td>
+<td align="left">Whether or not this device is required to start the instance. (The default is false, and all devices are hot-pluggable)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="type-gpu">Type: gpu<a class="headerlink" href="#type-gpu" title="Permanent link">&para;</a></h3>
+<p>GPU device entries simply make the requested gpu device appear in the
+instance.</p>
+<h4 id="gpus-available">GPUs Available:<a class="headerlink" href="#gpus-available" title="Permanent link">&para;</a></h4>
+<p>The following GPUs can be specified using the <code>gputype</code> property:</p>
+<ul>
+<li><a href="#gpu-physical">physical</a> Passes through an entire GPU. This is the default if <code>gputype</code> is unspecified.</li>
+<li><a href="#gpu-mdev">mdev</a> Creates and passes through a virtual GPU into the instance.</li>
+<li><a href="#gpu-mig">mig</a> Creates and passes through a MIG (Multi-Instance GPU) device into the instance.</li>
+<li><a href="#gpu-sriov">sriov</a> Passes a virtual function of an SR-IOV enabled GPU into the instance.</li>
+</ul>
+<h4 id="gpu-physical">gpu: physical<a class="headerlink" href="#gpu-physical" title="Permanent link">&para;</a></h4>
+<p>Supported instance types: container, VM</p>
+<p>Passes through an entire GPU.</p>
+<p>The following properties exist:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Type</th>
+<th align="left">Default</th>
+<th align="left">Required</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">vendorid</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">The vendor id of the GPU device</td>
+</tr>
+<tr>
+<td align="left">productid</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">The product id of the GPU device</td>
+</tr>
+<tr>
+<td align="left">id</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">The card id of the GPU device</td>
+</tr>
+<tr>
+<td align="left">pci</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">The pci address of the GPU device</td>
+</tr>
+<tr>
+<td align="left">uid</td>
+<td align="left">int</td>
+<td align="left">0</td>
+<td align="left">no</td>
+<td align="left">UID of the device owner in the instance (container only)</td>
+</tr>
+<tr>
+<td align="left">gid</td>
+<td align="left">int</td>
+<td align="left">0</td>
+<td align="left">no</td>
+<td align="left">GID of the device owner in the instance (container only)</td>
+</tr>
+<tr>
+<td align="left">mode</td>
+<td align="left">int</td>
+<td align="left">0660</td>
+<td align="left">no</td>
+<td align="left">Mode of the device in the instance (container only)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="gpu-mdev">gpu: mdev<a class="headerlink" href="#gpu-mdev" title="Permanent link">&para;</a></h4>
+<p>Supported instance types: VM</p>
+<p>Creates and passes through a virtual GPU into the instance. A list of available mdev profiles can be found by running <code>lxc info --resources</code>.</p>
+<p>The following properties exist:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Type</th>
+<th align="left">Default</th>
+<th align="left">Required</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">vendorid</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">The vendor id of the GPU device</td>
+</tr>
+<tr>
+<td align="left">productid</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">The product id of the GPU device</td>
+</tr>
+<tr>
+<td align="left">id</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">The card id of the GPU device</td>
+</tr>
+<tr>
+<td align="left">pci</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">The pci address of the GPU device</td>
+</tr>
+<tr>
+<td align="left">mdev</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">yes</td>
+<td align="left">The mdev profile to use (e.g. i915-GVTg_V5_4)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="gpu-mig">gpu: mig<a class="headerlink" href="#gpu-mig" title="Permanent link">&para;</a></h4>
+<p>Supported instance types: container</p>
+<p>Creates and passes through a MIG compute instance. This currently requires NVIDIA MIG instances to be pre-created.</p>
+<p>The following properties exist:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Type</th>
+<th align="left">Default</th>
+<th align="left">Required</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">vendorid</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">The vendor id of the GPU device</td>
+</tr>
+<tr>
+<td align="left">productid</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">The product id of the GPU device</td>
+</tr>
+<tr>
+<td align="left">id</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">The card id of the GPU device</td>
+</tr>
+<tr>
+<td align="left">pci</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">The pci address of the GPU device</td>
+</tr>
+<tr>
+<td align="left">mig.ci</td>
+<td align="left">int</td>
+<td align="left">-</td>
+<td align="left">yes</td>
+<td align="left">Existing MIG compute instance ID</td>
+</tr>
+<tr>
+<td align="left">mig.gi</td>
+<td align="left">int</td>
+<td align="left">-</td>
+<td align="left">yes</td>
+<td align="left">Existing MIG GPU instance ID</td>
+</tr>
+</tbody>
+</table>
+<h4 id="gpu-sriov">gpu: sriov<a class="headerlink" href="#gpu-sriov" title="Permanent link">&para;</a></h4>
+<p>Supported instance types: VM</p>
+<p>Passes a virtual function of an SR-IOV enabled GPU into the instance.</p>
+<p>The following properties exist:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Type</th>
+<th align="left">Default</th>
+<th align="left">Required</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">vendorid</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">The vendor id of the parent GPU device</td>
+</tr>
+<tr>
+<td align="left">productid</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">The product id of the parent GPU device</td>
+</tr>
+<tr>
+<td align="left">id</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">The card id of the parent GPU device</td>
+</tr>
+<tr>
+<td align="left">pci</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">The pci address of the parent GPU device</td>
+</tr>
+</tbody>
+</table>
+<h3 id="type-proxy">Type: proxy<a class="headerlink" href="#type-proxy" title="Permanent link">&para;</a></h3>
+<p>Supported instance types: container (<code>nat</code> and non-<code>nat</code> modes), VM (<code>nat</code> mode only)</p>
+<p>Proxy devices allow forwarding network connections between host and instance.
+This makes it possible to forward traffic hitting one of the host's
+addresses to an address inside the instance or to do the reverse and
+have an address in the instance connect through the host.</p>
+<p>The supported connection types are:
+* <code>tcp &lt;-&gt; tcp</code>
+* <code>udp &lt;-&gt; udp</code>
+* <code>unix &lt;-&gt; unix</code>
+* <code>tcp &lt;-&gt; unix</code>
+* <code>unix &lt;-&gt; tcp</code>
+* <code>udp &lt;-&gt; tcp</code>
+* <code>tcp &lt;-&gt; udp</code>
+* <code>udp &lt;-&gt; unix</code>
+* <code>unix &lt;-&gt; udp</code></p>
+<p>The proxy device also supports a <code>nat</code> mode where packets are forwarded using NAT rather than being proxied through
+a separate connection. This has benefit that the client address is maintained without the need for the target
+destination to support the <code>PROXY</code> protocol (which is the only way to pass the client address through when using
+the proxy device in non-nat mode).</p>
+<p>When configuring a proxy device with <code>nat=true</code>, you will need to ensure that the target instance has a static IP
+configured in LXD on its NIC device. E.g.</p>
+<div class="highlight"><pre><span></span><code>lxc config device set &lt;instance&gt; &lt;nic&gt; ipv4.address=&lt;ipv4.address&gt; ipv6.address=&lt;ipv6.address&gt;
+</code></pre></div>
+<p>In order to define a static IPv6 address, the parent managed network needs to have <code>ipv6.dhcp.stateful</code> enabled.</p>
+<p>In NAT mode the supported connection types are:</p>
+<ul>
+<li><code>tcp &lt;-&gt; tcp</code></li>
+<li><code>udp &lt;-&gt; udp</code></li>
+</ul>
+<p>When defining IPv6 addresses use square bracket notation, e.g.</p>
+<div class="highlight"><pre><span></span><code>connect=tcp:[2001:db8::1]:80
+</code></pre></div>
+<p>You can specify that the connect address should be the IP of the instance by setting the connect IP to the wildcard
+address (<code>0.0.0.0</code> for IPv4 and <code>[::]</code> for IPv6).</p>
+<p>The listen address can also use wildcard addresses when using non-NAT mode. However when using <code>nat</code> mode you must
+specify an IP address on the LXD host.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Type</th>
+<th align="left">Default</th>
+<th align="left">Required</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">listen</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">yes</td>
+<td align="left">The address and port to bind and listen (<code>&lt;type&gt;:&lt;addr&gt;:&lt;port&gt;[-&lt;port&gt;][,&lt;port&gt;]</code>)</td>
+</tr>
+<tr>
+<td align="left">connect</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">yes</td>
+<td align="left">The address and port to connect to (<code>&lt;type&gt;:&lt;addr&gt;:&lt;port&gt;[-&lt;port&gt;][,&lt;port&gt;]</code>)</td>
+</tr>
+<tr>
+<td align="left">bind</td>
+<td align="left">string</td>
+<td align="left">host</td>
+<td align="left">no</td>
+<td align="left">Which side to bind on (host/instance)</td>
+</tr>
+<tr>
+<td align="left">uid</td>
+<td align="left">int</td>
+<td align="left">0</td>
+<td align="left">no</td>
+<td align="left">UID of the owner of the listening Unix socket</td>
+</tr>
+<tr>
+<td align="left">gid</td>
+<td align="left">int</td>
+<td align="left">0</td>
+<td align="left">no</td>
+<td align="left">GID of the owner of the listening Unix socket</td>
+</tr>
+<tr>
+<td align="left">mode</td>
+<td align="left">int</td>
+<td align="left">0644</td>
+<td align="left">no</td>
+<td align="left">Mode for the listening Unix socket</td>
+</tr>
+<tr>
+<td align="left">nat</td>
+<td align="left">bool</td>
+<td align="left">false</td>
+<td align="left">no</td>
+<td align="left">Whether to optimize proxying via NAT (requires instance NIC has static IP address)</td>
+</tr>
+<tr>
+<td align="left">proxy_protocol</td>
+<td align="left">bool</td>
+<td align="left">false</td>
+<td align="left">no</td>
+<td align="left">Whether to use the HAProxy PROXY protocol to transmit sender information</td>
+</tr>
+<tr>
+<td align="left">security.uid</td>
+<td align="left">int</td>
+<td align="left">0</td>
+<td align="left">no</td>
+<td align="left">What UID to drop privilege to</td>
+</tr>
+<tr>
+<td align="left">security.gid</td>
+<td align="left">int</td>
+<td align="left">0</td>
+<td align="left">no</td>
+<td align="left">What GID to drop privilege to</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code>lxc config device add &lt;instance&gt; &lt;device-name&gt; proxy listen=&lt;type&gt;:&lt;addr&gt;:&lt;port&gt;[-&lt;port&gt;][,&lt;port&gt;] connect=&lt;type&gt;:&lt;addr&gt;:&lt;port&gt; bind=&lt;host/instance&gt;
+</code></pre></div>
+<h3 id="type-unix-hotplug">Type: unix-hotplug<a class="headerlink" href="#type-unix-hotplug" title="Permanent link">&para;</a></h3>
+<p>Supported instance types: container</p>
+<p>Unix hotplug device entries make the requested unix device appear in the
+instance's <code>/dev</code> and allow read/write operations to it if the device exists on
+the host system. Implementation depends on systemd-udev to be run on the host.</p>
+<p>The following properties exist:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Type</th>
+<th align="left">Default</th>
+<th align="left">Required</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">vendorid</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">The vendor id of the unix device</td>
+</tr>
+<tr>
+<td align="left">productid</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">no</td>
+<td align="left">The product id of the unix device</td>
+</tr>
+<tr>
+<td align="left">uid</td>
+<td align="left">int</td>
+<td align="left">0</td>
+<td align="left">no</td>
+<td align="left">UID of the device owner in the instance</td>
+</tr>
+<tr>
+<td align="left">gid</td>
+<td align="left">int</td>
+<td align="left">0</td>
+<td align="left">no</td>
+<td align="left">GID of the device owner in the instance</td>
+</tr>
+<tr>
+<td align="left">mode</td>
+<td align="left">int</td>
+<td align="left">0660</td>
+<td align="left">no</td>
+<td align="left">Mode of the device in the instance</td>
+</tr>
+<tr>
+<td align="left">required</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">no</td>
+<td align="left">Whether or not this device is required to start the instance. (The default is false, and all devices are hot-pluggable)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="type-tpm">Type: tpm<a class="headerlink" href="#type-tpm" title="Permanent link">&para;</a></h3>
+<p>Supported instance types: container, VM</p>
+<p>TPM device entries enable access to a TPM emulator.</p>
+<p>The following properties exist:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Type</th>
+<th align="left">Default</th>
+<th align="left">Required</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">path</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">yes</td>
+<td align="left">Path inside the instance (only for containers).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="type-pci">Type: pci<a class="headerlink" href="#type-pci" title="Permanent link">&para;</a></h3>
+<p>Supported instance types: VM</p>
+<p>PCI device entries are used to pass raw PCI devices from the host into a virtual machine.</p>
+<p>The following properties exist:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Type</th>
+<th align="left">Default</th>
+<th align="left">Required</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">address</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">yes</td>
+<td align="left">PCI address of the device.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="units-for-storage-and-network-limits">Units for storage and network limits<a class="headerlink" href="#units-for-storage-and-network-limits" title="Permanent link">&para;</a></h2>
+<p>Any value representing bytes or bits can make use of a number of useful
+suffixes to make it easier to understand what a particular limit is.</p>
+<p>Both decimal and binary (kibi) units are supported with the latter
+mostly making sense for storage limits.</p>
+<p>The full list of bit suffixes currently supported is:</p>
+<ul>
+<li>bit (1)</li>
+<li>kbit (1000)</li>
+<li>Mbit (1000^2)</li>
+<li>Gbit (1000^3)</li>
+<li>Tbit (1000^4)</li>
+<li>Pbit (1000^5)</li>
+<li>Ebit (1000^6)</li>
+<li>Kibit (1024)</li>
+<li>Mibit (1024^2)</li>
+<li>Gibit (1024^3)</li>
+<li>Tibit (1024^4)</li>
+<li>Pibit (1024^5)</li>
+<li>Eibit (1024^6)</li>
+</ul>
+<p>The full list of byte suffixes currently supported is:</p>
+<ul>
+<li>B or bytes (1)</li>
+<li>kB (1000)</li>
+<li>MB (1000^2)</li>
+<li>GB (1000^3)</li>
+<li>TB (1000^4)</li>
+<li>PB (1000^5)</li>
+<li>EB (1000^6)</li>
+<li>KiB (1024)</li>
+<li>MiB (1024^2)</li>
+<li>GiB (1024^3)</li>
+<li>TiB (1024^4)</li>
+<li>PiB (1024^5)</li>
+<li>EiB (1024^6)</li>
+</ul>
+<h2 id="instance-types">Instance types<a class="headerlink" href="#instance-types" title="Permanent link">&para;</a></h2>
+<p>LXD supports simple instance types. Those are represented as a string
+which can be passed at instance creation time.</p>
+<p>There are three allowed syntaxes:</p>
+<ul>
+<li><code>&lt;instance type&gt;</code></li>
+<li><code>&lt;cloud&gt;:&lt;instance type&gt;</code></li>
+<li><code>c&lt;CPU&gt;-m&lt;RAM in GB&gt;</code></li>
+</ul>
+<p>For example, those 3 are equivalent:</p>
+<ul>
+<li>t2.micro</li>
+<li>aws:t2.micro</li>
+<li>c1-m1</li>
+</ul>
+<p>On the command line, this is passed like this:</p>
+<div class="highlight"><pre><span></span><code>lxc launch ubuntu:20.04 my-instance -t t2.micro
+</code></pre></div>
+<p>The list of supported clouds and instance types can be found here:</p>
+<p>https://github.com/dustinkirkland/instance-type</p>
+<h2 id="hugepage-limits-via-limitshugepagessize">Hugepage limits via <code>limits.hugepages.[size]</code><a class="headerlink" href="#hugepage-limits-via-limitshugepagessize" title="Permanent link">&para;</a></h2>
+<p>LXD allows to limit the number of hugepages available to a container through
+the <code>limits.hugepage.[size]</code> key. Limiting hugepages is done through the
+hugetlb cgroup controller. This means the host system needs to expose the
+hugetlb controller in the legacy or unified cgroup hierarchy for these limits
+to apply.
+Note that architectures often expose multiple hugepage sizes. In addition,
+architectures may expose different hugepage sizes than other architectures.</p>
+<p>Limiting hugepages is especially useful when LXD is configured to intercept the
+mount syscall for the <code>hugetlbfs</code> filesystem in unprivileged containers. When
+LXD intercepts a <code>hugetlbfs</code> mount  syscall, it will mount the <code>hugetlbfs</code>
+filesystem for a container with correct <code>uid</code> and <code>gid</code> values as mount
+options. This makes it possible to use hugepages from unprivileged containers.
+However, it is recommended to limit the number of hugepages available to the
+container through <code>limits.hugepages.[size]</code> to stop the container from being
+able to exhaust the hugepages available to the host.</p>
+<h2 id="resource-limits-via-limitskernellimit-name">Resource limits via <code>limits.kernel.[limit name]</code><a class="headerlink" href="#resource-limits-via-limitskernellimit-name" title="Permanent link">&para;</a></h2>
+<p>LXD exposes a generic namespaced key <code>limits.kernel.*</code> which can be used to set
+resource limits for a given instance. It is generic in the sense that LXD will
+not perform any validation on the resource that is specified following the
+<code>limits.kernel.*</code> prefix. LXD cannot know about all the possible resources that
+a given kernel supports. Instead, LXD will simply pass down the corresponding
+resource key after the <code>limits.kernel.*</code> prefix and its value to the kernel.
+The kernel will do the appropriate validation. This allows users to specify any
+supported limit on their system. Some common limits are:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Resource</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">limits.kernel.as</td>
+<td align="left">RLIMIT_AS</td>
+<td align="left">Maximum size of the process's virtual memory</td>
+</tr>
+<tr>
+<td align="left">limits.kernel.core</td>
+<td align="left">RLIMIT_CORE</td>
+<td align="left">Maximum size of the process's coredump file</td>
+</tr>
+<tr>
+<td align="left">limits.kernel.cpu</td>
+<td align="left">RLIMIT_CPU</td>
+<td align="left">Limit in seconds on the amount of cpu time the process can consume</td>
+</tr>
+<tr>
+<td align="left">limits.kernel.data</td>
+<td align="left">RLIMIT_DATA</td>
+<td align="left">Maximum size of the process's data segment</td>
+</tr>
+<tr>
+<td align="left">limits.kernel.fsize</td>
+<td align="left">RLIMIT_FSIZE</td>
+<td align="left">Maximum size of files the process may create</td>
+</tr>
+<tr>
+<td align="left">limits.kernel.locks</td>
+<td align="left">RLIMIT_LOCKS</td>
+<td align="left">Limit on the number of file locks that this process may establish</td>
+</tr>
+<tr>
+<td align="left">limits.kernel.memlock</td>
+<td align="left">RLIMIT_MEMLOCK</td>
+<td align="left">Limit on the number of bytes of memory that the process may lock in RAM</td>
+</tr>
+<tr>
+<td align="left">limits.kernel.nice</td>
+<td align="left">RLIMIT_NICE</td>
+<td align="left">Maximum value to which the process's nice value can be raised</td>
+</tr>
+<tr>
+<td align="left">limits.kernel.nofile</td>
+<td align="left">RLIMIT_NOFILE</td>
+<td align="left">Maximum number of open files for the process</td>
+</tr>
+<tr>
+<td align="left">limits.kernel.nproc</td>
+<td align="left">RLIMIT_NPROC</td>
+<td align="left">Maximum number of processes that can be created for the user of the calling process</td>
+</tr>
+<tr>
+<td align="left">limits.kernel.rtprio</td>
+<td align="left">RLIMIT_RTPRIO</td>
+<td align="left">Maximum value on the real-time-priority that maybe set for this process</td>
+</tr>
+<tr>
+<td align="left">limits.kernel.sigpending</td>
+<td align="left">RLIMIT_SIGPENDING</td>
+<td align="left">Maximum number of signals that maybe queued for the user of the calling process</td>
+</tr>
+</tbody>
+</table>
+<p>A full list of all available limits can be found in the manpages for the
+<code>getrlimit(2)</code>/<code>setrlimit(2)</code> system calls. To specify a limit within the
+<code>limits.kernel.*</code> namespace use the resource name in lowercase without the
+<code>RLIMIT_</code> prefix, e.g.  <code>RLIMIT_NOFILE</code> should be specified as <code>nofile</code>.
+A limit is specified as two colon separated values which are either numeric or
+the word <code>unlimited</code> (e.g. <code>limits.kernel.nofile=1000:2000</code>). A single value can be
+used as a shortcut to set both soft and hard limit (e.g.
+<code>limits.kernel.nofile=3000</code>) to the same value. A resource with no explicitly
+configured limitation will be inherited from the process starting up the
+instance. Note that this inheritance is not enforced by LXD but by the kernel.</p>
+<h2 id="snapshot-scheduling">Snapshot scheduling<a class="headerlink" href="#snapshot-scheduling" title="Permanent link">&para;</a></h2>
+<p>LXD supports scheduled snapshots which can be created at most once every minute.
+There are three configuration options. <code>snapshots.schedule</code> takes a shortened
+cron expression: <code>&lt;minute&gt; &lt;hour&gt; &lt;day-of-month&gt; &lt;month&gt; &lt;day-of-week&gt;</code>. If this is
+empty (default), no snapshots will be created. <code>snapshots.schedule.stopped</code>
+controls whether or not stopped instance are to be automatically snapshotted.
+It defaults to <code>false</code>. <code>snapshots.pattern</code> takes a pongo2 template string,
+and the pongo2 context contains the <code>creation_date</code> variable. Be aware that you
+should format the date (e.g. use <code>{{ creation_date|date:"2006-01-02_15-04-05" }}</code>)
+in your template string to avoid forbidden characters in your snapshot name.
+Another way to avoid name collisions is to use the placeholder <code>%d</code>. If a snapshot
+with the same name (excluding the placeholder) already exists, all existing snapshot
+names will be taken into account to find the highest number at the placeholders
+position. This number will be incremented by one for the new name. The starting
+number if no snapshot exists will be <code>0</code>.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../containers/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Containers" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Containers
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../networks/" class="md-footer__link md-footer__link--next" aria-label="Next: Networks" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Networks
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "header.autohide"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2507 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>Networks - LXD documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ubuntu:300,400,400i,700%7C&display=fallback">
+        <style>:root{--md-text-font-family:"ubuntu";--md-code-font-family:""}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../stylesheets/style.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#network-configuration" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="LXD documentation" class="md-header__button md-logo" aria-label="LXD documentation" data-md-component="logo">
+      
+  <img src="../img/containers.small.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LXD documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Networks
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <div class="md-header__option">
+        <div class="md-select">
+          
+          <button class="md-header__button md-icon" aria-label="Select language">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24z"/></svg>
+          </button>
+          <div class="md-select__inner">
+            <ul class="md-select__list">
+              
+                <li class="md-select__item">
+                  <a href="/" hreflang="en" class="md-select__link">
+                    English
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="/lang/" hreflang="ja" class="md-select__link">
+                    Another language
+                  </a>
+                </li>
+                
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/lxc/lxd/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link md-tabs__link--active">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../test/" class="md-tabs__link">
+        Tab test
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="LXD documentation" class="md-nav__button md-logo" aria-label="LXD documentation" data-md-component="logo">
+      
+  <img src="../img/containers.small.png" alt="logo">
+
+    </a>
+    LXD documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/lxc/lxd/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          Home
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_2" type="checkbox" id="__nav_1_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_2">
+          Getting started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting started" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Getting started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        Requirements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        Frequently asked
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
+        Security
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_3" type="checkbox" id="__nav_1_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_3">
+          Configuration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Configuration" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../containers/" class="md-nav__link">
+        Containers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../instances/" class="md-nav__link">
+        Instances
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Networks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Networks
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#network-bridge" class="md-nav__link">
+    network: bridge
+  </a>
+  
+    <nav class="md-nav" aria-label="network: bridge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#integration-with-systemd-resolved" class="md-nav__link">
+    Integration with systemd-resolved
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ipv6-prefix-size" class="md-nav__link">
+    IPv6 prefix size
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allow-dhcp-dns-with-firewalld" class="md-nav__link">
+    Allow DHCP, DNS with Firewalld
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-let-firewalld-control-the-lxds-iptables-rules" class="md-nav__link">
+    How to let Firewalld control the LXD's iptables rules
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-macvlan" class="md-nav__link">
+    network: macvlan
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-sriov" class="md-nav__link">
+    network: sriov
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-ovn" class="md-nav__link">
+    network: ovn
+  </a>
+  
+    <nav class="md-nav" aria-label="network: ovn">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#standalone-lxd-ovn-setup" class="md-nav__link">
+    Standalone LXD OVN setup
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-physical" class="md-nav__link">
+    network: physical
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bgp-integration" class="md-nav__link">
+    BGP integration
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network-acls/" class="md-nav__link">
+        Network ACLs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network-forwards/" class="md-nav__link">
+        Network Forwards
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../preseed/" class="md-nav__link">
+        Preseed files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../profiles/" class="md-nav__link">
+        Profiles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../projects/" class="md-nav__link">
+        Projects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../server/" class="md-nav__link">
+        Server settings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../storage/" class="md-nav__link">
+        Storage pools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../virtual-machines/" class="md-nav__link">
+        Virtual machines
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metrics/" class="md-nav__link">
+        Instance metrics exporter
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_4" type="checkbox" id="__nav_1_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_4">
+          Images
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Images" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Images
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architectures/" class="md-nav__link">
+        Architectures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud-init/" class="md-nav__link">
+        Cloud-init
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image-handling/" class="md-nav__link">
+        Handling
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_5" type="checkbox" id="__nav_1_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_5">
+          Operation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Operation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          Operation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backup/" class="md-nav__link">
+        Backups
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clustering/" class="md-nav__link">
+        Clustering
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../production-setup/" class="md-nav__link">
+        Production setup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../remotes/" class="md-nav__link">
+        Remotes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_6" type="checkbox" id="__nav_1_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_6">
+          REST API
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="REST API" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_6">
+          <span class="md-nav__icon md-icon"></span>
+          REST API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rest-api/" class="md-nav__link">
+        Main API documentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-extensions/" class="md-nav__link">
+        Main API extensions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev-lxd/" class="md-nav__link">
+        Instance API documentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        Events API documentation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_7" type="checkbox" id="__nav_1_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_7">
+          Internals & debugging
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Internals & debugging" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_7">
+          <span class="md-nav__icon md-icon"></span>
+          Internals & debugging
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container-environment/" class="md-nav__link">
+        Container environment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migration/" class="md-nav__link">
+        Instance migration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../daemon-behavior/" class="md-nav__link">
+        Daemon behavior
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        Database
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debugging/" class="md-nav__link">
+        Debugging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environment/" class="md-nav__link">
+        Environment variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../syscall-interception/" class="md-nav__link">
+        System call interception
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../userns-idmap/" class="md-nav__link">
+        User namespace setup
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_8" type="checkbox" id="__nav_1_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_8">
+          External resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="External resources" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_8">
+          <span class="md-nav__icon md-icon"></span>
+          External resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/lxc/lxd" class="md-nav__link">
+        Project repository
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://images.linuxcontainers.org" class="md-nav__link">
+        Image server
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Tab test
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tab test" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Tab test
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test/" class="md-nav__link">
+        Testing stuff
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#network-bridge" class="md-nav__link">
+    network: bridge
+  </a>
+  
+    <nav class="md-nav" aria-label="network: bridge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#integration-with-systemd-resolved" class="md-nav__link">
+    Integration with systemd-resolved
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ipv6-prefix-size" class="md-nav__link">
+    IPv6 prefix size
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allow-dhcp-dns-with-firewalld" class="md-nav__link">
+    Allow DHCP, DNS with Firewalld
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-let-firewalld-control-the-lxds-iptables-rules" class="md-nav__link">
+    How to let Firewalld control the LXD's iptables rules
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-macvlan" class="md-nav__link">
+    network: macvlan
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-sriov" class="md-nav__link">
+    network: sriov
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-ovn" class="md-nav__link">
+    network: ovn
+  </a>
+  
+    <nav class="md-nav" aria-label="network: ovn">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#standalone-lxd-ovn-setup" class="md-nav__link">
+    Standalone LXD OVN setup
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-physical" class="md-nav__link">
+    network: physical
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bgp-integration" class="md-nav__link">
+    BGP integration
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/lxc/lxd/edit/master/docs/networks.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="network-configuration">Network configuration<a class="headerlink" href="#network-configuration" title="Permanent link">&para;</a></h1>
+<p>LXD supports the following network types:</p>
+<ul>
+<li><a href="#network-bridge">bridge</a>: Creates an L2 bridge for connecting instances to (can provide local DHCP and DNS). This is the default.</li>
+<li><a href="#network-macvlan">macvlan</a>: Provides preset configuration to use when connecting instances to a parent macvlan interface.</li>
+<li><a href="#network-sriov">sriov</a>: Provides preset configuration to use when connecting instances to a parent SR-IOV interface.</li>
+<li><a href="#network-ovn">ovn</a>: Creates a logical network using the OVN software defined networking system.</li>
+<li><a href="#network-physical">physical</a>: Provides preset configuration to use when connecting OVN networks to a parent interface.</li>
+</ul>
+<p>The desired type can be specified using the <code>--type</code> argument, e.g.</p>
+<div class="highlight"><pre><span></span><code>lxc network create &lt;name&gt; --type<span class="o">=</span>bridge <span class="o">[</span>options...<span class="o">]</span>
+</code></pre></div>
+<p>If no <code>--type</code> argument is specified, the default type of <code>bridge</code> is used.</p>
+<p>The configuration keys are namespaced with the following namespaces currently supported for all network types:</p>
+<ul>
+<li><code>maas</code> (MAAS network identification)</li>
+<li><code>user</code> (free form key/value for user metadata)</li>
+</ul>
+<h2 id="network-bridge">network: bridge<a class="headerlink" href="#network-bridge" title="Permanent link">&para;</a></h2>
+<p>As one of the possible network configuration types under LXD, LXD supports creating and managing network bridges.
+LXD bridges can leverage underlying native Linux bridges and Open vSwitch.</p>
+<p>Creation and management of LXD bridges is performed via the <code>lxc network</code> command.
+A bridge created by LXD is by default "managed" which means that LXD also will additionally set up a local <code>dnsmasq</code>
+DHCP server and if desired also perform NAT for the bridge (this is the default.)</p>
+<p>When a bridge is managed by LXD, configuration values under the <code>bridge</code> namespace can be used to configure it.</p>
+<p>Additionally, LXD can utilize a pre-existing Linux bridge. In this case, the bridge does not need to be created via
+<code>lxc network</code> and can simply be referenced in an instance or profile device configuration as follows:</p>
+<div class="highlight"><pre><span></span><code>devices:
+  eth0:
+     name: eth0
+     nictype: bridged
+     parent: br0
+     type: nic
+</code></pre></div>
+<p>Network forwards:</p>
+<p>Bridge networks support <a href="../network-forwards/#network-bridge">network forwards</a>.</p>
+<p>Network configuration properties:</p>
+<p>A complete list of configuration settings for LXD networks can be found below.</p>
+<p>The following configuration key namespaces are currently supported for bridge networks:</p>
+<ul>
+<li><code>bridge</code> (L2 interface configuration)</li>
+<li><code>fan</code> (configuration specific to the Ubuntu FAN overlay)</li>
+<li><code>tunnel</code> (cross-host tunneling configuration)</li>
+<li><code>ipv4</code> (L3 IPv4 configuration)</li>
+<li><code>ipv6</code> (L3 IPv6 configuration)</li>
+<li><code>dns</code> (DNS server and resolution configuration)</li>
+<li><code>raw</code> (raw configuration file content)</li>
+</ul>
+<p>It is expected that IP addresses and subnets are given using CIDR notation (<code>1.1.1.1/24</code> or <code>fd80:1234::1/64</code>).</p>
+<p>The exception being tunnel local and remote addresses which are just plain addresses (<code>1.1.1.1</code> or <code>fd80:1234::1</code>).</p>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Type</th>
+<th align="left">Condition</th>
+<th align="left">Default</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">bgp.peers.NAME.address</td>
+<td align="left">string</td>
+<td align="left">bgp server</td>
+<td align="left">-</td>
+<td align="left">Peer address (IPv4 or IPv6)</td>
+</tr>
+<tr>
+<td align="left">bgp.peers.NAME.asn</td>
+<td align="left">integer</td>
+<td align="left">bgp server</td>
+<td align="left">-</td>
+<td align="left">Peer AS number</td>
+</tr>
+<tr>
+<td align="left">bgp.peers.NAME.password</td>
+<td align="left">string</td>
+<td align="left">bgp server</td>
+<td align="left">- (no password)</td>
+<td align="left">Peer session password (optional)</td>
+</tr>
+<tr>
+<td align="left">bgp.ipv4.nexthop</td>
+<td align="left">string</td>
+<td align="left">bgp server</td>
+<td align="left">local address</td>
+<td align="left">Override the next-hop for advertised prefixes</td>
+</tr>
+<tr>
+<td align="left">bgp.ipv6.nexthop</td>
+<td align="left">string</td>
+<td align="left">bgp server</td>
+<td align="left">local address</td>
+<td align="left">Override the next-hop for advertised prefixes</td>
+</tr>
+<tr>
+<td align="left">bridge.driver</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">native</td>
+<td align="left">Bridge driver ("native" or "openvswitch")</td>
+</tr>
+<tr>
+<td align="left">bridge.external_interfaces</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Comma separate list of unconfigured network interfaces to include in the bridge</td>
+</tr>
+<tr>
+<td align="left">bridge.hwaddr</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">MAC address for the bridge</td>
+</tr>
+<tr>
+<td align="left">bridge.mode</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">standard</td>
+<td align="left">Bridge operation mode ("standard" or "fan")</td>
+</tr>
+<tr>
+<td align="left">bridge.mtu</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">1500</td>
+<td align="left">Bridge MTU (default varies if tunnel or fan setup)</td>
+</tr>
+<tr>
+<td align="left">dns.domain</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">lxd</td>
+<td align="left">Domain to advertise to DHCP clients and use for DNS resolution</td>
+</tr>
+<tr>
+<td align="left">dns.mode</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">managed</td>
+<td align="left">DNS registration mode ("none" for no DNS record, "managed" for LXD generated static records or "dynamic" for client generated records)</td>
+</tr>
+<tr>
+<td align="left">dns.search</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Full comma separated domain search list, defaulting to <code>dns.domain</code> value</td>
+</tr>
+<tr>
+<td align="left">fan.overlay_subnet</td>
+<td align="left">string</td>
+<td align="left">fan mode</td>
+<td align="left">240.0.0.0/8</td>
+<td align="left">Subnet to use as the overlay for the FAN (CIDR notation)</td>
+</tr>
+<tr>
+<td align="left">fan.type</td>
+<td align="left">string</td>
+<td align="left">fan mode</td>
+<td align="left">vxlan</td>
+<td align="left">The tunneling type for the FAN ("vxlan" or "ipip")</td>
+</tr>
+<tr>
+<td align="left">fan.underlay_subnet</td>
+<td align="left">string</td>
+<td align="left">fan mode</td>
+<td align="left">auto (on create only)</td>
+<td align="left">Subnet to use as the underlay for the FAN (CIDR notation). Use "auto" to use default gateway subnet</td>
+</tr>
+<tr>
+<td align="left">ipv4.address</td>
+<td align="left">string</td>
+<td align="left">standard mode</td>
+<td align="left">auto (on create only)</td>
+<td align="left">IPv4 address for the bridge (CIDR notation). Use "none" to turn off IPv4 or "auto" to generate a new random unused subnet</td>
+</tr>
+<tr>
+<td align="left">ipv4.dhcp</td>
+<td align="left">boolean</td>
+<td align="left">ipv4 address</td>
+<td align="left">true</td>
+<td align="left">Whether to allocate addresses using DHCP</td>
+</tr>
+<tr>
+<td align="left">ipv4.dhcp.expiry</td>
+<td align="left">string</td>
+<td align="left">ipv4 dhcp</td>
+<td align="left">1h</td>
+<td align="left">When to expire DHCP leases</td>
+</tr>
+<tr>
+<td align="left">ipv4.dhcp.gateway</td>
+<td align="left">string</td>
+<td align="left">ipv4 dhcp</td>
+<td align="left">ipv4.address</td>
+<td align="left">Address of the gateway for the subnet</td>
+</tr>
+<tr>
+<td align="left">ipv4.dhcp.ranges</td>
+<td align="left">string</td>
+<td align="left">ipv4 dhcp</td>
+<td align="left">all addresses</td>
+<td align="left">Comma separated list of IP ranges to use for DHCP (FIRST-LAST format)</td>
+</tr>
+<tr>
+<td align="left">ipv4.firewall</td>
+<td align="left">boolean</td>
+<td align="left">ipv4 address</td>
+<td align="left">true</td>
+<td align="left">Whether to generate filtering firewall rules for this network</td>
+</tr>
+<tr>
+<td align="left">ipv4.nat.address</td>
+<td align="left">string</td>
+<td align="left">ipv4 address</td>
+<td align="left">-</td>
+<td align="left">The source address used for outbound traffic from the bridge</td>
+</tr>
+<tr>
+<td align="left">ipv4.nat</td>
+<td align="left">boolean</td>
+<td align="left">ipv4 address</td>
+<td align="left">false</td>
+<td align="left">Whether to NAT (defaults to true for regular bridges where ipv4.address is generated and always defaults to true for fan bridges)</td>
+</tr>
+<tr>
+<td align="left">ipv4.nat.order</td>
+<td align="left">string</td>
+<td align="left">ipv4 address</td>
+<td align="left">before</td>
+<td align="left">Whether to add the required NAT rules before or after any pre-existing rules</td>
+</tr>
+<tr>
+<td align="left">ipv4.ovn.ranges</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Comma separate list of IPv4 ranges to use for child OVN network routers (FIRST-LAST format)</td>
+</tr>
+<tr>
+<td align="left">ipv4.routes</td>
+<td align="left">string</td>
+<td align="left">ipv4 address</td>
+<td align="left">-</td>
+<td align="left">Comma separated list of additional IPv4 CIDR subnets to route to the bridge</td>
+</tr>
+<tr>
+<td align="left">ipv4.routing</td>
+<td align="left">boolean</td>
+<td align="left">ipv4 address</td>
+<td align="left">true</td>
+<td align="left">Whether to route traffic in and out of the bridge</td>
+</tr>
+<tr>
+<td align="left">ipv6.address</td>
+<td align="left">string</td>
+<td align="left">standard mode</td>
+<td align="left">auto (on create only)</td>
+<td align="left">IPv6 address for the bridge (CIDR notation). Use "none" to turn off IPv6 or "auto" to generate a new random unused subnet</td>
+</tr>
+<tr>
+<td align="left">ipv6.dhcp</td>
+<td align="left">boolean</td>
+<td align="left">ipv6 address</td>
+<td align="left">true</td>
+<td align="left">Whether to provide additional network configuration over DHCP</td>
+</tr>
+<tr>
+<td align="left">ipv6.dhcp.expiry</td>
+<td align="left">string</td>
+<td align="left">ipv6 dhcp</td>
+<td align="left">1h</td>
+<td align="left">When to expire DHCP leases</td>
+</tr>
+<tr>
+<td align="left">ipv6.dhcp.ranges</td>
+<td align="left">string</td>
+<td align="left">ipv6 stateful dhcp</td>
+<td align="left">all addresses</td>
+<td align="left">Comma separated list of IPv6 ranges to use for DHCP (FIRST-LAST format)</td>
+</tr>
+<tr>
+<td align="left">ipv6.dhcp.stateful</td>
+<td align="left">boolean</td>
+<td align="left">ipv6 dhcp</td>
+<td align="left">false</td>
+<td align="left">Whether to allocate addresses using DHCP</td>
+</tr>
+<tr>
+<td align="left">ipv6.firewall</td>
+<td align="left">boolean</td>
+<td align="left">ipv6 address</td>
+<td align="left">true</td>
+<td align="left">Whether to generate filtering firewall rules for this network</td>
+</tr>
+<tr>
+<td align="left">ipv6.nat.address</td>
+<td align="left">string</td>
+<td align="left">ipv6 address</td>
+<td align="left">-</td>
+<td align="left">The source address used for outbound traffic from the bridge</td>
+</tr>
+<tr>
+<td align="left">ipv6.nat</td>
+<td align="left">boolean</td>
+<td align="left">ipv6 address</td>
+<td align="left">false</td>
+<td align="left">Whether to NAT (will default to true if unset and a random ipv6.address is generated)</td>
+</tr>
+<tr>
+<td align="left">ipv6.nat.order</td>
+<td align="left">string</td>
+<td align="left">ipv6 address</td>
+<td align="left">before</td>
+<td align="left">Whether to add the required NAT rules before or after any pre-existing rules</td>
+</tr>
+<tr>
+<td align="left">ipv6.ovn.ranges</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Comma separate list of IPv6 ranges to use for child OVN network routers (FIRST-LAST format)</td>
+</tr>
+<tr>
+<td align="left">ipv6.routes</td>
+<td align="left">string</td>
+<td align="left">ipv6 address</td>
+<td align="left">-</td>
+<td align="left">Comma separated list of additional IPv6 CIDR subnets to route to the bridge</td>
+</tr>
+<tr>
+<td align="left">ipv6.routing</td>
+<td align="left">boolean</td>
+<td align="left">ipv6 address</td>
+<td align="left">true</td>
+<td align="left">Whether to route traffic in and out of the bridge</td>
+</tr>
+<tr>
+<td align="left">maas.subnet.ipv4</td>
+<td align="left">string</td>
+<td align="left">ipv4 address</td>
+<td align="left">-</td>
+<td align="left">MAAS IPv4 subnet to register instances in (when using <code>network</code> property on nic)</td>
+</tr>
+<tr>
+<td align="left">maas.subnet.ipv6</td>
+<td align="left">string</td>
+<td align="left">ipv6 address</td>
+<td align="left">-</td>
+<td align="left">MAAS IPv6 subnet to register instances in (when using <code>network</code> property on nic)</td>
+</tr>
+<tr>
+<td align="left">raw.dnsmasq</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Additional dnsmasq configuration to append to the configuration file</td>
+</tr>
+<tr>
+<td align="left">tunnel.NAME.group</td>
+<td align="left">string</td>
+<td align="left">vxlan</td>
+<td align="left">239.0.0.1</td>
+<td align="left">Multicast address for vxlan (used if local and remote aren't set)</td>
+</tr>
+<tr>
+<td align="left">tunnel.NAME.id</td>
+<td align="left">integer</td>
+<td align="left">vxlan</td>
+<td align="left">0</td>
+<td align="left">Specific tunnel ID to use for the vxlan tunnel</td>
+</tr>
+<tr>
+<td align="left">tunnel.NAME.interface</td>
+<td align="left">string</td>
+<td align="left">vxlan</td>
+<td align="left">-</td>
+<td align="left">Specific host interface to use for the tunnel</td>
+</tr>
+<tr>
+<td align="left">tunnel.NAME.local</td>
+<td align="left">string</td>
+<td align="left">gre or vxlan</td>
+<td align="left">-</td>
+<td align="left">Local address for the tunnel (not necessary for multicast vxlan)</td>
+</tr>
+<tr>
+<td align="left">tunnel.NAME.port</td>
+<td align="left">integer</td>
+<td align="left">vxlan</td>
+<td align="left">0</td>
+<td align="left">Specific port to use for the vxlan tunnel</td>
+</tr>
+<tr>
+<td align="left">tunnel.NAME.protocol</td>
+<td align="left">string</td>
+<td align="left">standard mode</td>
+<td align="left">-</td>
+<td align="left">Tunneling protocol ("vxlan" or "gre")</td>
+</tr>
+<tr>
+<td align="left">tunnel.NAME.remote</td>
+<td align="left">string</td>
+<td align="left">gre or vxlan</td>
+<td align="left">-</td>
+<td align="left">Remote address for the tunnel (not necessary for multicast vxlan)</td>
+</tr>
+<tr>
+<td align="left">tunnel.NAME.ttl</td>
+<td align="left">integer</td>
+<td align="left">vxlan</td>
+<td align="left">1</td>
+<td align="left">Specific TTL to use for multicast routing topologies</td>
+</tr>
+<tr>
+<td align="left">security.acls</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Comma separated list of Network ACLs to apply to NICs connected to this network (see <a href="../network-acls/#bridge-limitations">Limitations</a>)</td>
+</tr>
+<tr>
+<td align="left">security.acls.default.ingress.action</td>
+<td align="left">string</td>
+<td align="left">security.acls</td>
+<td align="left">reject</td>
+<td align="left">Action to use for ingress traffic that doesn't match any ACL rule</td>
+</tr>
+<tr>
+<td align="left">security.acls.default.egress.action</td>
+<td align="left">string</td>
+<td align="left">security.acls</td>
+<td align="left">reject</td>
+<td align="left">Action to use for egress traffic that doesn't match any ACL rule</td>
+</tr>
+<tr>
+<td align="left">security.acls.default.ingress.logged</td>
+<td align="left">boolean</td>
+<td align="left">security.acls</td>
+<td align="left">false</td>
+<td align="left">Whether to log ingress traffic that doesn't match any ACL rule</td>
+</tr>
+<tr>
+<td align="left">security.acls.default.egress.logged</td>
+<td align="left">boolean</td>
+<td align="left">security.acls</td>
+<td align="left">false</td>
+<td align="left">Whether to log egress traffic that doesn't match any ACL rule</td>
+</tr>
+<tr>
+<td align="left">Those keys can be set using the lxc tool with:</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code>lxc network <span class="nb">set</span> &lt;network&gt; &lt;key&gt; &lt;value&gt;
+</code></pre></div>
+<h3 id="integration-with-systemd-resolved">Integration with systemd-resolved<a class="headerlink" href="#integration-with-systemd-resolved" title="Permanent link">&para;</a></h3>
+<p>If the system running LXD uses systemd-resolved to perform DNS
+lookups, it's possible to notify resolved of the domain(s) that
+LXD is able to resolve.  This requires telling resolved the
+specific bridge(s), nameserver address(es), and dns domain(s).</p>
+<p>For example, if LXD is using the <code>lxdbr0</code> interface, get the
+ipv4 address with <code>lxc network get lxdbr0 ipv4.address</code> command
+(the ipv6 can be used instead or in addition), and the domain
+with <code>lxc network get lxdbr0 dns.domain</code> (if unset, the domain
+is <code>lxd</code> as shown in the table above).  Then notify resolved:</p>
+<div class="highlight"><pre><span></span><code>systemd-resolve --interface lxdbr0 --set-domain &#39;~lxd&#39; --set-dns n.n.n.n
+</code></pre></div>
+<p>Replace <code>lxdbr0</code> with the actual bridge name, and <code>n.n.n.n</code> with
+the actual address of the nameserver (without the subnet netmask).</p>
+<p>Also replace <code>lxd</code> with the domain name.  Note the <code>~</code> before the
+domain name is important; it tells resolved to use this
+nameserver to look up only this domain; no matter what your
+actual domain name is, you should prefix it with <code>~</code>.  Also,
+since the shell may expand the <code>~</code> character, you may need to
+include it in quotes.</p>
+<p>In newer releases of systemd, the <code>systemd-resolve</code> command has been
+deprecated, however it is still provided for backwards compatibility
+(as of this writing).  The newer method to notify resolved is using
+the <code>resolvectl</code> command, which would be done in two steps:</p>
+<div class="highlight"><pre><span></span><code>resolvectl dns lxdbr0 n.n.n.n
+resolvectl domain lxdbr0 &#39;~lxd&#39;
+</code></pre></div>
+<p>This resolved configuration will persist as long as the bridge
+exists, so you must repeat this command each reboot and after
+LXD is restarted (see below on how to automate this).</p>
+<p>Also note this only works if the bridge <code>dns.mode</code> is not <code>none</code>.</p>
+<p>Note that depending on the <code>dns.domain</code> used, you may need to disable
+DNSSEC in resolved to allow for DNS resolution. This can be done through
+the <code>DNSSEC</code> option in <code>resolved.conf</code>.</p>
+<p>To automate the <code>systemd-resolved</code> DNS configuration when LXD creates the <code>lxdbr0</code> interface so that it is applied
+on system start you need to create a systemd unit file <code>/etc/systemd/system/lxd-dns-lxdbr0.service</code> containing:</p>
+<div class="highlight"><pre><span></span><code>[Unit]
+Description=LXD per-link DNS configuration for lxdbr0
+BindsTo=sys-subsystem-net-devices-lxdbr0.device
+After=sys-subsystem-net-devices-lxdbr0.device
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/resolvectl dns lxdbr0 n.n.n.n
+ExecStart=/usr/bin/resolvectl domain lxdbr0 &#39;~lxd&#39;
+
+[Install]
+WantedBy=sys-subsystem-net-devices-lxdbr0.device
+</code></pre></div>
+<p>Be sure to replace <code>n.n.n.n</code> in that file with the IP of the <code>lxdbr0</code> bridge.</p>
+<p>Then enable and start it using:</p>
+<div class="highlight"><pre><span></span><code>sudo systemctl daemon-reload
+sudo systemctl enable --now lxd-dns-lxdbr0
+</code></pre></div>
+<p>If the <code>lxdbr0</code> interface already exists (i.e LXD is running), then you can check that the new service has started:</p>
+<div class="highlight"><pre><span></span><code>sudo systemctl status lxd-dns-lxdbr0.service
+● lxd-dns-lxdbr0.service - LXD per-link DNS configuration for lxdbr0
+     Loaded: loaded (/etc/systemd/system/lxd-dns-lxdbr0.service; enabled; vendor preset: enabled)
+     Active: inactive (dead) since Mon 2021-06-14 17:03:12 BST; 1min 2s ago
+    Process: 9433 ExecStart=/usr/bin/resolvectl dns lxdbr0 n.n.n.n (code=exited, status=0/SUCCESS)
+    Process: 9434 ExecStart=/usr/bin/resolvectl domain lxdbr0 ~lxd (code=exited, status=0/SUCCESS)
+   Main PID: 9434 (code=exited, status=0/SUCCESS)
+</code></pre></div>
+<p>You can then check it has applied the settings using:</p>
+<div class="highlight"><pre><span></span><code>sudo resolvectl status lxdbr0
+Link 6 (lxdbr0)
+      Current Scopes: DNS
+DefaultRoute setting: no
+       LLMNR setting: yes
+MulticastDNS setting: no
+  DNSOverTLS setting: no
+      DNSSEC setting: no
+    DNSSEC supported: no
+  Current DNS Server: n.n.n.n
+         DNS Servers: n.n.n.n
+          DNS Domain: ~lxd
+</code></pre></div>
+<h3 id="ipv6-prefix-size">IPv6 prefix size<a class="headerlink" href="#ipv6-prefix-size" title="Permanent link">&para;</a></h3>
+<p>For optimal operation, a prefix size of 64 is preferred.
+Larger subnets (prefix smaller than 64) should work properly too but
+aren't typically that useful for SLAAC.</p>
+<p>Smaller subnets while in theory possible when using stateful DHCPv6 for
+IPv6 allocation aren't properly supported by dnsmasq and may be the
+source of issue. If you must use one of those, static allocation or
+another standalone RA daemon be used.</p>
+<h3 id="allow-dhcp-dns-with-firewalld">Allow DHCP, DNS with Firewalld<a class="headerlink" href="#allow-dhcp-dns-with-firewalld" title="Permanent link">&para;</a></h3>
+<p>In order to allow instances to access the DHCP and DNS server that LXD runs on the host when using firewalld
+you need to add the host's bridge interface to the <code>trusted</code> zone in firewalld.</p>
+<p>To do this permanently (so that it persists after a reboot) run the following command:</p>
+<div class="highlight"><pre><span></span><code>firewall-cmd --zone=trusted --change-interface=&lt;LXD network name&gt; --permanent
+</code></pre></div>
+<p>E.g. for a bridged network called <code>lxdbr0</code> run the command:</p>
+<div class="highlight"><pre><span></span><code>firewall-cmd --zone=trusted --change-interface=lxdbr0 --permanent
+</code></pre></div>
+<p>This will then allow LXD's own firewall rules to take effect.</p>
+<h3 id="how-to-let-firewalld-control-the-lxds-iptables-rules">How to let Firewalld control the LXD's iptables rules<a class="headerlink" href="#how-to-let-firewalld-control-the-lxds-iptables-rules" title="Permanent link">&para;</a></h3>
+<p>When using firewalld and LXD together, iptables rules can overlaps. For example, firewalld could erase LXD iptables rules if it is started after LXD daemon, then LXD container will not be able to do any oubound internet access.
+One way to fix it is to delegate to firewalld the LXD's iptables rules and to disable the LXD ones.</p>
+<p>First step is to <a href="#allow-dhcp-dns-with-firewalld">allow DNS and DHCP</a>.</p>
+<p>Then to tell to LXD totally stop to set iptables rules (because firewalld will do it):
+<div class="highlight"><pre><span></span><code>lxc network set lxdbr0 ipv4.nat false
+lxc network set lxdbr0 ipv6.nat false
+lxc network set lxdbr0 ipv6.firewall false
+lxc network set lxdbr0 ipv4.firewall false
+</code></pre></div></p>
+<p>Finally, to enable iptables firewalld's rules for LXD usecase (in this example, we suppose the bridge interface is <code>lxdbr0</code> and the associated IP range is <code>10.0.0.0/24</code>:
+<div class="highlight"><pre><span></span><code>firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 0 -i lxdbr0 -s 10.0.0.0/24 -m comment --comment &quot;generated by firewalld for LXD&quot; -j ACCEPT
+firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 0 -o lxdbr0 -d 10.0.0.0/24 -m comment --comment &quot;generated by firewalld for LXD&quot; -j ACCEPT
+firewall-cmd --permanent --direct --add-rule ipv4 filter FORWARD 0 -i lxdbr0 -s 10.0.0.0/24 -m comment --comment &quot;generated by firewalld for LXD&quot; -j ACCEPT
+firewall-cmd --permanent --direct --add-rule ipv4 nat POSTROUTING 0 -s 10.0.0.0/24 ! -d 10.0.0.0/24 -m comment --comment &quot;generated by firewalld for LXD&quot; -j MASQUERADE
+firewall-cmd --reload
+</code></pre></div>
+To check the rules are taken into account by firewalld:
+<div class="highlight"><pre><span></span><code>firewall-cmd --direct --get-all-rules
+</code></pre></div></p>
+<p>Warning: what is exposed above is not a fool-proof approach and may end up inadvertently introducing a security risk.</p>
+<h2 id="network-macvlan">network: macvlan<a class="headerlink" href="#network-macvlan" title="Permanent link">&para;</a></h2>
+<p>The macvlan network type allows one to specify presets to use when connecting instances to a parent interface
+using macvlan NICs. This allows the instance NIC itself to simply specify the <code>network</code> it is connecting to without
+knowing any of the underlying configuration details.</p>
+<p>Network configuration properties:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Type</th>
+<th align="left">Condition</th>
+<th align="left">Default</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">maas.subnet.ipv4</td>
+<td align="left">string</td>
+<td align="left">ipv4 address</td>
+<td align="left">-</td>
+<td align="left">MAAS IPv4 subnet to register instances in (when using <code>network</code> property on nic)</td>
+</tr>
+<tr>
+<td align="left">maas.subnet.ipv6</td>
+<td align="left">string</td>
+<td align="left">ipv6 address</td>
+<td align="left">-</td>
+<td align="left">MAAS IPv6 subnet to register instances in (when using <code>network</code> property on nic)</td>
+</tr>
+<tr>
+<td align="left">mtu</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">The MTU of the new interface</td>
+</tr>
+<tr>
+<td align="left">parent</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Parent interface to create macvlan NICs on</td>
+</tr>
+<tr>
+<td align="left">vlan</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">The VLAN ID to attach to</td>
+</tr>
+<tr>
+<td align="left">gvrp</td>
+<td align="left">boolean</td>
+<td align="left">-</td>
+<td align="left">false</td>
+<td align="left">Register VLAN using GARP VLAN Registration Protocol</td>
+</tr>
+</tbody>
+</table>
+<h2 id="network-sriov">network: sriov<a class="headerlink" href="#network-sriov" title="Permanent link">&para;</a></h2>
+<p>The sriov network type allows one to specify presets to use when connecting instances to a parent interface
+using sriov NICs. This allows the instance NIC itself to simply specify the <code>network</code> it is connecting to without
+knowing any of the underlying configuration details.</p>
+<p>Network configuration properties:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Type</th>
+<th align="left">Condition</th>
+<th align="left">Default</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">maas.subnet.ipv4</td>
+<td align="left">string</td>
+<td align="left">ipv4 address</td>
+<td align="left">-</td>
+<td align="left">MAAS IPv4 subnet to register instances in (when using <code>network</code> property on nic)</td>
+</tr>
+<tr>
+<td align="left">maas.subnet.ipv6</td>
+<td align="left">string</td>
+<td align="left">ipv6 address</td>
+<td align="left">-</td>
+<td align="left">MAAS IPv6 subnet to register instances in (when using <code>network</code> property on nic)</td>
+</tr>
+<tr>
+<td align="left">mtu</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">The MTU of the new interface</td>
+</tr>
+<tr>
+<td align="left">parent</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Parent interface to create sriov NICs on</td>
+</tr>
+<tr>
+<td align="left">vlan</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">The VLAN ID to attach to</td>
+</tr>
+</tbody>
+</table>
+<h2 id="network-ovn">network: ovn<a class="headerlink" href="#network-ovn" title="Permanent link">&para;</a></h2>
+<p>The ovn network type allows the creation of logical networks using the OVN SDN. This can be useful for labs and
+multi-tenant environments where the same logical subnets are used in multiple discrete networks.</p>
+<p>A LXD OVN network can be connected to an existing managed LXD bridge network in order for it to gain outbound
+access to the wider network. All connections from the OVN logical networks are NATed to a dynamic IP allocated by
+the parent network.</p>
+<h3 id="standalone-lxd-ovn-setup">Standalone LXD OVN setup<a class="headerlink" href="#standalone-lxd-ovn-setup" title="Permanent link">&para;</a></h3>
+<p>This will create a standalone OVN network that is connected to the parent network lxdbr0 for outbound connectivity.</p>
+<p>Install the OVN tools and configure the OVN integration bridge on the local node:</p>
+<div class="highlight"><pre><span></span><code>sudo apt install ovn-host ovn-central
+sudo ovs-vsctl set open_vswitch . \
+  external_ids:ovn-remote=unix:/var/run/ovn/ovnsb_db.sock \
+  external_ids:ovn-encap-type=geneve \
+  external_ids:ovn-encap-ip=127.0.0.1
+</code></pre></div>
+<p>Create an OVN network and an instance using it:</p>
+<div class="highlight"><pre><span></span><code>lxc network set lxdbr0 ipv4.dhcp.ranges=... ipv4.ovn.ranges=... # Allocate IP range for OVN gateways.
+lxc network create ovntest --type=ovn network=lxdbr0
+lxc init images:ubuntu/20.04 c1
+lxc config device override c1 eth0 network=ovntest
+lxc start c1
+lxc ls
++------+---------+---------------------+----------------------------------------------+-----------+-----------+
+| NAME |  STATE  |        IPV4         |                     IPV6                     |   TYPE    | SNAPSHOTS |
++------+---------+---------------------+----------------------------------------------+-----------+-----------+
+| c1   | RUNNING | 10.254.118.2 (eth0) | fd42:887:cff3:5089:216:3eff:fef0:549f (eth0) | CONTAINER | 0         |
++------+---------+---------------------+----------------------------------------------+-----------+-----------+
+</code></pre></div>
+<p>Network forwards:</p>
+<p>OVN networks support <a href="../network-forwards/#network-ovn">network forwards</a>.</p>
+<p>Network configuration properties:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Type</th>
+<th align="left">Condition</th>
+<th align="left">Default</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">bridge.hwaddr</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">MAC address for the bridge</td>
+</tr>
+<tr>
+<td align="left">bridge.mtu</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">1442</td>
+<td align="left">Bridge MTU (default allows host to host geneve tunnels)</td>
+</tr>
+<tr>
+<td align="left">dns.domain</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">lxd</td>
+<td align="left">Domain to advertise to DHCP clients and use for DNS resolution</td>
+</tr>
+<tr>
+<td align="left">dns.search</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Full comma separated domain search list, defaulting to <code>dns.domain</code> value</td>
+</tr>
+<tr>
+<td align="left">ipv4.address</td>
+<td align="left">string</td>
+<td align="left">standard mode</td>
+<td align="left">auto (on create only)</td>
+<td align="left">IPv4 address for the bridge (CIDR notation). Use "none" to turn off IPv4 or "auto" to generate a new random unused subnet</td>
+</tr>
+<tr>
+<td align="left">ipv4.dhcp</td>
+<td align="left">boolean</td>
+<td align="left">ipv4 address</td>
+<td align="left">true</td>
+<td align="left">Whether to allocate addresses using DHCP</td>
+</tr>
+<tr>
+<td align="left">ipv4.nat</td>
+<td align="left">boolean</td>
+<td align="left">ipv4 address</td>
+<td align="left">false</td>
+<td align="left">Whether to NAT (will default to true if unset and a random ipv4.address is generated)</td>
+</tr>
+<tr>
+<td align="left">ipv4.nat.address</td>
+<td align="left">string</td>
+<td align="left">ipv4 address</td>
+<td align="left">-</td>
+<td align="left">The source address used for outbound traffic from the network (requires uplink <code>ovn.ingress_mode=routed</code>)</td>
+</tr>
+<tr>
+<td align="left">ipv6.address</td>
+<td align="left">string</td>
+<td align="left">standard mode</td>
+<td align="left">auto (on create only)</td>
+<td align="left">IPv6 address for the bridge (CIDR notation). Use "none" to turn off IPv6 or "auto" to generate a new random unused subnet</td>
+</tr>
+<tr>
+<td align="left">ipv6.nat.address</td>
+<td align="left">string</td>
+<td align="left">ipv6 address</td>
+<td align="left">-</td>
+<td align="left">The source address used for outbound traffic from the network (requires uplink <code>ovn.ingress_mode=routed</code>)</td>
+</tr>
+<tr>
+<td align="left">ipv6.dhcp</td>
+<td align="left">boolean</td>
+<td align="left">ipv6 address</td>
+<td align="left">true</td>
+<td align="left">Whether to provide additional network configuration over DHCP</td>
+</tr>
+<tr>
+<td align="left">ipv6.dhcp.stateful</td>
+<td align="left">boolean</td>
+<td align="left">ipv6 dhcp</td>
+<td align="left">false</td>
+<td align="left">Whether to allocate addresses using DHCP</td>
+</tr>
+<tr>
+<td align="left">ipv6.nat</td>
+<td align="left">boolean</td>
+<td align="left">ipv6 address</td>
+<td align="left">false</td>
+<td align="left">Whether to NAT (will default to true if unset and a random ipv6.address is generated)</td>
+</tr>
+<tr>
+<td align="left">network</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Uplink network to use for external network access</td>
+</tr>
+<tr>
+<td align="left">security.acls</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Comma separated list of Network ACLs to apply to NICs connected to this network</td>
+</tr>
+<tr>
+<td align="left">security.acls.default.ingress.action</td>
+<td align="left">string</td>
+<td align="left">security.acls</td>
+<td align="left">reject</td>
+<td align="left">Action to use for ingress traffic that doesn't match any ACL rule</td>
+</tr>
+<tr>
+<td align="left">security.acls.default.egress.action</td>
+<td align="left">string</td>
+<td align="left">security.acls</td>
+<td align="left">reject</td>
+<td align="left">Action to use for egress traffic that doesn't match any ACL rule</td>
+</tr>
+<tr>
+<td align="left">security.acls.default.ingress.logged</td>
+<td align="left">boolean</td>
+<td align="left">security.acls</td>
+<td align="left">false</td>
+<td align="left">Whether to log ingress traffic that doesn't match any ACL rule</td>
+</tr>
+<tr>
+<td align="left">security.acls.default.egress.logged</td>
+<td align="left">boolean</td>
+<td align="left">security.acls</td>
+<td align="left">false</td>
+<td align="left">Whether to log egress traffic that doesn't match any ACL rule</td>
+</tr>
+</tbody>
+</table>
+<h2 id="network-physical">network: physical<a class="headerlink" href="#network-physical" title="Permanent link">&para;</a></h2>
+<p>The physical network type allows one to specify presets to use when connecting OVN networks to a parent interface.</p>
+<p>Network configuration properties:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Type</th>
+<th align="left">Condition</th>
+<th align="left">Default</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">bgp.peers.NAME.address</td>
+<td align="left">string</td>
+<td align="left">bgp server</td>
+<td align="left">-</td>
+<td align="left">Peer address (IPv4 or IPv6) for use by <code>ovn</code> downstream networks</td>
+</tr>
+<tr>
+<td align="left">bgp.peers.NAME.asn</td>
+<td align="left">integer</td>
+<td align="left">bgp server</td>
+<td align="left">-</td>
+<td align="left">Peer AS number for use by <code>ovn</code> downstream networks</td>
+</tr>
+<tr>
+<td align="left">bgp.peers.NAME.password</td>
+<td align="left">string</td>
+<td align="left">bgp server</td>
+<td align="left">- (no password)</td>
+<td align="left">Peer session password (optional) for use by <code>ovn</code> downstream networks</td>
+</tr>
+<tr>
+<td align="left">maas.subnet.ipv4</td>
+<td align="left">string</td>
+<td align="left">ipv4 address</td>
+<td align="left">-</td>
+<td align="left">MAAS IPv4 subnet to register instances in (when using <code>network</code> property on nic)</td>
+</tr>
+<tr>
+<td align="left">maas.subnet.ipv6</td>
+<td align="left">string</td>
+<td align="left">ipv6 address</td>
+<td align="left">-</td>
+<td align="left">MAAS IPv6 subnet to register instances in (when using <code>network</code> property on nic)</td>
+</tr>
+<tr>
+<td align="left">mtu</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">The MTU of the new interface</td>
+</tr>
+<tr>
+<td align="left">parent</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Parent interface to create sriov NICs on</td>
+</tr>
+<tr>
+<td align="left">vlan</td>
+<td align="left">integer</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">The VLAN ID to attach to</td>
+</tr>
+<tr>
+<td align="left">gvrp</td>
+<td align="left">boolean</td>
+<td align="left">-</td>
+<td align="left">false</td>
+<td align="left">Register VLAN using GARP VLAN Registration Protocol</td>
+</tr>
+<tr>
+<td align="left">ipv4.gateway</td>
+<td align="left">string</td>
+<td align="left">standard mode</td>
+<td align="left">-</td>
+<td align="left">IPv4 address for the gateway and network (CIDR notation)</td>
+</tr>
+<tr>
+<td align="left">ipv4.ovn.ranges</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Comma separate list of IPv4 ranges to use for child OVN network routers (FIRST-LAST format)</td>
+</tr>
+<tr>
+<td align="left">ipv4.routes</td>
+<td align="left">string</td>
+<td align="left">ipv4 address</td>
+<td align="left">-</td>
+<td align="left">Comma separated list of additional IPv4 CIDR subnets that can be used with child OVN networks ipv4.routes.external setting</td>
+</tr>
+<tr>
+<td align="left">ipv4.routes.anycast</td>
+<td align="left">boolean</td>
+<td align="left">ipv4 address</td>
+<td align="left">false</td>
+<td align="left">Allow the overlapping routes to be used on multiple networks/NIC at the same time.</td>
+</tr>
+<tr>
+<td align="left">ipv6.gateway</td>
+<td align="left">string</td>
+<td align="left">standard mode</td>
+<td align="left">-</td>
+<td align="left">IPv6 address for the gateway and network  (CIDR notation)</td>
+</tr>
+<tr>
+<td align="left">ipv6.ovn.ranges</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Comma separate list of IPv6 ranges to use for child OVN network routers (FIRST-LAST format)</td>
+</tr>
+<tr>
+<td align="left">ipv6.routes</td>
+<td align="left">string</td>
+<td align="left">ipv6 address</td>
+<td align="left">-</td>
+<td align="left">Comma separated list of additional IPv6 CIDR subnets that can be used with child OVN networks ipv6.routes.external setting</td>
+</tr>
+<tr>
+<td align="left">ipv6.routes.anycast</td>
+<td align="left">boolean</td>
+<td align="left">ipv6 address</td>
+<td align="left">false</td>
+<td align="left">Allow the overlapping routes to be used on multiple networks/NIC at the same time.</td>
+</tr>
+<tr>
+<td align="left">dns.nameservers</td>
+<td align="left">string</td>
+<td align="left">standard mode</td>
+<td align="left">-</td>
+<td align="left">List of DNS server IPs on physical network</td>
+</tr>
+<tr>
+<td align="left">ovn.ingress_mode</td>
+<td align="left">string</td>
+<td align="left">standard mode</td>
+<td align="left">l2proxy</td>
+<td align="left">Sets the method that OVN NIC external IPs will be advertised on uplink network. Either <code>l2proxy</code> (proxy ARP/NDP) or <code>routed</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="bgp-integration">BGP integration<a class="headerlink" href="#bgp-integration" title="Permanent link">&para;</a></h2>
+<p>LXD can act as a BGP server, effectively allowing to establish sessions with upstream BGP routers and announce the addresses and subnets that it's using.</p>
+<p>This can be used to allow a LXD server or cluster to directly use internal/external address space, getting the specific subnets or addresses routed to the correct host for it to forward onto the target instance.</p>
+<p>For this to work, <code>core.bgp_address</code>, <code>core.bgp_asn</code> and <code>core.bgp_routerid</code> must be set.
+Once those are set, LXD will start listening for BGP sessions.</p>
+<p>Peers can be defined on both <code>bridged</code> and <code>physical</code> managed networks. Additionally in the <code>bridged</code> case, a set of per-server configuration keys are also available to override the next-hop. When those aren't specified, the next-hop defaults to the address used for the BGP session.</p>
+<p>The <code>physical</code> network case is used for <code>ovn</code> networks where the uplink network is the one holding the list of allowed subnets and the BGP configuration. Once that parent network is configured, children OVN networks will get their external subnets and addresses announced over BGP with the next-hop set to the OVN router address for the network in question.</p>
+<p>The addresses and networks currently being advertised are:
+ - Network <code>ipv4.address</code> or <code>ipv6.address</code> subnets when the matching <code>nat</code> property isn't set to <code>true</code>
+ - Network <code>ipv4.nat.address</code> and <code>ipv6.nat.address</code> when those are set
+ - Instance NIC routes defined through <code>ipv4.routes.external</code> or <code>ipv6.routes.external</code></p>
+<p>At this time, there isn't a way to only announce some specific routes/addresses to particular peers. Instead it's currently recommended to filter prefixes on the upstream routers.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../instances/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Instances" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Instances
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../network-acls/" class="md-footer__link md-footer__link--next" aria-label="Next: Network ACLs" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Network ACLs
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "header.autohide"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+    
+  </body>
+</html>

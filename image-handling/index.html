@@ -1,0 +1,1725 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>Handling - LXD documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ubuntu:300,400,400i,700%7C&display=fallback">
+        <style>:root{--md-text-font-family:"ubuntu";--md-code-font-family:""}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../stylesheets/style.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#image-handling" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="LXD documentation" class="md-header__button md-logo" aria-label="LXD documentation" data-md-component="logo">
+      
+  <img src="../img/containers.small.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LXD documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Handling
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <div class="md-header__option">
+        <div class="md-select">
+          
+          <button class="md-header__button md-icon" aria-label="Select language">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24z"/></svg>
+          </button>
+          <div class="md-select__inner">
+            <ul class="md-select__list">
+              
+                <li class="md-select__item">
+                  <a href="/" hreflang="en" class="md-select__link">
+                    English
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="/lang/" hreflang="ja" class="md-select__link">
+                    Another language
+                  </a>
+                </li>
+                
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/lxc/lxd/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link md-tabs__link--active">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../test/" class="md-tabs__link">
+        Tab test
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="LXD documentation" class="md-nav__button md-logo" aria-label="LXD documentation" data-md-component="logo">
+      
+  <img src="../img/containers.small.png" alt="logo">
+
+    </a>
+    LXD documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/lxc/lxd/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          Home
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_2" type="checkbox" id="__nav_1_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_2">
+          Getting started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting started" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Getting started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        Requirements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        Frequently asked
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
+        Security
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_3" type="checkbox" id="__nav_1_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_3">
+          Configuration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Configuration" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../containers/" class="md-nav__link">
+        Containers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../instances/" class="md-nav__link">
+        Instances
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../networks/" class="md-nav__link">
+        Networks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network-acls/" class="md-nav__link">
+        Network ACLs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network-forwards/" class="md-nav__link">
+        Network Forwards
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../preseed/" class="md-nav__link">
+        Preseed files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../profiles/" class="md-nav__link">
+        Profiles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../projects/" class="md-nav__link">
+        Projects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../server/" class="md-nav__link">
+        Server settings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../storage/" class="md-nav__link">
+        Storage pools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../virtual-machines/" class="md-nav__link">
+        Virtual machines
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metrics/" class="md-nav__link">
+        Instance metrics exporter
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_4" type="checkbox" id="__nav_1_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_4">
+          Images
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Images" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Images
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architectures/" class="md-nav__link">
+        Architectures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud-init/" class="md-nav__link">
+        Cloud-init
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Handling
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Handling
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sources" class="md-nav__link">
+    Sources
+  </a>
+  
+    <nav class="md-nav" aria-label="Sources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#remote-image-server-lxd-or-simplestreams" class="md-nav__link">
+    Remote image server (LXD or simplestreams)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#direct-pushing-of-the-image-files" class="md-nav__link">
+    Direct pushing of the image files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-on-a-remote-web-server" class="md-nav__link">
+    File on a remote web server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publishing-an-instance-or-snapshot-as-a-new-image" class="md-nav__link">
+    Publishing an instance or snapshot as a new image
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caching" class="md-nav__link">
+    Caching
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auto-update" class="md-nav__link">
+    Auto-update
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#profiles" class="md-nav__link">
+    Profiles
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image-format" class="md-nav__link">
+    Image format
+  </a>
+  
+    <nav class="md-nav" aria-label="Image format">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unified-tarball" class="md-nav__link">
+    Unified tarball
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#split-tarballs" class="md-nav__link">
+    Split tarballs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supported-compression" class="md-nav__link">
+    Supported compression
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#content" class="md-nav__link">
+    Content
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_5" type="checkbox" id="__nav_1_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_5">
+          Operation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Operation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          Operation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backup/" class="md-nav__link">
+        Backups
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clustering/" class="md-nav__link">
+        Clustering
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../production-setup/" class="md-nav__link">
+        Production setup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../remotes/" class="md-nav__link">
+        Remotes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_6" type="checkbox" id="__nav_1_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_6">
+          REST API
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="REST API" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_6">
+          <span class="md-nav__icon md-icon"></span>
+          REST API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rest-api/" class="md-nav__link">
+        Main API documentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-extensions/" class="md-nav__link">
+        Main API extensions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev-lxd/" class="md-nav__link">
+        Instance API documentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        Events API documentation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_7" type="checkbox" id="__nav_1_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_7">
+          Internals & debugging
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Internals & debugging" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_7">
+          <span class="md-nav__icon md-icon"></span>
+          Internals & debugging
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container-environment/" class="md-nav__link">
+        Container environment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migration/" class="md-nav__link">
+        Instance migration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../daemon-behavior/" class="md-nav__link">
+        Daemon behavior
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        Database
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debugging/" class="md-nav__link">
+        Debugging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environment/" class="md-nav__link">
+        Environment variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../syscall-interception/" class="md-nav__link">
+        System call interception
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../userns-idmap/" class="md-nav__link">
+        User namespace setup
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_8" type="checkbox" id="__nav_1_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_8">
+          External resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="External resources" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_8">
+          <span class="md-nav__icon md-icon"></span>
+          External resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/lxc/lxd" class="md-nav__link">
+        Project repository
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://images.linuxcontainers.org" class="md-nav__link">
+        Image server
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Tab test
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tab test" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Tab test
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test/" class="md-nav__link">
+        Testing stuff
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sources" class="md-nav__link">
+    Sources
+  </a>
+  
+    <nav class="md-nav" aria-label="Sources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#remote-image-server-lxd-or-simplestreams" class="md-nav__link">
+    Remote image server (LXD or simplestreams)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#direct-pushing-of-the-image-files" class="md-nav__link">
+    Direct pushing of the image files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-on-a-remote-web-server" class="md-nav__link">
+    File on a remote web server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publishing-an-instance-or-snapshot-as-a-new-image" class="md-nav__link">
+    Publishing an instance or snapshot as a new image
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caching" class="md-nav__link">
+    Caching
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auto-update" class="md-nav__link">
+    Auto-update
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#profiles" class="md-nav__link">
+    Profiles
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image-format" class="md-nav__link">
+    Image format
+  </a>
+  
+    <nav class="md-nav" aria-label="Image format">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unified-tarball" class="md-nav__link">
+    Unified tarball
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#split-tarballs" class="md-nav__link">
+    Split tarballs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supported-compression" class="md-nav__link">
+    Supported compression
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#content" class="md-nav__link">
+    Content
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/lxc/lxd/edit/master/docs/image-handling.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="image-handling">Image handling<a class="headerlink" href="#image-handling" title="Permanent link">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>LXD uses an image based workflow. It comes with a built-in image store
+where the user or external tools can import images.</p>
+<p>Containers are then started from those images.</p>
+<p>It's possible to spawn remote instances using local images or local
+instances using remote images. In such cases, the image may be cached
+on the target LXD.</p>
+<h2 id="sources">Sources<a class="headerlink" href="#sources" title="Permanent link">&para;</a></h2>
+<p>LXD supports importing images from three different sources:</p>
+<ul>
+<li>Remote image server (LXD or simplestreams)</li>
+<li>Direct pushing of the image files</li>
+<li>File on a remote web server</li>
+</ul>
+<h3 id="remote-image-server-lxd-or-simplestreams">Remote image server (LXD or simplestreams)<a class="headerlink" href="#remote-image-server-lxd-or-simplestreams" title="Permanent link">&para;</a></h3>
+<p>This is the most common source of images and the only one of the three
+options which is supported directly at instance creation time.</p>
+<p>With this option, an image server is provided to the target LXD server
+along with any needed certificate to validate it (only HTTPS is supported).</p>
+<p>The image itself is then selected either by its fingerprint (SHA256) or
+one of its aliases.</p>
+<p>From a CLI point of view, this is what's done behind those common actions:</p>
+<ul>
+<li>lxc launch ubuntu:20.04 u1</li>
+<li>lxc launch images:centos/8 c1</li>
+<li>lxc launch my-server:SHA256 a1</li>
+<li>lxc image copy images:gentoo local: --copy-aliases --auto-update</li>
+</ul>
+<p>In the cases of <code>ubuntu</code> and <code>images</code> above, those remotes use
+simplestreams as a read-only image server protocol and select images by
+one of their aliases.</p>
+<p>The <code>my-server</code> remote there is another LXD server and in that example
+selects an image based on its fingerprint.</p>
+<h3 id="direct-pushing-of-the-image-files">Direct pushing of the image files<a class="headerlink" href="#direct-pushing-of-the-image-files" title="Permanent link">&para;</a></h3>
+<p>This is mostly useful for air-gapped environments where images cannot be
+directly retrieved from an external server.</p>
+<p>In such a scenario, image files can be downloaded on another system using:</p>
+<ul>
+<li>lxc image export ubuntu:20.04</li>
+</ul>
+<p>Then transferred to the target system and manually imported into the
+local image store with:</p>
+<ul>
+<li>lxc image import META ROOTFS --alias ubuntu-20.04</li>
+</ul>
+<p><code>lxc image import</code> supports both unified images (single file) and split
+images (two files) with the example above using the latter.</p>
+<h3 id="file-on-a-remote-web-server">File on a remote web server<a class="headerlink" href="#file-on-a-remote-web-server" title="Permanent link">&para;</a></h3>
+<p>As an alternative to running a full image server only to distribute a
+single image to users, LXD also supports importing images by URL.</p>
+<p>There are a few limitations to that method though:</p>
+<ul>
+<li>Only unified (single file) images are supported</li>
+<li>Additional http headers must be returned by the remote server</li>
+</ul>
+<p>LXD will set the following headers when querying the server:</p>
+<ul>
+<li><code>LXD-Server-Architectures</code> to a comma separate list of architectures the client supports</li>
+<li><code>LXD-Server-Version</code> to the version of LXD in use</li>
+</ul>
+<p>And expects <code>LXD-Image-Hash</code> and <code>LXD-Image-URL</code> to be set by the remote server.
+The former being the SHA256 of the image being downloaded and the latter
+the URL to download the image from.</p>
+<p>This allows for reasonably complex image servers to be implemented using
+only a basic web server with support for custom headers.</p>
+<p>On the client side, this is used with:</p>
+<p><code>lxc image import URL --alias some-name</code></p>
+<h3 id="publishing-an-instance-or-snapshot-as-a-new-image">Publishing an instance or snapshot as a new image<a class="headerlink" href="#publishing-an-instance-or-snapshot-as-a-new-image" title="Permanent link">&para;</a></h3>
+<p>An instance or one of its snapshots can be turned into a new image.
+This is done on the CLI with <code>lxc publish</code>.</p>
+<p>When doing this, you will most likely first want to cleanup metadata and
+templates on the instance you're publishing using the <code>lxc config metadata</code>
+and <code>lxc config template</code> commands. You will also want to remove any
+instance-specific state like host SSH keys, dbus/systemd machine-id, ...</p>
+<p>The publishing process can take quite a while as a tarball must be
+generated from the instance and then be compressed. As this can be
+particularly I/O and CPU intensive, publish operations are serialized by LXD.</p>
+<h2 id="caching">Caching<a class="headerlink" href="#caching" title="Permanent link">&para;</a></h2>
+<p>When spawning an instance from a remote image, the remote image is
+downloaded into the local image store with the cached bit set. The image
+will be kept locally as a private image until either it's been unused
+(no new instance spawned) for the number of days set in
+<code>images.remote_cache_expiry</code> or until the image's expiry is reached
+whichever comes first.</p>
+<p>LXD keeps track of image usage by updating the <code>last_used_at</code> image
+property every time a new instance is spawned from the image.</p>
+<h2 id="auto-update">Auto-update<a class="headerlink" href="#auto-update" title="Permanent link">&para;</a></h2>
+<p>LXD can keep images up to date. By default, any image which comes from a
+remote server and was requested through an alias will be automatically
+updated by LXD. This can be changed with <code>images.auto_update_cached</code>.</p>
+<p>On startup and then every 6 hours (unless <code>images.auto_update_interval</code>
+is set), the LXD daemon will go look for more recent version of all the
+images in the store which are marked as auto-update and have a recorded
+source server.</p>
+<p>When a new image is found, it is downloaded into the image store, the
+aliases pointing to the old image are moved to the new one and the old
+image is removed from the store.</p>
+<p>The user can also request a particular image be kept up to date when
+manually copying an image from a remote server.</p>
+<p>If a new upstream image update is published and the local LXD has the
+previous image in its cache when the user requests a new instance to be
+created from it, LXD will use the previous version of the image rather
+than delay the instance creation.</p>
+<p>This behavior only happens if the current image is scheduled to be
+auto-updated and can be disabled by setting <code>images.auto_update_interval</code> to 0.</p>
+<h2 id="profiles">Profiles<a class="headerlink" href="#profiles" title="Permanent link">&para;</a></h2>
+<p>A list of profiles can be associated with an image using the <code>lxc image edit</code>
+command. After associating profiles with an image, an instance launched
+using the image will have the profiles applied in order. If <code>nil</code> is passed
+as the list of profiles, only the <code>default</code> profile will be associated with
+the image. If an empty list is passed, then no profile will be associated
+with the image, not even the <code>default</code> profile. An image's associated
+profiles can be overridden when launching an instance by using the
+<code>--profile</code> and the <code>--no-profiles</code> flags to <code>lxc launch</code>.</p>
+<h2 id="image-format">Image format<a class="headerlink" href="#image-format" title="Permanent link">&para;</a></h2>
+<p>LXD currently supports two LXD-specific image formats.</p>
+<p>The first is a unified tarball, where a single tarball
+contains both the instance root and the needed metadata.</p>
+<p>The second is a split model, using two files instead, one containing
+the root, the other containing the metadata.</p>
+<p>The former is what's produced by LXD itself and what people should be
+using for LXD-specific images.</p>
+<p>The latter is designed to allow for easy image building from existing
+non-LXD rootfs tarballs already available today.</p>
+<h3 id="unified-tarball">Unified tarball<a class="headerlink" href="#unified-tarball" title="Permanent link">&para;</a></h3>
+<p>Tarball, can be compressed and contains:</p>
+<ul>
+<li><code>rootfs/</code></li>
+<li><code>metadata.yaml</code></li>
+<li><code>templates/</code> (optional)</li>
+</ul>
+<p>In this mode, the image identifier is the SHA-256 of the tarball.</p>
+<h3 id="split-tarballs">Split tarballs<a class="headerlink" href="#split-tarballs" title="Permanent link">&para;</a></h3>
+<p>Two (possibly compressed) tarballs. One for metadata, one for the rootfs.</p>
+<p><code>metadata.tar</code> contains:</p>
+<ul>
+<li><code>metadata.yaml</code></li>
+<li><code>templates/</code> (optional)</li>
+</ul>
+<p><code>rootfs.tar</code> contains a Linux root filesystem at its root.</p>
+<p>In this mode the image identifier is the SHA-256 of the concatenation of
+the metadata and rootfs tarball (in that order).</p>
+<h3 id="supported-compression">Supported compression<a class="headerlink" href="#supported-compression" title="Permanent link">&para;</a></h3>
+<p>LXD supports a wide variety of compression algorithms for tarballs
+though for compatibility purposes, gzip or xz should be preferred.</p>
+<p>For split images, the rootfs file can also be squashfs formatted in the
+container case. For virtual machines, the <code>rootfs.img</code> file is always
+qcow2 and can optionally be compressed using qcow2's native compression.</p>
+<h3 id="content">Content<a class="headerlink" href="#content" title="Permanent link">&para;</a></h3>
+<p>For containers, the rootfs directory (or tarball) contains a full file system tree of what will become the <code>/</code>.
+For VMs, this is instead a <code>rootfs.img</code> file which becomes the main disk device.</p>
+<p>The templates directory contains pongo2-formatted templates of files inside the instance.</p>
+<p><code>metadata.yaml</code> contains information relevant to running the image under
+LXD, at the moment, this contains:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">architecture</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">x86_64</span>
+<span class="nt">creation_date</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1424284563</span>
+<span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Ubuntu 18.04 LTS Intel 64bit</span>
+  <span class="nt">os</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Ubuntu</span>
+  <span class="nt">release</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bionic 18.04</span>
+<span class="nt">templates</span><span class="p">:</span>
+  <span class="nt">/etc/hosts</span><span class="p">:</span>
+    <span class="nt">when</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">create</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">rename</span>
+    <span class="nt">template</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hosts.tpl</span>
+    <span class="nt">properties</span><span class="p">:</span>
+      <span class="nt">foo</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bar</span>
+  <span class="nt">/etc/hostname</span><span class="p">:</span>
+    <span class="nt">when</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">start</span>
+    <span class="nt">template</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hostname.tpl</span>
+  <span class="nt">/etc/network/interfaces</span><span class="p">:</span>
+    <span class="nt">when</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">create</span>
+    <span class="nt">template</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">interfaces.tpl</span>
+    <span class="nt">create_only</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<p>The <code>architecture</code> and <code>creation_date</code> fields are mandatory, the properties
+are just a set of default properties for the image. The os, release,
+name and description fields while not mandatory in any way, should be
+pretty common.</p>
+<p>For templates, the <code>when</code> key can be one or more of:</p>
+<ul>
+<li><code>create</code> (run at the time a new instance is created from the image)</li>
+<li><code>copy</code> (run when an instance is created from an existing one)</li>
+<li><code>start</code> (run every time the instance is started)</li>
+</ul>
+<p>The templates will always receive the following context:</p>
+<ul>
+<li><code>trigger</code>: name of the event which triggered the template (string)</li>
+<li><code>path</code>: path of the file being templated (string)</li>
+<li><code>container</code>: key/value map of instance properties (name, architecture, privileged and ephemeral) (map[string]string) (deprecated in favor of <code>instance</code>)</li>
+<li><code>instance</code>: key/value map of instance properties (name, architecture, privileged and ephemeral) (map[string]string)</li>
+<li><code>config</code>: key/value map of the instance's configuration (map[string]string)</li>
+<li><code>devices</code>: key/value map of the devices assigned to this instance (map[string]map[string]string)</li>
+<li><code>properties</code>: key/value map of the template properties specified in metadata.yaml (map[string]string)</li>
+</ul>
+<p>The <code>create_only</code> key can be set to have LXD only only create missing files but not overwrite an existing file.</p>
+<p>As a general rule, you should never template a file which is owned by a
+package or is otherwise expected to be overwritten by normal operation
+of the instance.</p>
+<p>For convenience the following functions are exported to pongo templates:</p>
+<ul>
+<li><code>config_get("user.foo", "bar")</code> =&gt; Returns the value of <code>user.foo</code> or <code>"bar"</code> if unset.</li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../cloud-init/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Cloud-init" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Cloud-init
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../backup/" class="md-footer__link md-footer__link--next" aria-label="Next: Backups" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Backups
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "header.autohide"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+    
+  </body>
+</html>

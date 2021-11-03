@@ -1,0 +1,1797 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>Security - LXD documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ubuntu:300,400,400i,700%7C&display=fallback">
+        <style>:root{--md-text-font-family:"ubuntu";--md-code-font-family:""}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../stylesheets/style.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#security" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="LXD documentation" class="md-header__button md-logo" aria-label="LXD documentation" data-md-component="logo">
+      
+  <img src="../img/containers.small.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LXD documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Security
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <div class="md-header__option">
+        <div class="md-select">
+          
+          <button class="md-header__button md-icon" aria-label="Select language">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24z"/></svg>
+          </button>
+          <div class="md-select__inner">
+            <ul class="md-select__list">
+              
+                <li class="md-select__item">
+                  <a href="/" hreflang="en" class="md-select__link">
+                    English
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="/lang/" hreflang="ja" class="md-select__link">
+                    Another language
+                  </a>
+                </li>
+                
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/lxc/lxd/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link md-tabs__link--active">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../test/" class="md-tabs__link">
+        Tab test
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="LXD documentation" class="md-nav__button md-logo" aria-label="LXD documentation" data-md-component="logo">
+      
+  <img src="../img/containers.small.png" alt="logo">
+
+    </a>
+    LXD documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/lxc/lxd/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          Home
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_2" type="checkbox" id="__nav_1_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_2">
+          Getting started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting started" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Getting started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        Requirements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        Frequently asked
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Security
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Security
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tls-configuration" class="md-nav__link">
+    TLS configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#role-based-access-control-rbac" class="md-nav__link">
+    Role Based Access Control (RBAC)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#container-security" class="md-nav__link">
+    Container security
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-a-remote-with-tls-client-certificate-authentication" class="md-nav__link">
+    Adding a remote with TLS client certificate authentication
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-a-remote-with-a-tls-client-in-a-pki-based-setup" class="md-nav__link">
+    Adding a remote with a TLS client in a PKI based setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-a-remote-with-candid-authentication" class="md-nav__link">
+    Adding a remote with Candid authentication
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managing-trusted-tls-clients" class="md-nav__link">
+    Managing trusted TLS clients
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#password-prompt-with-tls-authentication" class="md-nav__link">
+    Password prompt with TLS authentication
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#failure-scenarios" class="md-nav__link">
+    Failure scenarios
+  </a>
+  
+    <nav class="md-nav" aria-label="Failure scenarios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#server-certificate-changes" class="md-nav__link">
+    Server certificate changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#server-trust-relationship-revoked" class="md-nav__link">
+    Server trust relationship revoked
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-setup" class="md-nav__link">
+    Production setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-security" class="md-nav__link">
+    Network security
+  </a>
+  
+    <nav class="md-nav" aria-label="Network security">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bridged-nic-security" class="md-nav__link">
+    Bridged NIC security
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#routed-nic-security" class="md-nav__link">
+    Routed NIC security
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_3" type="checkbox" id="__nav_1_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_3">
+          Configuration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Configuration" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../containers/" class="md-nav__link">
+        Containers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../instances/" class="md-nav__link">
+        Instances
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../networks/" class="md-nav__link">
+        Networks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network-acls/" class="md-nav__link">
+        Network ACLs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network-forwards/" class="md-nav__link">
+        Network Forwards
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../preseed/" class="md-nav__link">
+        Preseed files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../profiles/" class="md-nav__link">
+        Profiles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../projects/" class="md-nav__link">
+        Projects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../server/" class="md-nav__link">
+        Server settings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../storage/" class="md-nav__link">
+        Storage pools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../virtual-machines/" class="md-nav__link">
+        Virtual machines
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metrics/" class="md-nav__link">
+        Instance metrics exporter
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_4" type="checkbox" id="__nav_1_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_4">
+          Images
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Images" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Images
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architectures/" class="md-nav__link">
+        Architectures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud-init/" class="md-nav__link">
+        Cloud-init
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image-handling/" class="md-nav__link">
+        Handling
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_5" type="checkbox" id="__nav_1_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_5">
+          Operation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Operation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          Operation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backup/" class="md-nav__link">
+        Backups
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clustering/" class="md-nav__link">
+        Clustering
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../production-setup/" class="md-nav__link">
+        Production setup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../remotes/" class="md-nav__link">
+        Remotes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_6" type="checkbox" id="__nav_1_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_6">
+          REST API
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="REST API" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_6">
+          <span class="md-nav__icon md-icon"></span>
+          REST API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rest-api/" class="md-nav__link">
+        Main API documentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-extensions/" class="md-nav__link">
+        Main API extensions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev-lxd/" class="md-nav__link">
+        Instance API documentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        Events API documentation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_7" type="checkbox" id="__nav_1_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_7">
+          Internals & debugging
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Internals & debugging" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_7">
+          <span class="md-nav__icon md-icon"></span>
+          Internals & debugging
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container-environment/" class="md-nav__link">
+        Container environment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migration/" class="md-nav__link">
+        Instance migration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../daemon-behavior/" class="md-nav__link">
+        Daemon behavior
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        Database
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debugging/" class="md-nav__link">
+        Debugging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environment/" class="md-nav__link">
+        Environment variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../syscall-interception/" class="md-nav__link">
+        System call interception
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../userns-idmap/" class="md-nav__link">
+        User namespace setup
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_8" type="checkbox" id="__nav_1_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_8">
+          External resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="External resources" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_8">
+          <span class="md-nav__icon md-icon"></span>
+          External resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/lxc/lxd" class="md-nav__link">
+        Project repository
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://images.linuxcontainers.org" class="md-nav__link">
+        Image server
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Tab test
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tab test" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Tab test
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test/" class="md-nav__link">
+        Testing stuff
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tls-configuration" class="md-nav__link">
+    TLS configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#role-based-access-control-rbac" class="md-nav__link">
+    Role Based Access Control (RBAC)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#container-security" class="md-nav__link">
+    Container security
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-a-remote-with-tls-client-certificate-authentication" class="md-nav__link">
+    Adding a remote with TLS client certificate authentication
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-a-remote-with-a-tls-client-in-a-pki-based-setup" class="md-nav__link">
+    Adding a remote with a TLS client in a PKI based setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-a-remote-with-candid-authentication" class="md-nav__link">
+    Adding a remote with Candid authentication
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managing-trusted-tls-clients" class="md-nav__link">
+    Managing trusted TLS clients
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#password-prompt-with-tls-authentication" class="md-nav__link">
+    Password prompt with TLS authentication
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#failure-scenarios" class="md-nav__link">
+    Failure scenarios
+  </a>
+  
+    <nav class="md-nav" aria-label="Failure scenarios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#server-certificate-changes" class="md-nav__link">
+    Server certificate changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#server-trust-relationship-revoked" class="md-nav__link">
+    Server trust relationship revoked
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-setup" class="md-nav__link">
+    Production setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-security" class="md-nav__link">
+    Network security
+  </a>
+  
+    <nav class="md-nav" aria-label="Network security">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bridged-nic-security" class="md-nav__link">
+    Bridged NIC security
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#routed-nic-security" class="md-nav__link">
+    Routed NIC security
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/lxc/lxd/edit/master/docs/security.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="security">Security<a class="headerlink" href="#security" title="Permanent link">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>LXD is a daemon running as root.</p>
+<p>Access to that daemon is only possible over a local UNIX socket by default.
+Through configuration, it's then possible to expose the same API over
+the network on a TLS socket.</p>
+<p><strong>WARNING</strong>: Local access to LXD through the UNIX socket always grants
+full access to LXD. This includes the ability to attach any filesystem
+paths or devices to any instance as well as tweaking all security
+features on instances. You should only give such access to someone who
+you'd trust with root access to your system.</p>
+<p>The remote API uses either TLS client certificates or Candid based
+authentication. Canonical RBAC support can be used combined with Candid
+based authentication to limit what an API client may do on LXD.</p>
+<h2 id="tls-configuration">TLS configuration<a class="headerlink" href="#tls-configuration" title="Permanent link">&para;</a></h2>
+<p>Remote communications with the LXD daemon happen using JSON over HTTPS.
+The supported protocol must be TLS1.2 or better.</p>
+<p>All communications must use perfect forward secrecy and ciphers must be
+limited to strong elliptic curve ones (such as ECDHE-RSA or ECDHE-ECDSA).</p>
+<p>Any generated key should be at least 4096bit RSA, preferably EC384 and
+when using signatures, only SHA-2 signatures should be trusted.</p>
+<p>Since we control both client and server, there is no reason to support
+any backward compatibility to broken protocol or ciphers.</p>
+<p>Both the client and the server will generate a keypair the first time
+they're launched. The server will use that for all https connections to
+the LXD socket and the client will use its certificate as a client
+certificate for any client-server communication.</p>
+<p>To cause certificates to be regenerated, simply remove the old ones. On the
+next connection a new certificate will be generated.</p>
+<h2 id="role-based-access-control-rbac">Role Based Access Control (RBAC)<a class="headerlink" href="#role-based-access-control-rbac" title="Permanent link">&para;</a></h2>
+<p>LXD supports integrating with the Canonical RBAC service.</p>
+<p>This uses Candid based authentication with the RBAC service maintaining
+roles to user/group relationships. Roles can be assigned to individual
+projects, to all projects or to the entire LXD instance.</p>
+<p>The meaning of the roles when applied to a project is as follow:</p>
+<ul>
+<li>auditor: Read-only access to the project</li>
+<li>user: Ability to do normal lifecycle actions (start, stop, ...),
+   execute commands in the instances, attach to console, manage snapshots, ...</li>
+<li>operator: All of the above + the ability to create, re-configure and
+   delete instances and images</li>
+<li>admin: All of the above + the ability to reconfigure the project itself</li>
+</ul>
+<p><strong>WARNING</strong>: Of those roles, only <code>auditor</code> and <code>user</code> are currently
+suitable for a user whom you wouldn't trust with root access to the
+host.</p>
+<h2 id="container-security">Container security<a class="headerlink" href="#container-security" title="Permanent link">&para;</a></h2>
+<p>LXD containers can use a pretty wide range of features for security.</p>
+<p>By default containers are <code>unprivileged</code>, meaning that they operate
+inside a user namespace, restricting the abilities of users in the
+container to that of regular users on the host with limited privileges
+on the devices that the container owns.</p>
+<p>If data sharing between containers isn't needed, it is possible to
+enable <code>security.idmap.isolated</code> which will use non-overlapping uid/gid
+maps for each container, preventing potential DoS attacks on other
+containers.</p>
+<p>LXD can also run <code>privileged</code> containers if you so wish, do note that
+those aren't root safe and a user with root in such a container will be
+able to DoS the host as well as find ways to escape confinement.</p>
+<p>More details on container security and the kernel features we use can be found on the
+<a href="https://linuxcontainers.org/lxc/security/">LXC security page</a>.</p>
+<h2 id="adding-a-remote-with-tls-client-certificate-authentication">Adding a remote with TLS client certificate authentication<a class="headerlink" href="#adding-a-remote-with-tls-client-certificate-authentication" title="Permanent link">&para;</a></h2>
+<p>In the default setup, when the user adds a new server with <code>lxc remote add</code>,
+the server will be contacted over HTTPS, its certificate downloaded and the
+fingerprint will be shown to the user.</p>
+<p>The user will then be asked to confirm that this is indeed the server's
+fingerprint which they can manually check by connecting to or asking
+someone with access to the server to run the info command and compare
+the fingerprints.</p>
+<p>After that, the user must enter the trust password for that server, if
+it matches, the client certificate is added to the server's trust store
+and the client can now connect to the server without having to provide
+any additional credentials.</p>
+<p>This is a workflow that's very similar to that of SSH where an initial
+connection to an unknown server triggers a prompt.</p>
+<h2 id="adding-a-remote-with-a-tls-client-in-a-pki-based-setup">Adding a remote with a TLS client in a PKI based setup<a class="headerlink" href="#adding-a-remote-with-a-tls-client-in-a-pki-based-setup" title="Permanent link">&para;</a></h2>
+<p>In the PKI setup, a system administrator is managing a central PKI, that
+PKI then issues client certificates for all the lxc clients and server
+certificates for all the LXD daemons.</p>
+<p>Those certificates and keys are manually put in place on the various
+machines, replacing the automatically generated ones.</p>
+<p>The CA certificate is also added to all machines.</p>
+<p>In that mode, any connection to a LXD daemon will be done using the
+preseeded CA certificate. If the server certificate isn't signed by the
+CA, the connection will simply go through the normal authentication
+mechanism.</p>
+<p>If the server certificate is valid and signed by the CA, then the
+connection continues without prompting the user for the certificate.</p>
+<p>After that, the user must enter the trust password for that server, if
+it matches, the client certificate is added to the server's trust store
+and the client can now connect to the server without having to provide
+any additional credentials.</p>
+<p>Enabling PKI mode is done by adding a client.ca file in the
+client's configuration directory (<code>~/.config/lxc</code>) and a server.ca file in
+the server's configuration directory (<code>/var/lib/lxd</code> or <code>/var/snap/lxd/common/lxd</code>
+for snap users). Then a client certificate must be issued by the CA for the client
+and a server certificate for the server. Those must then replace the existing
+pre-generated files.</p>
+<p>After this is done, restarting the server will have it run in PKI mode.</p>
+<h2 id="adding-a-remote-with-candid-authentication">Adding a remote with Candid authentication<a class="headerlink" href="#adding-a-remote-with-candid-authentication" title="Permanent link">&para;</a></h2>
+<p>When LXD is configured with Candid, it will request that clients trying to
+authenticating with it get a Discharge token from the authentication server
+specified by the <code>candid.api.url</code> setting.</p>
+<p>The authentication server certificate needs to be trusted by the LXD server.</p>
+<p>To add a remote pointing to a LXD configured with Macaroon auth, run <code>lxc
+remote add REMOTE ENDPOINT --auth-type=candid</code>.  The client will prompt for
+the credentials required by the authentication server in order to verify the
+user. If the authentication is successful, it will connect to the LXD server
+presenting the token received from the authentication server.  The LXD server
+verifies the token, thus authenticating the request.  The token is stored as
+cookie and is presented by the client at each request to LXD.</p>
+<h2 id="managing-trusted-tls-clients">Managing trusted TLS clients<a class="headerlink" href="#managing-trusted-tls-clients" title="Permanent link">&para;</a></h2>
+<p>The list of TLS certificates trusted by a LXD server can be obtained with
+<code>lxc config trust list</code>.</p>
+<p>Clients can manually be added using <code>lxc config trust add &lt;file&gt;</code>,
+removing the need for a shared trust password by letting an existing
+administrator add the new client certificate directly to the trust store.</p>
+<p>To revoke trust to a client its certificate can be removed with <code>lxc config
+trust remove FINGERPRINT</code>.</p>
+<p>It's possible to restrict a TLS client to one or multiple projects, in
+such a mode, the client will also be prevented from performing global
+configuration changes or altering the configuration (limits,
+restrictions) of the projects it's allowed access to.</p>
+<p>This can be controlled through <code>lxc config trust edit</code>, setting the
+<code>restricted</code> key to <code>true</code> and then specifying a list of projects to
+retrict the user to. If the list of projects is empty, the user will not
+be allowed access to any of them.</p>
+<h2 id="password-prompt-with-tls-authentication">Password prompt with TLS authentication<a class="headerlink" href="#password-prompt-with-tls-authentication" title="Permanent link">&para;</a></h2>
+<p>To establish a new trust relationship when not already setup by the
+administrator, a password must be set on the server and sent by the
+client when adding itself.</p>
+<p>A remote add operation should therefore go like this:</p>
+<ol>
+<li>Call GET /1.0</li>
+<li>If we're not in a PKI setup ask the user to confirm the fingerprint.</li>
+<li>Look at the dict we received back from the server. If "auth" is
+    "untrusted", ask the user for the server's password and do a <code>POST</code> to
+    <code>/1.0/certificates</code>, then call <code>/1.0</code> again to check that we're indeed
+    trusted.</li>
+<li>Remote is now ready</li>
+</ol>
+<h2 id="failure-scenarios">Failure scenarios<a class="headerlink" href="#failure-scenarios" title="Permanent link">&para;</a></h2>
+<h3 id="server-certificate-changes">Server certificate changes<a class="headerlink" href="#server-certificate-changes" title="Permanent link">&para;</a></h3>
+<p>This will typically happen in two cases:</p>
+<ul>
+<li>The server was fully reinstalled and so changed certificate</li>
+<li>The connection is being intercepted (MITM)</li>
+</ul>
+<p>In such cases the client will refuse to connect to the server since the
+certificate fringerprint will not match that in the config for this
+remote.</p>
+<p>It is then up to the user to contact the server administrator to check
+if the certificate did in fact change. If it did, then the certificate
+can be replaced by the new one or the remote be removed altogether and
+re-added.</p>
+<h3 id="server-trust-relationship-revoked">Server trust relationship revoked<a class="headerlink" href="#server-trust-relationship-revoked" title="Permanent link">&para;</a></h3>
+<p>In this case, the server still uses the same certificate but all API
+calls return a 403 with an error indicating that the client isn't
+trusted.</p>
+<p>This happens if another trusted client or the local server administrator
+removed the trust entry on the server.</p>
+<h2 id="production-setup">Production setup<a class="headerlink" href="#production-setup" title="Permanent link">&para;</a></h2>
+<p>For production setup, it's recommended that <code>core.trust_password</code> is unset
+after all clients have been added.  This prevents brute-force attacks trying to
+guess the password.</p>
+<p>Furthermore, <code>core.https_address</code> should be set to the single address where the
+server should be available (rather than any address on the host), and firewall
+rules should be set to only allow access to the LXD port from authorized
+hosts/subnets.</p>
+<h2 id="network-security">Network security<a class="headerlink" href="#network-security" title="Permanent link">&para;</a></h2>
+<h3 id="bridged-nic-security">Bridged NIC security<a class="headerlink" href="#bridged-nic-security" title="Permanent link">&para;</a></h3>
+<p>The default networking mode in LXD is to provide a 'managed' private network bridge that each instance connects to.
+In this mode, there is an interface on the host called <code>lxdbr0</code> that acts as the bridge for the instances.</p>
+<p>The host runs an instance of <code>dnsmasq</code> for each managed bridge, which is responsible for allocating IP addresses
+and providing both authoritative and recursive DNS services.</p>
+<p>Instances using DHCPv4 will be allocated an IPv4 address and a DNS record will be created for their instance name.
+This prevents instances from being able to spoof DNS records by providing false hostname info in the DHCP request.</p>
+<p>The <code>dnsmasq</code> service also provides IPv6 router advertisement capabilities. This means that instances will auto
+configure their own IPv6 address using SLAAC, so no allocation is made by <code>dnsmasq</code>. However instances that are
+also using DHCPv4 will also get an AAAA DNS record created for the equivalent SLAAC IPv6 address.
+This assumes that the instances are not using any IPv6 privacy extensions when generating IPv6 addresses.</p>
+<p>In this default configuration, whilst DNS names cannot not be spoofed, the instance is connected to an Ethernet
+bridge and can transmit any layer 2 traffic that it wishes, which means an untrusted instance can effectively do
+MAC or IP spoofing on the bridge.</p>
+<p>It is also possible in the default configuration for instances connected to the bridge to modify the LXD host's
+IPv6 routing table by sending (potentially malicious) IPv6 router advertisements to the bridge. This is because
+the <code>lxdbr0</code> interface is created with <code>/proc/sys/net/ipv6/conf/lxdbr0/accept_ra</code> set to <code>2</code> meaning that the
+LXD host will accept router advertisements even though <code>forwarding</code> is enabled (see
+https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt for more info).</p>
+<p>However LXD offers several <code>bridged</code> NIC security features that can be used to control the type of traffic that
+an instance is allowed to send onto the network. These NIC settings should be added to the profile that the
+instance is using, or can be added to individual instances, as shown below.</p>
+<p>The following security features are available for <code>bridged</code> NICs:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Type</th>
+<th align="left">Default</th>
+<th align="left">Required</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">security.mac_filtering</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">no</td>
+<td align="left">Prevent the instance from spoofing another's MAC address</td>
+</tr>
+<tr>
+<td align="left">security.ipv4_filtering</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">no</td>
+<td align="left">Prevent the instance from spoofing another's IPv4 address (enables mac_filtering)</td>
+</tr>
+<tr>
+<td align="left">security.ipv6_filtering</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">no</td>
+<td align="left">Prevent the instance from spoofing another's IPv6 address (enables mac_filtering)</td>
+</tr>
+</tbody>
+</table>
+<p>One can override the default <code>bridged</code> NIC settings from the profile on a per-instance basis using:</p>
+<div class="highlight"><pre><span></span><code>lxc config device override &lt;instance&gt; &lt;NIC&gt; security.mac_filtering=true
+</code></pre></div>
+<p>Used together these features can prevent an instance connected to a bridge from spoofing MAC and IP addresses.
+These are implemented using either <code>xtables</code> (iptables, ip6tables and ebtables) or <code>nftables</code>, depending on what is
+available on the host.</p>
+<p>It's worth noting that those options effectively prevent nested containers from using the parent network with a
+different MAC address (i.e using bridged or macvlan NICs).</p>
+<p>The IP filtering features block ARP and NDP advertisements that contain a spoofed IP, as well as blocking any
+packets that contain a spoofed source address.</p>
+<p>If <code>security.ipv4_filtering</code> or <code>security.ipv6_filtering</code> is enabled and the instance cannot be allocated an IP
+address (because <code>ipvX.address=none</code> or there is no DHCP service enabled on the bridge) then all IP traffic for
+that protocol is blocked from the instance.</p>
+<p>When <code>security.ipv6_filtering</code> is enabled IPv6 router advertisements are blocked from the instance.</p>
+<p>When <code>security.ipv4_filtering</code> or <code>security.ipv6_filtering</code> is enabled, any Ethernet frames that are not ARP,
+IPv4 or IPv6 are dropped. This prevents stacked VLAN QinQ (802.1ad) frames from bypassing the IP filtering.</p>
+<h3 id="routed-nic-security">Routed NIC security<a class="headerlink" href="#routed-nic-security" title="Permanent link">&para;</a></h3>
+<p>An alternative networking mode is available called <code>routed</code> that provides a veth pair between container and host.
+In this networking mode the LXD host functions as a router and static routes are added to the host directing
+traffic for the container's IPs towards the container's veth interface.</p>
+<p>By default the veth interface created on the host has its <code>accept_ra</code> setting disabled to prevent router
+advertisements from the container modifying the IPv6 routing table on the LXD host. In addition to that the
+<code>rp_filter</code> on the host is set to <code>1</code> to prevent source address spoofing for IPs that the host does not know the
+container has.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../faq/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Frequently asked" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Frequently asked
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../contributing/" class="md-footer__link md-footer__link--next" aria-label="Next: Contributing" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Contributing
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "header.autohide"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+    
+  </body>
+</html>

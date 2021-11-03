@@ -1,0 +1,1705 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>Server settings - LXD documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ubuntu:300,400,400i,700%7C&display=fallback">
+        <style>:root{--md-text-font-family:"ubuntu";--md-code-font-family:""}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../stylesheets/style.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#server-configuration" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="LXD documentation" class="md-header__button md-logo" aria-label="LXD documentation" data-md-component="logo">
+      
+  <img src="../img/containers.small.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LXD documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Server settings
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <div class="md-header__option">
+        <div class="md-select">
+          
+          <button class="md-header__button md-icon" aria-label="Select language">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24z"/></svg>
+          </button>
+          <div class="md-select__inner">
+            <ul class="md-select__list">
+              
+                <li class="md-select__item">
+                  <a href="/" hreflang="en" class="md-select__link">
+                    English
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="/lang/" hreflang="ja" class="md-select__link">
+                    Another language
+                  </a>
+                </li>
+                
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/lxc/lxd/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link md-tabs__link--active">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../test/" class="md-tabs__link">
+        Tab test
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="LXD documentation" class="md-nav__button md-logo" aria-label="LXD documentation" data-md-component="logo">
+      
+  <img src="../img/containers.small.png" alt="logo">
+
+    </a>
+    LXD documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/lxc/lxd/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          Home
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_2" type="checkbox" id="__nav_1_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_2">
+          Getting started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting started" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Getting started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        Requirements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        Frequently asked
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
+        Security
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_3" type="checkbox" id="__nav_1_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_3">
+          Configuration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Configuration" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../containers/" class="md-nav__link">
+        Containers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../instances/" class="md-nav__link">
+        Instances
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../networks/" class="md-nav__link">
+        Networks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network-acls/" class="md-nav__link">
+        Network ACLs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network-forwards/" class="md-nav__link">
+        Network Forwards
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../preseed/" class="md-nav__link">
+        Preseed files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../profiles/" class="md-nav__link">
+        Profiles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../projects/" class="md-nav__link">
+        Projects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Server settings
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Server settings
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exposing-lxd-to-the-network" class="md-nav__link">
+    Exposing LXD to the network
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#external-authentication" class="md-nav__link">
+    External authentication
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../storage/" class="md-nav__link">
+        Storage pools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../virtual-machines/" class="md-nav__link">
+        Virtual machines
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metrics/" class="md-nav__link">
+        Instance metrics exporter
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_4" type="checkbox" id="__nav_1_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_4">
+          Images
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Images" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Images
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architectures/" class="md-nav__link">
+        Architectures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud-init/" class="md-nav__link">
+        Cloud-init
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image-handling/" class="md-nav__link">
+        Handling
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_5" type="checkbox" id="__nav_1_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_5">
+          Operation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Operation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          Operation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backup/" class="md-nav__link">
+        Backups
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clustering/" class="md-nav__link">
+        Clustering
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../production-setup/" class="md-nav__link">
+        Production setup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../remotes/" class="md-nav__link">
+        Remotes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_6" type="checkbox" id="__nav_1_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_6">
+          REST API
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="REST API" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_6">
+          <span class="md-nav__icon md-icon"></span>
+          REST API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rest-api/" class="md-nav__link">
+        Main API documentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-extensions/" class="md-nav__link">
+        Main API extensions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev-lxd/" class="md-nav__link">
+        Instance API documentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        Events API documentation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_7" type="checkbox" id="__nav_1_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_7">
+          Internals & debugging
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Internals & debugging" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_7">
+          <span class="md-nav__icon md-icon"></span>
+          Internals & debugging
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container-environment/" class="md-nav__link">
+        Container environment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migration/" class="md-nav__link">
+        Instance migration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../daemon-behavior/" class="md-nav__link">
+        Daemon behavior
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        Database
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debugging/" class="md-nav__link">
+        Debugging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environment/" class="md-nav__link">
+        Environment variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../syscall-interception/" class="md-nav__link">
+        System call interception
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../userns-idmap/" class="md-nav__link">
+        User namespace setup
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_8" type="checkbox" id="__nav_1_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_8">
+          External resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="External resources" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_8">
+          <span class="md-nav__icon md-icon"></span>
+          External resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/lxc/lxd" class="md-nav__link">
+        Project repository
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://images.linuxcontainers.org" class="md-nav__link">
+        Image server
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Tab test
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tab test" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Tab test
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test/" class="md-nav__link">
+        Testing stuff
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exposing-lxd-to-the-network" class="md-nav__link">
+    Exposing LXD to the network
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#external-authentication" class="md-nav__link">
+    External authentication
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/lxc/lxd/edit/master/docs/server.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="server-configuration">Server configuration<a class="headerlink" href="#server-configuration" title="Permanent link">&para;</a></h1>
+<p>The server configuration is a simple set of key and values.</p>
+<p>The key/value configuration is namespaced with the following namespaces
+currently supported:</p>
+<ul>
+<li><code>backups</code> (backups configuration)</li>
+<li><code>candid</code> (External user authentication through Candid)</li>
+<li><code>cluster</code> (cluster configuration)</li>
+<li><code>core</code> (core daemon configuration)</li>
+<li><code>images</code> (image configuration)</li>
+<li><code>maas</code> (MAAS integration)</li>
+<li><code>rbac</code> (Role Based Access Control through external Candid + Canonical RBAC)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Type</th>
+<th align="left">Scope</th>
+<th align="left">Default</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">backups.compression_algorithm</td>
+<td align="left">string</td>
+<td align="left">global</td>
+<td align="left">gzip</td>
+<td align="left">Compression algorithm to use for new images (bzip2, gzip, lzma, xz or none)</td>
+</tr>
+<tr>
+<td align="left">candid.api.key</td>
+<td align="left">string</td>
+<td align="left">global</td>
+<td align="left">-</td>
+<td align="left">Public key of the candid server (required for HTTP-only servers)</td>
+</tr>
+<tr>
+<td align="left">candid.api.url</td>
+<td align="left">string</td>
+<td align="left">global</td>
+<td align="left">-</td>
+<td align="left">URL of the the external authentication endpoint using Candid</td>
+</tr>
+<tr>
+<td align="left">candid.domains</td>
+<td align="left">string</td>
+<td align="left">global</td>
+<td align="left">-</td>
+<td align="left">Comma-separated list of allowed Candid domains (empty string means all domains are valid)</td>
+</tr>
+<tr>
+<td align="left">candid.expiry</td>
+<td align="left">integer</td>
+<td align="left">global</td>
+<td align="left">3600</td>
+<td align="left">Candid macaroon expiry in seconds</td>
+</tr>
+<tr>
+<td align="left">cluster.https_address</td>
+<td align="left">string</td>
+<td align="left">local</td>
+<td align="left">-</td>
+<td align="left">Address to use for clustering traffic</td>
+</tr>
+<tr>
+<td align="left">cluster.images_minimal_replica</td>
+<td align="left">integer</td>
+<td align="left">global</td>
+<td align="left">3</td>
+<td align="left">Minimal numbers of cluster members with a copy of a particular image (set 1 for no replication, -1 for all members)</td>
+</tr>
+<tr>
+<td align="left">cluster.max_standby</td>
+<td align="left">integer</td>
+<td align="left">global</td>
+<td align="left">2</td>
+<td align="left">Maximum number of cluster members that will be assigned the database stand-by role</td>
+</tr>
+<tr>
+<td align="left">cluster.max_voters</td>
+<td align="left">integer</td>
+<td align="left">global</td>
+<td align="left">3</td>
+<td align="left">Maximum number of cluster members that will be assigned the database voter role</td>
+</tr>
+<tr>
+<td align="left">cluster.offline_threshold</td>
+<td align="left">integer</td>
+<td align="left">global</td>
+<td align="left">20</td>
+<td align="left">Number of seconds after which an unresponsive node is considered offline</td>
+</tr>
+<tr>
+<td align="left">core.bgp_address</td>
+<td align="left">string</td>
+<td align="left">local</td>
+<td align="left">-</td>
+<td align="left">Address to bind the BGP server to (BGP)</td>
+</tr>
+<tr>
+<td align="left">core.bgp_asn</td>
+<td align="left">string</td>
+<td align="left">global</td>
+<td align="left">-</td>
+<td align="left">The BGP Autonomous System Number to use for the local server</td>
+</tr>
+<tr>
+<td align="left">core.bgp_routerid</td>
+<td align="left">string</td>
+<td align="left">local</td>
+<td align="left">-</td>
+<td align="left">A unique identifier for this BGP server (formatted as an IPv4 address)</td>
+</tr>
+<tr>
+<td align="left">core.debug_address</td>
+<td align="left">string</td>
+<td align="left">local</td>
+<td align="left">-</td>
+<td align="left">Address to bind the pprof debug server to (HTTP)</td>
+</tr>
+<tr>
+<td align="left">core.https_address</td>
+<td align="left">string</td>
+<td align="left">local</td>
+<td align="left">-</td>
+<td align="left">Address to bind for the remote API (HTTPS)</td>
+</tr>
+<tr>
+<td align="left">core.https_allowed_credentials</td>
+<td align="left">boolean</td>
+<td align="left">global</td>
+<td align="left">-</td>
+<td align="left">Whether to set Access-Control-Allow-Credentials http header value to "true"</td>
+</tr>
+<tr>
+<td align="left">core.https_allowed_headers</td>
+<td align="left">string</td>
+<td align="left">global</td>
+<td align="left">-</td>
+<td align="left">Access-Control-Allow-Headers http header value</td>
+</tr>
+<tr>
+<td align="left">core.https_allowed_methods</td>
+<td align="left">string</td>
+<td align="left">global</td>
+<td align="left">-</td>
+<td align="left">Access-Control-Allow-Methods http header value</td>
+</tr>
+<tr>
+<td align="left">core.https_allowed_origin</td>
+<td align="left">string</td>
+<td align="left">global</td>
+<td align="left">-</td>
+<td align="left">Access-Control-Allow-Origin http header value</td>
+</tr>
+<tr>
+<td align="left">core.https_trusted_proxy</td>
+<td align="left">string</td>
+<td align="left">global</td>
+<td align="left">-</td>
+<td align="left">Comma-separated list of IP addresses of trusted servers to provide the client's address through the proxy connection header</td>
+</tr>
+<tr>
+<td align="left">core.metrics_address</td>
+<td align="left">string</td>
+<td align="left">global</td>
+<td align="left">-</td>
+<td align="left">Address to bind the metrics server to (HTTPS)</td>
+</tr>
+<tr>
+<td align="left">core.proxy_https</td>
+<td align="left">string</td>
+<td align="left">global</td>
+<td align="left">-</td>
+<td align="left">https proxy to use, if any (falls back to HTTPS_PROXY environment variable)</td>
+</tr>
+<tr>
+<td align="left">core.proxy_http</td>
+<td align="left">string</td>
+<td align="left">global</td>
+<td align="left">-</td>
+<td align="left">http proxy to use, if any (falls back to HTTP_PROXY environment variable)</td>
+</tr>
+<tr>
+<td align="left">core.proxy_ignore_hosts</td>
+<td align="left">string</td>
+<td align="left">global</td>
+<td align="left">-</td>
+<td align="left">hosts which don't need the proxy for use (similar format to NO_PROXY, e.g. 1.2.3.4,1.2.3.5, falls back to NO_PROXY environment variable)</td>
+</tr>
+<tr>
+<td align="left">core.shutdown_timeout</td>
+<td align="left">integer</td>
+<td align="left">global</td>
+<td align="left">5</td>
+<td align="left">Number of minutes to wait for running operations to complete before LXD server shut down</td>
+</tr>
+<tr>
+<td align="left">core.trust_ca_certificates</td>
+<td align="left">boolean</td>
+<td align="left">global</td>
+<td align="left">-</td>
+<td align="left">Whether to automatically trust clients signed by the CA</td>
+</tr>
+<tr>
+<td align="left">core.trust_password</td>
+<td align="left">string</td>
+<td align="left">global</td>
+<td align="left">-</td>
+<td align="left">Password to be provided by clients to setup a trust</td>
+</tr>
+<tr>
+<td align="left">images.auto_update_cached</td>
+<td align="left">boolean</td>
+<td align="left">global</td>
+<td align="left">true</td>
+<td align="left">Whether to automatically update any image that LXD caches</td>
+</tr>
+<tr>
+<td align="left">images.auto_update_interval</td>
+<td align="left">integer</td>
+<td align="left">global</td>
+<td align="left">6</td>
+<td align="left">Interval in hours at which to look for update to cached images (0 disables it)</td>
+</tr>
+<tr>
+<td align="left">images.compression_algorithm</td>
+<td align="left">string</td>
+<td align="left">global</td>
+<td align="left">gzip</td>
+<td align="left">Compression algorithm to use for new images (bzip2, gzip, lzma, xz or none)</td>
+</tr>
+<tr>
+<td align="left">images.default_architecture</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Default architecture which should be used in mixed architecture cluster</td>
+</tr>
+<tr>
+<td align="left">images.remote_cache_expiry</td>
+<td align="left">integer</td>
+<td align="left">global</td>
+<td align="left">10</td>
+<td align="left">Number of days after which an unused cached remote image will be flushed</td>
+</tr>
+<tr>
+<td align="left">maas.api.key</td>
+<td align="left">string</td>
+<td align="left">global</td>
+<td align="left">-</td>
+<td align="left">API key to manage MAAS</td>
+</tr>
+<tr>
+<td align="left">maas.api.url</td>
+<td align="left">string</td>
+<td align="left">global</td>
+<td align="left">-</td>
+<td align="left">URL of the MAAS server</td>
+</tr>
+<tr>
+<td align="left">maas.machine</td>
+<td align="left">string</td>
+<td align="left">local</td>
+<td align="left">hostname</td>
+<td align="left">Name of this LXD host in MAAS</td>
+</tr>
+<tr>
+<td align="left">network.ovn.integration_bridge</td>
+<td align="left">string</td>
+<td align="left">global</td>
+<td align="left">br-int</td>
+<td align="left">OVS integration bridge to use for OVN networks</td>
+</tr>
+<tr>
+<td align="left">network.ovn.northbound_connection</td>
+<td align="left">string</td>
+<td align="left">global</td>
+<td align="left">unix:/var/run/ovn/ovnnb_db.sock</td>
+<td align="left">OVN northbound database connection string</td>
+</tr>
+<tr>
+<td align="left">rbac.agent.private_key</td>
+<td align="left">string</td>
+<td align="left">global</td>
+<td align="left">-</td>
+<td align="left">The Candid agent private key as provided during RBAC registration</td>
+</tr>
+<tr>
+<td align="left">rbac.agent.public_key</td>
+<td align="left">string</td>
+<td align="left">global</td>
+<td align="left">-</td>
+<td align="left">The Candid agent public key as provided during RBAC registration</td>
+</tr>
+<tr>
+<td align="left">rbac.agent.url</td>
+<td align="left">string</td>
+<td align="left">global</td>
+<td align="left">-</td>
+<td align="left">The Candid agent url as provided during RBAC registration</td>
+</tr>
+<tr>
+<td align="left">rbac.agent.username</td>
+<td align="left">string</td>
+<td align="left">global</td>
+<td align="left">-</td>
+<td align="left">The Candid agent username as provided during RBAC registration</td>
+</tr>
+<tr>
+<td align="left">rbac.api.expiry</td>
+<td align="left">integer</td>
+<td align="left">global</td>
+<td align="left">-</td>
+<td align="left">RBAC macaroon expiry in seconds</td>
+</tr>
+<tr>
+<td align="left">rbac.api.key</td>
+<td align="left">string</td>
+<td align="left">global</td>
+<td align="left">-</td>
+<td align="left">Public key of the RBAC server (required for HTTP-only servers)</td>
+</tr>
+<tr>
+<td align="left">rbac.api.url</td>
+<td align="left">string</td>
+<td align="left">global</td>
+<td align="left">-</td>
+<td align="left">URL of the external RBAC server</td>
+</tr>
+<tr>
+<td align="left">storage.backups_volume</td>
+<td align="left">string</td>
+<td align="left">local</td>
+<td align="left">-</td>
+<td align="left">Volume to use to store the backup tarballs (syntax is POOL/VOLUME)</td>
+</tr>
+<tr>
+<td align="left">storage.images_volume</td>
+<td align="left">string</td>
+<td align="left">local</td>
+<td align="left">-</td>
+<td align="left">Volume to use to store the image tarballs (syntax is POOL/VOLUME)</td>
+</tr>
+</tbody>
+</table>
+<p>Those keys can be set using the lxc tool with:</p>
+<div class="highlight"><pre><span></span><code>lxc config <span class="nb">set</span> &lt;key&gt; &lt;value&gt;
+</code></pre></div>
+<p>When operating as part of a cluster, the keys marked with a <code>global</code>
+scope will immediately be applied to all the cluster members. Those keys
+with a <code>local</code> scope must be set on a per member basis using the
+<code>--target</code> option of the command line tool.</p>
+<h2 id="exposing-lxd-to-the-network">Exposing LXD to the network<a class="headerlink" href="#exposing-lxd-to-the-network" title="Permanent link">&para;</a></h2>
+<p>By default, LXD can only be used by local users through a UNIX socket.</p>
+<p>To expose LXD to the network, you'll need to set <code>core.https_address</code>.
+All remote clients can then connect to LXD and access any image which
+was marked for public use.</p>
+<p>Trusted clients can be manually added to the trust store on the server
+with <code>lxc config trust add</code> or the <code>core.trust_password</code> key can be set
+allowing for clients to self-enroll into the trust store at connection
+time by providing the confgiured password.</p>
+<p>More details about authentication can be found <a href="../security/">here</a>.</p>
+<h2 id="external-authentication">External authentication<a class="headerlink" href="#external-authentication" title="Permanent link">&para;</a></h2>
+<p>LXD when accessed over the network can be configured to use external
+authentication through <a href="https://github.com/canonical/candid">Candid</a>.</p>
+<p>Setting the <code>candid.*</code> configuration keys above to the values matching
+your Candid deployment will allow users to authenticate through their
+web browsers and then get trusted by LXD.</p>
+<p>For those that have a Canonical RBAC server in front of their Candid
+server, they can instead set the <code>rbac.*</code> configuration keys which are a
+superset of the <code>candid.*</code> ones and allow for LXD to integrate with the
+RBAC service.</p>
+<p>When integrated with RBAC, individual users and groups can be granted
+various level of access on a per-project basis. All of this is driven
+externally through the RBAC service.</p>
+<p>More details about authentication can be found <a href="../security/">here</a>.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../projects/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Projects" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Projects
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../storage/" class="md-footer__link md-footer__link--next" aria-label="Next: Storage pools" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Storage pools
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "header.autohide"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+    
+  </body>
+</html>

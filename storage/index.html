@@ -1,0 +1,2420 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>Storage pools - LXD documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ubuntu:300,400,400i,700%7C&display=fallback">
+        <style>:root{--md-text-font-family:"ubuntu";--md-code-font-family:""}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../stylesheets/style.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#storage-configuration" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="LXD documentation" class="md-header__button md-logo" aria-label="LXD documentation" data-md-component="logo">
+      
+  <img src="../img/containers.small.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LXD documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Storage pools
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <div class="md-header__option">
+        <div class="md-select">
+          
+          <button class="md-header__button md-icon" aria-label="Select language">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24z"/></svg>
+          </button>
+          <div class="md-select__inner">
+            <ul class="md-select__list">
+              
+                <li class="md-select__item">
+                  <a href="/" hreflang="en" class="md-select__link">
+                    English
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="/lang/" hreflang="ja" class="md-select__link">
+                    Another language
+                  </a>
+                </li>
+                
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/lxc/lxd/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link md-tabs__link--active">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../test/" class="md-tabs__link">
+        Tab test
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="LXD documentation" class="md-nav__button md-logo" aria-label="LXD documentation" data-md-component="logo">
+      
+  <img src="../img/containers.small.png" alt="logo">
+
+    </a>
+    LXD documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/lxc/lxd/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          Home
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_2" type="checkbox" id="__nav_1_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_2">
+          Getting started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting started" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Getting started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        Requirements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        Frequently asked
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
+        Security
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_3" type="checkbox" id="__nav_1_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_3">
+          Configuration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Configuration" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../containers/" class="md-nav__link">
+        Containers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../instances/" class="md-nav__link">
+        Instances
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../networks/" class="md-nav__link">
+        Networks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network-acls/" class="md-nav__link">
+        Network ACLs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network-forwards/" class="md-nav__link">
+        Network Forwards
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../preseed/" class="md-nav__link">
+        Preseed files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../profiles/" class="md-nav__link">
+        Profiles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../projects/" class="md-nav__link">
+        Projects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../server/" class="md-nav__link">
+        Server settings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Storage pools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Storage pools
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#storage-pool-configuration" class="md-nav__link">
+    Storage pool configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage-volume-configuration" class="md-nav__link">
+    Storage volume configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage-volume-content-types" class="md-nav__link">
+    Storage volume content types
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-to-store-lxd-data" class="md-nav__link">
+    Where to store LXD data
+  </a>
+  
+    <nav class="md-nav" aria-label="Where to store LXD data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sharing-with-the-host" class="md-nav__link">
+    Sharing with the host
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dedicated-diskpartition" class="md-nav__link">
+    Dedicated disk/partition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loop-disk" class="md-nav__link">
+    Loop disk
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage-backends-and-supported-functions" class="md-nav__link">
+    Storage Backends and supported functions
+  </a>
+  
+    <nav class="md-nav" aria-label="Storage Backends and supported functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#feature-comparison" class="md-nav__link">
+    Feature comparison
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommended-setup" class="md-nav__link">
+    Recommended setup
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-considerations" class="md-nav__link">
+    Security Considerations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimized-image-storage" class="md-nav__link">
+    Optimized image storage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimized-instance-transfer" class="md-nav__link">
+    Optimized instance transfer
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#default-storage-pool" class="md-nav__link">
+    Default storage pool
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#io-limits" class="md-nav__link">
+    I/O limits
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes-and-examples" class="md-nav__link">
+    Notes and examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Notes and examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#directory" class="md-nav__link">
+    Directory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ceph" class="md-nav__link">
+    CEPH
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cephfs" class="md-nav__link">
+    CEPHFS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#btrfs" class="md-nav__link">
+    Btrfs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lvm" class="md-nav__link">
+    LVM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zfs" class="md-nav__link">
+    ZFS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../virtual-machines/" class="md-nav__link">
+        Virtual machines
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metrics/" class="md-nav__link">
+        Instance metrics exporter
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_4" type="checkbox" id="__nav_1_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_4">
+          Images
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Images" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Images
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architectures/" class="md-nav__link">
+        Architectures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud-init/" class="md-nav__link">
+        Cloud-init
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image-handling/" class="md-nav__link">
+        Handling
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_5" type="checkbox" id="__nav_1_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_5">
+          Operation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Operation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          Operation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backup/" class="md-nav__link">
+        Backups
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clustering/" class="md-nav__link">
+        Clustering
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../production-setup/" class="md-nav__link">
+        Production setup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../remotes/" class="md-nav__link">
+        Remotes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_6" type="checkbox" id="__nav_1_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_6">
+          REST API
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="REST API" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_6">
+          <span class="md-nav__icon md-icon"></span>
+          REST API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rest-api/" class="md-nav__link">
+        Main API documentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-extensions/" class="md-nav__link">
+        Main API extensions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev-lxd/" class="md-nav__link">
+        Instance API documentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        Events API documentation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_7" type="checkbox" id="__nav_1_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_7">
+          Internals & debugging
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Internals & debugging" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_7">
+          <span class="md-nav__icon md-icon"></span>
+          Internals & debugging
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container-environment/" class="md-nav__link">
+        Container environment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migration/" class="md-nav__link">
+        Instance migration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../daemon-behavior/" class="md-nav__link">
+        Daemon behavior
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        Database
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debugging/" class="md-nav__link">
+        Debugging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environment/" class="md-nav__link">
+        Environment variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../syscall-interception/" class="md-nav__link">
+        System call interception
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../userns-idmap/" class="md-nav__link">
+        User namespace setup
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_8" type="checkbox" id="__nav_1_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_8">
+          External resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="External resources" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_8">
+          <span class="md-nav__icon md-icon"></span>
+          External resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/lxc/lxd" class="md-nav__link">
+        Project repository
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://images.linuxcontainers.org" class="md-nav__link">
+        Image server
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Tab test
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tab test" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Tab test
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test/" class="md-nav__link">
+        Testing stuff
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#storage-pool-configuration" class="md-nav__link">
+    Storage pool configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage-volume-configuration" class="md-nav__link">
+    Storage volume configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage-volume-content-types" class="md-nav__link">
+    Storage volume content types
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-to-store-lxd-data" class="md-nav__link">
+    Where to store LXD data
+  </a>
+  
+    <nav class="md-nav" aria-label="Where to store LXD data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sharing-with-the-host" class="md-nav__link">
+    Sharing with the host
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dedicated-diskpartition" class="md-nav__link">
+    Dedicated disk/partition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loop-disk" class="md-nav__link">
+    Loop disk
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage-backends-and-supported-functions" class="md-nav__link">
+    Storage Backends and supported functions
+  </a>
+  
+    <nav class="md-nav" aria-label="Storage Backends and supported functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#feature-comparison" class="md-nav__link">
+    Feature comparison
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommended-setup" class="md-nav__link">
+    Recommended setup
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-considerations" class="md-nav__link">
+    Security Considerations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimized-image-storage" class="md-nav__link">
+    Optimized image storage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimized-instance-transfer" class="md-nav__link">
+    Optimized instance transfer
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#default-storage-pool" class="md-nav__link">
+    Default storage pool
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#io-limits" class="md-nav__link">
+    I/O limits
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes-and-examples" class="md-nav__link">
+    Notes and examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Notes and examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#directory" class="md-nav__link">
+    Directory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ceph" class="md-nav__link">
+    CEPH
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cephfs" class="md-nav__link">
+    CEPHFS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#btrfs" class="md-nav__link">
+    Btrfs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lvm" class="md-nav__link">
+    LVM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zfs" class="md-nav__link">
+    ZFS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/lxc/lxd/edit/master/docs/storage.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="storage-configuration">Storage configuration<a class="headerlink" href="#storage-configuration" title="Permanent link">&para;</a></h1>
+<p>LXD supports creating and managing storage pools and storage volumes.
+General keys are top-level. Driver specific keys are namespaced by driver name.
+Volume keys apply to any volume created in the pool unless the value is
+overridden on a per-volume basis.</p>
+<h2 id="storage-pool-configuration">Storage pool configuration<a class="headerlink" href="#storage-pool-configuration" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Type</th>
+<th align="left">Condition</th>
+<th align="left">Default</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">size</td>
+<td align="left">string</td>
+<td align="left">appropriate driver and source</td>
+<td align="left">0</td>
+<td align="left">Size of the storage pool in bytes (suffixes supported). (Currently valid for loop based pools and zfs.)</td>
+</tr>
+<tr>
+<td align="left">source</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Path to block device or loop file or filesystem entry</td>
+</tr>
+<tr>
+<td align="left">btrfs.mount_options</td>
+<td align="left">string</td>
+<td align="left">btrfs driver</td>
+<td align="left">user_subvol_rm_allowed</td>
+<td align="left">Mount options for block devices</td>
+</tr>
+<tr>
+<td align="left">ceph.cluster_name</td>
+<td align="left">string</td>
+<td align="left">ceph driver</td>
+<td align="left">ceph</td>
+<td align="left">Name of the ceph cluster in which to create new storage pools.</td>
+</tr>
+<tr>
+<td align="left">ceph.osd.force_reuse</td>
+<td align="left">bool</td>
+<td align="left">ceph driver</td>
+<td align="left">false</td>
+<td align="left">Force using an osd storage pool that is already in use by another LXD instance.</td>
+</tr>
+<tr>
+<td align="left">ceph.osd.pg_num</td>
+<td align="left">string</td>
+<td align="left">ceph driver</td>
+<td align="left">32</td>
+<td align="left">Number of placement groups for the osd storage pool.</td>
+</tr>
+<tr>
+<td align="left">ceph.osd.pool_name</td>
+<td align="left">string</td>
+<td align="left">ceph driver</td>
+<td align="left">name of the pool</td>
+<td align="left">Name of the osd storage pool.</td>
+</tr>
+<tr>
+<td align="left">ceph.osd.data_pool_name</td>
+<td align="left">string</td>
+<td align="left">ceph driver</td>
+<td align="left">-</td>
+<td align="left">Name of the osd data pool.</td>
+</tr>
+<tr>
+<td align="left">ceph.rbd.clone_copy</td>
+<td align="left">string</td>
+<td align="left">ceph driver</td>
+<td align="left">true</td>
+<td align="left">Whether to use RBD lightweight clones rather than full dataset copies.</td>
+</tr>
+<tr>
+<td align="left">ceph.rbd.features</td>
+<td align="left">string</td>
+<td align="left">ceph driver</td>
+<td align="left">layering</td>
+<td align="left">Comma separate list of RBD features to enable on the volumes.</td>
+</tr>
+<tr>
+<td align="left">ceph.user.name</td>
+<td align="left">string</td>
+<td align="left">ceph driver</td>
+<td align="left">admin</td>
+<td align="left">The ceph user to use when creating storage pools and volumes.</td>
+</tr>
+<tr>
+<td align="left">cephfs.cluster_name</td>
+<td align="left">string</td>
+<td align="left">cephfs driver</td>
+<td align="left">ceph</td>
+<td align="left">Name of the ceph cluster in which to create new storage pools.</td>
+</tr>
+<tr>
+<td align="left">cephfs.path</td>
+<td align="left">string</td>
+<td align="left">cephfs driver</td>
+<td align="left">/</td>
+<td align="left">The base path for the CEPHFS mount</td>
+</tr>
+<tr>
+<td align="left">cephfs.user.name</td>
+<td align="left">string</td>
+<td align="left">cephfs driver</td>
+<td align="left">admin</td>
+<td align="left">The ceph user to use when creating storage pools and volumes.</td>
+</tr>
+<tr>
+<td align="left">lvm.thinpool_name</td>
+<td align="left">string</td>
+<td align="left">lvm driver</td>
+<td align="left">LXDThinPool</td>
+<td align="left">Thin pool where volumes are created.</td>
+</tr>
+<tr>
+<td align="left">lvm.use_thinpool</td>
+<td align="left">bool</td>
+<td align="left">lvm driver</td>
+<td align="left">true</td>
+<td align="left">Whether the storage pool uses a thinpool for logical volumes.</td>
+</tr>
+<tr>
+<td align="left">lvm.vg_name</td>
+<td align="left">string</td>
+<td align="left">lvm driver</td>
+<td align="left">name of the pool</td>
+<td align="left">Name of the volume group to create.</td>
+</tr>
+<tr>
+<td align="left">lvm.vg.force_reuse</td>
+<td align="left">bool</td>
+<td align="left">lvm driver</td>
+<td align="left">false</td>
+<td align="left">Force using an existing non-empty volume group.</td>
+</tr>
+<tr>
+<td align="left">volume.lvm.stripes</td>
+<td align="left">string</td>
+<td align="left">lvm driver</td>
+<td align="left">-</td>
+<td align="left">Number of stripes to use for new volumes (or thin pool volume).</td>
+</tr>
+<tr>
+<td align="left">volume.lvm.stripes.size</td>
+<td align="left">string</td>
+<td align="left">lvm driver</td>
+<td align="left">-</td>
+<td align="left">Size of stripes to use (at least 4096 bytes and multiple of 512bytes).</td>
+</tr>
+<tr>
+<td align="left">rsync.bwlimit</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">0 (no limit)</td>
+<td align="left">Specifies the upper limit to be placed on the socket I/O whenever rsync has to be used to transfer storage entities.</td>
+</tr>
+<tr>
+<td align="left">rsync.compression</td>
+<td align="left">bool</td>
+<td align="left">appropriate driver</td>
+<td align="left">true</td>
+<td align="left">Whether to use compression while migrating storage pools.</td>
+</tr>
+<tr>
+<td align="left">volatile.initial_source</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Records the actual source passed during creating (e.g. /dev/sdb).</td>
+</tr>
+<tr>
+<td align="left">volatile.pool.pristine</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">true</td>
+<td align="left">Whether the pool has been empty on creation time.</td>
+</tr>
+<tr>
+<td align="left">volume.block.filesystem</td>
+<td align="left">string</td>
+<td align="left">block based driver (lvm)</td>
+<td align="left">ext4</td>
+<td align="left">Filesystem to use for new volumes</td>
+</tr>
+<tr>
+<td align="left">volume.block.mount_options</td>
+<td align="left">string</td>
+<td align="left">block based driver (lvm)</td>
+<td align="left">discard</td>
+<td align="left">Mount options for block devices</td>
+</tr>
+<tr>
+<td align="left">volume.size</td>
+<td align="left">string</td>
+<td align="left">appropriate driver</td>
+<td align="left">unlimited (10GB for block)</td>
+<td align="left">Default volume size</td>
+</tr>
+<tr>
+<td align="left">volume.zfs.remove_snapshots</td>
+<td align="left">bool</td>
+<td align="left">zfs driver</td>
+<td align="left">false</td>
+<td align="left">Remove snapshots as needed</td>
+</tr>
+<tr>
+<td align="left">volume.zfs.use_refquota</td>
+<td align="left">bool</td>
+<td align="left">zfs driver</td>
+<td align="left">false</td>
+<td align="left">Use refquota instead of quota for space.</td>
+</tr>
+<tr>
+<td align="left">zfs.clone_copy</td>
+<td align="left">string</td>
+<td align="left">zfs driver</td>
+<td align="left">true</td>
+<td align="left">Whether to use ZFS lightweight clones rather than full dataset copies (boolean) or "rebase" to copy based on the initial image.</td>
+</tr>
+<tr>
+<td align="left">zfs.pool_name</td>
+<td align="left">string</td>
+<td align="left">zfs driver</td>
+<td align="left">name of the pool</td>
+<td align="left">Name of the zpool</td>
+</tr>
+</tbody>
+</table>
+<p>Storage pool configuration keys can be set using the lxc tool with:</p>
+<div class="highlight"><pre><span></span><code>lxc storage <span class="nb">set</span> <span class="o">[</span>&lt;remote&gt;:<span class="o">]</span>&lt;pool&gt; &lt;key&gt; &lt;value&gt;
+</code></pre></div>
+<h2 id="storage-volume-configuration">Storage volume configuration<a class="headerlink" href="#storage-volume-configuration" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Type</th>
+<th align="left">Condition</th>
+<th align="left">Default</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">size</td>
+<td align="left">string</td>
+<td align="left">appropriate driver</td>
+<td align="left">same as volume.size</td>
+<td align="left">Size of the storage volume</td>
+</tr>
+<tr>
+<td align="left">block.filesystem</td>
+<td align="left">string</td>
+<td align="left">block based driver</td>
+<td align="left">same as volume.block.filesystem</td>
+<td align="left">Filesystem of the storage volume</td>
+</tr>
+<tr>
+<td align="left">block.mount_options</td>
+<td align="left">string</td>
+<td align="left">block based driver</td>
+<td align="left">same as volume.block.mount_options</td>
+<td align="left">Mount options for block devices</td>
+</tr>
+<tr>
+<td align="left">security.shifted</td>
+<td align="left">bool</td>
+<td align="left">custom volume</td>
+<td align="left">false</td>
+<td align="left">Enable id shifting overlay (allows attach by multiple isolated instances)</td>
+</tr>
+<tr>
+<td align="left">security.unmapped</td>
+<td align="left">bool</td>
+<td align="left">custom volume</td>
+<td align="left">false</td>
+<td align="left">Disable id mapping for the volume</td>
+</tr>
+<tr>
+<td align="left">lvm.stripes</td>
+<td align="left">string</td>
+<td align="left">lvm driver</td>
+<td align="left">-</td>
+<td align="left">Number of stripes to use for new volumes (or thin pool volume).</td>
+</tr>
+<tr>
+<td align="left">lvm.stripes.size</td>
+<td align="left">string</td>
+<td align="left">lvm driver</td>
+<td align="left">-</td>
+<td align="left">Size of stripes to use (at least 4096 bytes and multiple of 512bytes).</td>
+</tr>
+<tr>
+<td align="left">snapshots.expiry</td>
+<td align="left">string</td>
+<td align="left">custom volume</td>
+<td align="left">-</td>
+<td align="left">Controls when snapshots are to be deleted (expects expression like <code>1M 2H 3d 4w 5m 6y</code>)</td>
+</tr>
+<tr>
+<td align="left">snapshots.schedule</td>
+<td align="left">string</td>
+<td align="left">custom volume</td>
+<td align="left">-</td>
+<td align="left">Cron expression (<code>&lt;minute&gt; &lt;hour&gt; &lt;dom&gt; &lt;month&gt; &lt;dow&gt;</code>), or a comma separated list of schedule aliases <code>&lt;@hourly&gt; &lt;@daily&gt; &lt;@midnight&gt; &lt;@weekly&gt; &lt;@monthly&gt; &lt;@annually&gt; &lt;@yearly&gt;</code></td>
+</tr>
+<tr>
+<td align="left">snapshots.pattern</td>
+<td align="left">string</td>
+<td align="left">custom volume</td>
+<td align="left">snap%d</td>
+<td align="left">Pongo2 template string which represents the snapshot name (used for scheduled snapshots and unnamed snapshots)</td>
+</tr>
+<tr>
+<td align="left">zfs.remove_snapshots</td>
+<td align="left">string</td>
+<td align="left">zfs driver</td>
+<td align="left">same as volume.zfs.remove_snapshots</td>
+<td align="left">Remove snapshots as needed</td>
+</tr>
+<tr>
+<td align="left">zfs.use_refquota</td>
+<td align="left">string</td>
+<td align="left">zfs driver</td>
+<td align="left">same as volume.zfs.zfs_requota</td>
+<td align="left">Use refquota instead of quota for space</td>
+</tr>
+</tbody>
+</table>
+<p>Storage volume configuration keys can be set using the lxc tool with:</p>
+<div class="highlight"><pre><span></span><code>lxc storage volume <span class="nb">set</span> <span class="o">[</span>&lt;remote&gt;:<span class="o">]</span>&lt;pool&gt; &lt;volume&gt; &lt;key&gt; &lt;value&gt;
+</code></pre></div>
+<h2 id="storage-volume-content-types">Storage volume content types<a class="headerlink" href="#storage-volume-content-types" title="Permanent link">&para;</a></h2>
+<p>Storage volumes can be either <code>filesystem</code> or <code>block</code> type.</p>
+<p>Containers and container images are always going to be using <code>filesystem</code>.
+Virtual machines and virtual machine images are always going to be using <code>block</code>.</p>
+<p>Custom storage volumes can be either types with the default being <code>filesystem</code>.
+Those custom storage volumes of type <code>block</code> can only be attached to virtual machines.</p>
+<p>Block custom storage volumes can be created with:</p>
+<div class="highlight"><pre><span></span><code>lxc storage volume create <span class="o">[</span>&lt;remote&gt;<span class="o">]</span>:&lt;pool&gt; &lt;name&gt; --type<span class="o">=</span>block
+</code></pre></div>
+<h2 id="where-to-store-lxd-data">Where to store LXD data<a class="headerlink" href="#where-to-store-lxd-data" title="Permanent link">&para;</a></h2>
+<p>Depending on the storage backends used, LXD can either share the filesystem with its host or keep its data separate.</p>
+<h3 id="sharing-with-the-host">Sharing with the host<a class="headerlink" href="#sharing-with-the-host" title="Permanent link">&para;</a></h3>
+<p>This is usually the most space efficient way to run LXD and possibly the easiest to manage.
+It can be done with:</p>
+<ul>
+<li><code>dir</code> backend on any backing filesystem</li>
+<li><code>btrfs</code> backend if the host is btrfs and you point LXD to a dedicated subvolume</li>
+<li><code>zfs</code> backend if the host is zfs and you point LXD to a dedicated dataset on your zpool</li>
+</ul>
+<h3 id="dedicated-diskpartition">Dedicated disk/partition<a class="headerlink" href="#dedicated-diskpartition" title="Permanent link">&para;</a></h3>
+<p>In this mode, LXD's storage will be completely independent from the host.
+This can be done by having LXD use an empty partition on your main disk or by having it use a full dedicated disk.</p>
+<p>This is supported by all storage drivers except <code>dir</code>, <code>ceph</code> and <code>cephfs</code>.</p>
+<h3 id="loop-disk">Loop disk<a class="headerlink" href="#loop-disk" title="Permanent link">&para;</a></h3>
+<p>If neither of the options above are possible for you, LXD can create a loop file
+on your main drive and then have the selected storage driver use that.</p>
+<p>This is functionally similar to using a disk/partition but uses a large file on your main drive instead.
+This comes at a performance penalty as every writes need to go through the storage driver and then your main
+drive's filesystem. The loop files also usually cannot be shrunk.
+They will grow up to the limit you select but deleting instances or images will not cause the file to shrink.</p>
+<h2 id="storage-backends-and-supported-functions">Storage Backends and supported functions<a class="headerlink" href="#storage-backends-and-supported-functions" title="Permanent link">&para;</a></h2>
+<h3 id="feature-comparison">Feature comparison<a class="headerlink" href="#feature-comparison" title="Permanent link">&para;</a></h3>
+<p>LXD supports using ZFS, btrfs, LVM or just plain directories for storage of images, instances and custom volumes.
+Where possible, LXD tries to use the advanced features of each system to optimize operations.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Feature</th>
+<th align="left">Directory</th>
+<th align="left">Btrfs</th>
+<th align="left">LVM</th>
+<th align="left">ZFS</th>
+<th align="left">CEPH</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Optimized image storage</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+</tr>
+<tr>
+<td align="left">Optimized instance creation</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+</tr>
+<tr>
+<td align="left">Optimized snapshot creation</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+</tr>
+<tr>
+<td align="left">Optimized image transfer</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+</tr>
+<tr>
+<td align="left">Optimized instance transfer</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+</tr>
+<tr>
+<td align="left">Copy on write</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+</tr>
+<tr>
+<td align="left">Block based</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+</tr>
+<tr>
+<td align="left">Instant cloning</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+</tr>
+<tr>
+<td align="left">Storage driver usable inside a container</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+<td align="left">no</td>
+<td align="left">no</td>
+<td align="left">no</td>
+</tr>
+<tr>
+<td align="left">Restore from older snapshots (not latest)</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+</tr>
+<tr>
+<td align="left">Storage quotas</td>
+<td align="left">yes(*)</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+<td align="left">yes</td>
+<td align="left">no</td>
+</tr>
+</tbody>
+</table>
+<h3 id="recommended-setup">Recommended setup<a class="headerlink" href="#recommended-setup" title="Permanent link">&para;</a></h3>
+<p>The two best options for use with LXD are ZFS and btrfs.
+They have about similar functionalities but ZFS is more reliable if available on your particular platform.</p>
+<p>Whenever possible, you should dedicate a full disk or partition to your LXD storage pool.
+While LXD will let you create loop based storage, this isn't recommended for production use.</p>
+<p>Similarly, the directory backend is to be considered as a last resort option.
+It does support all main LXD features, but is terribly slow and inefficient as it can't perform
+instant copies or snapshots and so needs to copy the entirety of the instance's storage every time.</p>
+<h3 id="security-considerations">Security Considerations<a class="headerlink" href="#security-considerations" title="Permanent link">&para;</a></h3>
+<p>Currently, the Linux Kernel may not apply mount options and silently ignore
+them when a block-based filesystem (e.g. <code>ext4</code>) is already mounted with
+different options. This means when dedicated disk devices are shared between
+different storage pools with different mount options set, the second mount may
+not have the expected mount options. This becomes security relevant, when e.g.
+one storage pool is supposed to provide <code>acl</code> support and the second one is
+supposed to not provide <code>acl</code> support. For this reason it is currently
+recommended to either have dedicated disk devices per storage pool or ensure
+that all storage pools that share the same dedicated disk device use the same
+mount options.</p>
+<h3 id="optimized-image-storage">Optimized image storage<a class="headerlink" href="#optimized-image-storage" title="Permanent link">&para;</a></h3>
+<p>All backends but the directory backend have some kind of optimized image storage format.
+This is used by LXD to make instance creation near instantaneous by simply cloning a pre-made
+image volume rather than unpack the image tarball from scratch.</p>
+<p>As it would be wasteful to prepare such a volume on a storage pool that may never be used with that image,
+the volume is generated on demand, causing the first instance to take longer to create than subsequent ones.</p>
+<h3 id="optimized-instance-transfer">Optimized instance transfer<a class="headerlink" href="#optimized-instance-transfer" title="Permanent link">&para;</a></h3>
+<p>ZFS, btrfs and CEPH RBD have an internal send/receive mechanisms which allow for optimized volume transfer.
+LXD uses those features to transfer instances and snapshots between servers.</p>
+<p>When such capabilities aren't available, either because the storage driver doesn't support it
+or because the storage backend of the source and target servers differ,
+LXD will fallback to using rsync to transfer the individual files instead.</p>
+<p>When rsync has to be used LXD allows to specify an upper limit on the amount of
+socket I/O by setting the <code>rsync.bwlimit</code> storage pool property to a non-zero
+value.</p>
+<h2 id="default-storage-pool">Default storage pool<a class="headerlink" href="#default-storage-pool" title="Permanent link">&para;</a></h2>
+<p>There is no concept of a default storage pool in LXD.
+Instead, the pool to use for the instance's root is treated as just another "disk" device in LXD.</p>
+<p>The device entry looks like:</p>
+<div class="highlight"><pre><span></span><code>  <span class="nt">root</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">disk</span>
+    <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/</span>
+    <span class="nt">pool</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">default</span>
+</code></pre></div>
+<p>And it can be directly set on an instance ("-s" option to "lxc launch" and "lxc init")
+or it can be set through LXD profiles.</p>
+<p>That latter option is what the default LXD setup (through "lxd init") will do for you.
+The same can be done manually against any profile using (for the "default" profile):</p>
+<div class="highlight"><pre><span></span><code>lxc profile device add default root disk <span class="nv">path</span><span class="o">=</span>/ <span class="nv">pool</span><span class="o">=</span>default
+</code></pre></div>
+<h2 id="io-limits">I/O limits<a class="headerlink" href="#io-limits" title="Permanent link">&para;</a></h2>
+<p>I/O limits in IOp/s or MB/s can be set on storage devices when attached to an
+instance (see <a href="../instances/">Instances</a>).</p>
+<p>Those are applied through the Linux <code>blkio</code> cgroup controller which makes it possible
+to restrict I/O at the disk level (but nothing finer grained than that).</p>
+<p>Because those apply to a whole physical disk rather than a partition or path, the following restrictions apply:</p>
+<ul>
+<li>Limits will not apply to filesystems that are backed by virtual devices (e.g. device mapper).</li>
+<li>If a filesystem is backed by multiple block devices, each device will get the same limit.</li>
+<li>If the instance is passed two disk devices that are each backed by the same disk,
+   the limits of the two devices will be averaged.</li>
+</ul>
+<p>It's also worth noting that all I/O limits only apply to actual block device access,
+so you will need to consider the filesystem's own overhead when setting limits.
+This also means that access to cached data will not be affected by the limit.</p>
+<h2 id="notes-and-examples">Notes and examples<a class="headerlink" href="#notes-and-examples" title="Permanent link">&para;</a></h2>
+<h3 id="directory">Directory<a class="headerlink" href="#directory" title="Permanent link">&para;</a></h3>
+<ul>
+<li>While this backend is fully functional, it's also much slower than
+   all the others due to it having to unpack images or do instant copies of
+   instances, snapshots and images.</li>
+<li>Quotas are supported with the directory backend when running on
+   either ext4 or XFS with project quotas enabled at the filesystem level.</li>
+</ul>
+<h4 id="the-following-commands-can-be-used-to-create-directory-storage-pools">The following commands can be used to create directory storage pools<a class="headerlink" href="#the-following-commands-can-be-used-to-create-directory-storage-pools" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Create a new directory pool called "pool1".</li>
+</ul>
+<div class="highlight"><pre><span></span><code>lxc storage create pool1 dir
+</code></pre></div>
+<ul>
+<li>Use an existing directory for "pool2".</li>
+</ul>
+<div class="highlight"><pre><span></span><code>lxc storage create pool2 dir <span class="nv">source</span><span class="o">=</span>/data/lxd
+</code></pre></div>
+<h3 id="ceph">CEPH<a class="headerlink" href="#ceph" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Uses RBD images for images, then snapshots and clones to create instances
+  and snapshots.</li>
+<li>Due to the way copy-on-write works in RBD, parent filesystems can't be
+  removed until all children are gone. As a result, LXD will automatically
+  prefix any removed but still referenced object with "zombie_" and keep it
+  until such time the references are gone and it can safely be removed.</li>
+<li>Note that LXD will assume it has full control over the osd storage pool.
+  It is recommended to not maintain any non-LXD owned filesystem entities in
+  a LXD OSD storage pool since LXD might delete them.</li>
+<li>Note that sharing the same osd storage pool between multiple LXD instances is
+  not supported. LXD only allows sharing of an OSD storage pool between
+  multiple LXD instances only for backup purposes of existing instances via
+  <code>lxd import</code>. In line with this, LXD requires the "ceph.osd.force_reuse"
+  property to be set to true. If not set, LXD will refuse to reuse an osd
+  storage pool it detected as being in use by another LXD instance.</li>
+<li>When setting up a ceph cluster that LXD is going to use we recommend using
+  <code>xfs</code> as the underlying filesystem for the storage entities that are used to
+  hold OSD storage pools. Using <code>ext4</code> as the underlying filesystem for the
+  storage entities is not recommended by Ceph upstream. You may see unexpected
+  and erratic failures which are unrelated to LXD itself.</li>
+</ul>
+<h4 id="the-following-commands-can-be-used-to-create-ceph-storage-pools">The following commands can be used to create Ceph storage pools<a class="headerlink" href="#the-following-commands-can-be-used-to-create-ceph-storage-pools" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Create a osd storage pool named "pool1" in the CEPH cluster "ceph".</li>
+</ul>
+<div class="highlight"><pre><span></span><code>lxc storage create pool1 ceph
+</code></pre></div>
+<ul>
+<li>Create a osd storage pool named "pool1" in the CEPH cluster "my-cluster".</li>
+</ul>
+<div class="highlight"><pre><span></span><code>lxc storage create pool1 ceph ceph.cluster_name<span class="o">=</span>my-cluster
+</code></pre></div>
+<ul>
+<li>Create a osd storage pool named "pool1" with the on-disk name "my-osd".</li>
+</ul>
+<div class="highlight"><pre><span></span><code>lxc storage create pool1 ceph ceph.osd.pool_name<span class="o">=</span>my-osd
+</code></pre></div>
+<ul>
+<li>Use the existing osd storage pool "my-already-existing-osd".</li>
+</ul>
+<div class="highlight"><pre><span></span><code>lxc storage create pool1 ceph <span class="nv">source</span><span class="o">=</span>my-already-existing-osd
+</code></pre></div>
+<h3 id="cephfs">CEPHFS<a class="headerlink" href="#cephfs" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Can only be used for custom storage volumes</li>
+<li>Supports snapshots if enabled on the server side</li>
+</ul>
+<h3 id="btrfs">Btrfs<a class="headerlink" href="#btrfs" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Uses a subvolume per instance, image and snapshot, creating btrfs snapshots when creating a new object.</li>
+<li>btrfs can be used as a storage backend inside a container (nesting), so long as the parent container is itself on btrfs. (But see notes about btrfs quota via qgroups.)</li>
+<li>btrfs supports storage quotas via qgroups. While btrfs qgroups are
+   hierarchical, new subvolumes will not automatically be added to the qgroups
+   of their parent subvolumes. This means that users can trivially escape any
+   quotas that are set. If adherence to strict quotas is a necessity users
+   should be mindful of this and maybe consider using a zfs storage pool with
+   refquotas.</li>
+</ul>
+<h4 id="the-following-commands-can-be-used-to-create-btrfs-storage-pools">The following commands can be used to create BTRFS storage pools<a class="headerlink" href="#the-following-commands-can-be-used-to-create-btrfs-storage-pools" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Create loop-backed pool named "pool1".</li>
+</ul>
+<div class="highlight"><pre><span></span><code>lxc storage create pool1 btrfs
+</code></pre></div>
+<ul>
+<li>Create a new pool called "pool1" using an existing btrfs filesystem at <code>/some/path</code>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>lxc storage create pool1 btrfs <span class="nv">source</span><span class="o">=</span>/some/path
+</code></pre></div>
+<ul>
+<li>Create a new pool called "pool1" on <code>/dev/sdX</code>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>lxc storage create pool1 btrfs <span class="nv">source</span><span class="o">=</span>/dev/sdX
+</code></pre></div>
+<h4 id="growing-a-loop-backed-btrfs-pool">Growing a loop backed btrfs pool<a class="headerlink" href="#growing-a-loop-backed-btrfs-pool" title="Permanent link">&para;</a></h4>
+<p>LXD doesn't let you directly grow a loop backed btrfs pool, but you can do so with:</p>
+<div class="highlight"><pre><span></span><code>sudo truncate -s +5G /var/lib/lxd/disks/&lt;POOL&gt;.img
+sudo losetup -c &lt;LOOPDEV&gt;
+sudo btrfs filesystem resize max /var/lib/lxd/storage-pools/&lt;POOL&gt;/
+</code></pre></div>
+<p>(NOTE: For users of the snap, use <code>/var/snap/lxd/common/lxd/</code> instead of <code>/var/lib/lxd/</code>)</p>
+<h3 id="lvm">LVM<a class="headerlink" href="#lvm" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Uses LVs for images, then LV snapshots for instances and instance snapshots.</li>
+<li>The filesystem used for the LVs is ext4 (can be configured to use xfs instead).</li>
+<li>By default, all LVM storage pools use an LVM thinpool in which logical
+   volumes for all LXD storage entities (images, instances, etc.) are created.
+   This behavior can be changed by setting "lvm.use_thinpool" to "false". In
+   this case, LXD will use normal logical volumes for all non-instance
+   snapshot storage entities (images, instances, etc.). This means most storage
+   operations will need to fallback to rsyncing since non-thinpool logical
+   volumes do not support snapshots of snapshots. Note that this entails
+   serious performance impacts for the LVM driver causing it to be close to the
+   fallback DIR driver both in speed and storage usage. This option should only
+   be chosen if the use-case renders it necessary.</li>
+<li>For environments with high instance turn over (e.g continuous integration)
+   it may be important to tweak the archival <code>retain_min</code> and <code>retain_days</code>
+   settings in <code>/etc/lvm/lvm.conf</code> to avoid slowdowns when interacting with
+   LXD.</li>
+</ul>
+<h4 id="the-following-commands-can-be-used-to-create-lvm-storage-pools">The following commands can be used to create LVM storage pools<a class="headerlink" href="#the-following-commands-can-be-used-to-create-lvm-storage-pools" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Create a loop-backed pool named "pool1". The LVM Volume Group will also be called "pool1".</li>
+</ul>
+<div class="highlight"><pre><span></span><code>lxc storage create pool1 lvm
+</code></pre></div>
+<ul>
+<li>Use the existing LVM Volume Group called "my-pool"</li>
+</ul>
+<div class="highlight"><pre><span></span><code>lxc storage create pool1 lvm <span class="nv">source</span><span class="o">=</span>my-pool
+</code></pre></div>
+<ul>
+<li>Use the existing LVM Thinpool called "my-pool" in Volume Group "my-vg".</li>
+</ul>
+<div class="highlight"><pre><span></span><code>lxc storage create pool1 lvm <span class="nv">source</span><span class="o">=</span>my-vg lvm.thinpool_name<span class="o">=</span>my-pool
+</code></pre></div>
+<ul>
+<li>Create a new pool named "pool1" on <code>/dev/sdX</code>. The LVM Volume Group will also be called "pool1".</li>
+</ul>
+<div class="highlight"><pre><span></span><code>lxc storage create pool1 lvm <span class="nv">source</span><span class="o">=</span>/dev/sdX
+</code></pre></div>
+<ul>
+<li>Create a new pool called "pool1" using <code>/dev/sdX</code> with the LVM Volume Group called "my-pool".</li>
+</ul>
+<div class="highlight"><pre><span></span><code>lxc storage create pool1 lvm <span class="nv">source</span><span class="o">=</span>/dev/sdX lvm.vg_name<span class="o">=</span>my-pool
+</code></pre></div>
+<h3 id="zfs">ZFS<a class="headerlink" href="#zfs" title="Permanent link">&para;</a></h3>
+<ul>
+<li>When LXD creates a ZFS pool, compression is enabled by default.</li>
+<li>Uses ZFS filesystems for images, then snapshots and clones to create instances and snapshots.</li>
+<li>Due to the way copy-on-write works in ZFS, parent filesystems can't
+   be removed until all children are gone. As a result, LXD will
+   automatically rename any removed but still referenced object to a random
+   deleted/ path and keep it until such time the references are gone and it
+   can safely be removed.</li>
+<li>ZFS as it is today doesn't support delegating part of a pool to a
+   container user. Upstream is actively working on this.</li>
+<li>ZFS doesn't support restoring from snapshots other than the latest
+   one. You can however create new instances from older snapshots which
+   makes it possible to confirm the snapshots is indeed what you want to
+   restore before you remove the newer snapshots.</li>
+</ul>
+<p>LXD can be configured to automatically discard the newer snapshots during restore.
+   This can be configured through the <code>volume.zfs.remove_snapshots</code> pool option.</p>
+<p>However note that instance copies use ZFS snapshots too, so you also cannot
+   restore an instance to a snapshot taken before the last copy without having
+   to also delete all its descendants.</p>
+<p>Copying the wanted snapshot into a new instance and then deleting
+   the old instance does however work, at the cost of losing any other
+   snapshot the instance may have had.</p>
+<ul>
+<li>Note that LXD will assume it has full control over the ZFS pool or dataset.
+   It is recommended to not maintain any non-LXD owned filesystem entities in
+   a LXD zfs pool or dataset since LXD might delete them.</li>
+<li>When quotas are used on a ZFS dataset LXD will set the ZFS "quota" property.
+   In order to have LXD set the ZFS "refquota" property, either set
+   "zfs.use_refquota" to "true" for the given dataset or set
+   "volume.zfs.use_refquota" to true on the storage pool. The former option
+   will make LXD use refquota only for the given storage volume the latter will
+   make LXD use refquota for all storage volumes in the storage pool.</li>
+<li>I/O quotas (IOps/MBs) are unlikely to affect ZFS filesystems very
+   much. That's because of ZFS being a port of a Solaris module (using SPL)
+   and not a native Linux filesystem using the Linux VFS API which is where
+   I/O limits are applied.</li>
+</ul>
+<h4 id="the-following-commands-can-be-used-to-create-zfs-storage-pools">The following commands can be used to create ZFS storage pools<a class="headerlink" href="#the-following-commands-can-be-used-to-create-zfs-storage-pools" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Create a loop-backed pool named "pool1". The ZFS Zpool will also be called "pool1".</li>
+</ul>
+<div class="highlight"><pre><span></span><code>lxc storage create pool1 zfs
+</code></pre></div>
+<ul>
+<li>Create a loop-backed pool named "pool1" with the ZFS Zpool called "my-tank".</li>
+</ul>
+<div class="highlight"><pre><span></span><code>lxc storage create pool1 zfs zfs.pool_name<span class="o">=</span>my-tank
+</code></pre></div>
+<ul>
+<li>Use the existing ZFS Zpool "my-tank".</li>
+</ul>
+<div class="highlight"><pre><span></span><code>lxc storage create pool1 zfs <span class="nv">source</span><span class="o">=</span>my-tank
+</code></pre></div>
+<ul>
+<li>Use the existing ZFS dataset "my-tank/slice".</li>
+</ul>
+<div class="highlight"><pre><span></span><code>lxc storage create pool1 zfs <span class="nv">source</span><span class="o">=</span>my-tank/slice
+</code></pre></div>
+<ul>
+<li>Create a new pool called "pool1" on <code>/dev/sdX</code>. The ZFS Zpool will also be called "pool1".</li>
+</ul>
+<div class="highlight"><pre><span></span><code>lxc storage create pool1 zfs <span class="nv">source</span><span class="o">=</span>/dev/sdX
+</code></pre></div>
+<ul>
+<li>Create a new pool on <code>/dev/sdX</code> with the ZFS Zpool called "my-tank".</li>
+</ul>
+<div class="highlight"><pre><span></span><code>lxc storage create pool1 zfs <span class="nv">source</span><span class="o">=</span>/dev/sdX zfs.pool_name<span class="o">=</span>my-tank
+</code></pre></div>
+<h4 id="growing-a-loop-backed-zfs-pool">Growing a loop backed ZFS pool<a class="headerlink" href="#growing-a-loop-backed-zfs-pool" title="Permanent link">&para;</a></h4>
+<p>LXD doesn't let you directly grow a loop backed ZFS pool, but you can do so with:</p>
+<div class="highlight"><pre><span></span><code>sudo truncate -s +5G /var/lib/lxd/disks/&lt;POOL&gt;.img
+sudo zpool <span class="nb">set</span> <span class="nv">autoexpand</span><span class="o">=</span>on lxd
+sudo zpool online -e lxd /var/lib/lxd/disks/&lt;POOL&gt;.img
+sudo zpool <span class="nb">set</span> <span class="nv">autoexpand</span><span class="o">=</span>off lxd
+</code></pre></div>
+<p>(NOTE: For users of the snap, use <code>/var/snap/lxd/common/lxd/</code> instead of <code>/var/lib/lxd/</code>)</p>
+<h4 id="enabling-trim-on-existing-pools">Enabling TRIM on existing pools<a class="headerlink" href="#enabling-trim-on-existing-pools" title="Permanent link">&para;</a></h4>
+<p>LXD will automatically enable trimming support on all newly created pools on ZFS 0.8 or later.</p>
+<p>This helps with the lifetime of SSDs by allowing better block re-use by the controller.
+This also will allow freeing space on the root filesystem when using a loop backed ZFS pool.</p>
+<p>For systems which were upgraded from pre-0.8 to 0.8, this can be enabled with a one time action of:</p>
+<ul>
+<li>zpool upgrade ZPOOL-NAME</li>
+<li>zpool set autotrim=on ZPOOL-NAME</li>
+<li>zpool trim ZPOOL-NAME</li>
+</ul>
+<p>This will make sure that TRIM is automatically issued in the future as
+well as cause TRIM on all currently unused space.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../server/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Server settings" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Server settings
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../virtual-machines/" class="md-footer__link md-footer__link--next" aria-label="Next: Virtual machines" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Virtual machines
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "header.autohide"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+    
+  </body>
+</html>
