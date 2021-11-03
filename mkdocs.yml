@@ -1,0 +1,84 @@
+site_name: LXD documentation
+docs_dir: 'doc'
+repo_url: https://github.com/lxc/lxd
+theme:
+  name: material
+  font:
+    text: ubuntu
+  language: en
+  logo: img/containers.small.png
+  favicon: img/favicon.ico
+  features:
+    - navigation.tabs
+    - navigation.top
+    - header.autohide
+extra_css:
+  - stylesheets/style.css
+extra:
+  alternate:
+    - name: English
+      link: /
+      lang: en
+    - name: Another language
+      link: /lang/
+      lang: ja
+markdown_extensions:
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - abbr
+  - pymdownx.snippets:
+      base_path: ['snippets/']
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+nav:
+    - 'Home':
+        - 'index.md'
+        - 'Getting started':
+            - 'Requirements': 'requirements.md'
+            - 'Frequently asked': 'faq.md'
+            - 'Security': 'security.md'
+            - 'Contributing': 'contributing.md'
+        - 'Configuration':
+            - 'configuration.md'
+            - 'Containers': 'containers.md'
+            - 'Instances': 'instances.md'
+            - 'Networks': 'networks.md'
+            - 'Network ACLs': 'network-acls.md'
+            - 'Network Forwards': 'network-forwards.md'
+            - 'Preseed files': 'preseed.md'
+            - 'Profiles': 'profiles.md'
+            - 'Projects': 'projects.md'
+            - 'Server settings': 'server.md'
+            - 'Storage pools': 'storage.md'
+            - 'Virtual machines': 'virtual-machines.md'
+            - 'Instance metrics exporter': 'metrics.md'
+        - 'Images':
+            - 'Architectures': 'architectures.md'
+            - 'Cloud-init': 'cloud-init.md'
+            - 'Handling': 'image-handling.md'
+        - 'Operation':
+            - 'Backups': 'backup.md'
+            - 'Clustering': 'clustering.md'
+            - 'Production setup': 'production-setup.md'
+            - 'Remotes': 'remotes.md'
+        - 'REST API':
+            - 'Main API documentation': 'rest-api.md'
+            - 'Main API extensions': 'api-extensions.md'
+            - 'Instance API documentation': 'dev-lxd.md'
+            - 'Events API documentation': 'events.md'
+        - 'Internals & debugging':
+            - 'Container environment': 'container-environment.md'
+            - 'Instance migration': 'migration.md'
+            - 'Daemon behavior': 'daemon-behavior.md'
+            - 'Database': 'database.md'
+            - 'Debugging': 'debugging.md'
+            - 'Environment variables': 'environment.md'
+            - 'System call interception': 'syscall-interception.md'
+            - 'User namespace setup': 'userns-idmap.md'
+        - 'External resources':
+            - 'Project repository': 'https://github.com/lxc/lxd'
+            - 'Image server': 'https://images.linuxcontainers.org'

@@ -185,7 +185,7 @@ instance, relative to any other instance which is using the same CPU(s).
 scheduler priority score when a number of instances sharing a set of
 CPUs have the same percentage of CPU assigned to them.
 
-# Devices configuration
+## Devices configuration
 LXD will always provide the instance with the basic devices which are required
 for a standard POSIX system to work. These aren't visible in instance or
 profile configuration and may not be overridden.
