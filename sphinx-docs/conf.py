@@ -28,8 +28,16 @@ author = 'Daniele'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    "sphinx_tabs.tabs"
+    "sphinx_tabs.tabs",
+    "myst_parser"
 ]
+myst_enable_extensions = [
+    "substitution"
+]
+
+myst_substitutions = {
+  "key1": "I'm a **substitution**"
+}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -37,7 +45,7 @@ templates_path = ['_templates']
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'env']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'env', 'node_modules']
 
 
 # -- Options for HTML output -------------------------------------------------
@@ -73,3 +81,5 @@ html_sidebars = {
 rst_epilog = """
 .. include:: /shortcuts.txt
 """
+
+source_suffix = [".rst", ".md"]

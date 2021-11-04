@@ -26,6 +26,8 @@ will configure the LXD daemon to listen for HTTPS connections on port
 15 hours, and to create a network bridge device named `lxdbr0`, which
 will get assigned an IPv4 address automatically.
 
+(test_id)=
+
 ## Configure a brand new LXD
 
 If you are configuring a brand new LXD instance, then the preseed

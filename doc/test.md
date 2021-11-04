@@ -2,13 +2,15 @@
 
 Link to a page: [link text](preseed.md)
 
-Link to an anchor: [link text](preseed.md#default-profile)
+Link to an anchor: [link text](preseed.md#default-profile) / [fixed](../preseed/#default-profile)
 
 Link without specified link text: [](requirements.md)
 
+Link to test ID: {ref}`test_id`
+
 ![Image](img/containers.png)
 
-Update...
+{{ key1 }}
 
 --8<-- "reuse.md"
 
@@ -17,6 +19,8 @@ The HTML specification is maintained by the W3C.
 !!! note
     Just experimenting
 
+.. note::
+   RST note
 
 !!! tip
     lsjdfldjflksjf
@@ -25,6 +29,17 @@ The HTML specification is maintained by the W3C.
 
     * One
     * Two
+
+```{admonition} This is my admonition
+This is my note
+
+This is a list:
+
+* One
+* Two
+
+```
+
 
 ??? Details
 
