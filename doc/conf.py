@@ -29,7 +29,8 @@ author = 'Canonical Ltd.'
 # ones.
 extensions = [
     "myst_parser",
-    "sphinx_tabs.tabs"
+    "sphinx_tabs.tabs",
+    "sphinx_reredirects"
 ]
 
 
@@ -82,3 +83,8 @@ html_sidebars = {
 
 
 source_suffix = [".rst", ".md"]
+
+
+redirects = {
+    "redirect/index": "../configuration/",
+}
