@@ -1,4 +1,5 @@
 myst_substitutions = {
+    "reuse_key": "This is included text.",
     "key1": "I'm a **substitution**",
     "key2": '''This is a bit more
 

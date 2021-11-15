@@ -37,7 +37,8 @@ extensions = [
 myst_enable_extensions = [
     "substitution",
     "colon_fence",
-    "deflist"
+    "deflist",
+    "linkify"
 ]
 
 sys.path.insert(0, "reuse")
