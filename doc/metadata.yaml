@@ -1,11 +1,15 @@
 site_title: LXD
 site_logo_url: https://linuxcontainers.org/static/img/containers.png
 navigation:
-    - title: Getting started
+    - title: LXD
       location: index.md
+    - title: Getting started
       children:
         - title: Requirements
           location: requirements.md
+
+        - title: Installing LXD
+          location: installing.md
 
         - title: Frequently asked
           location: faq.md
@@ -17,7 +21,6 @@ navigation:
           location: contributing.md
 
     - title: Configuration
-      location: configuration.md
       children:
         - title: Containers
           location: containers.md
