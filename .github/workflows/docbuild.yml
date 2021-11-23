@@ -1,0 +1,35 @@
+name: Build Sphinx documentation
+on:
+  - push
+  - pull_request
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Download theme
+        working-directory: doc
+        run: make theme
+
+      - name: Install required tools
+        working-directory: doc
+        run: make install
+
+      - name: Build docs
+        working-directory: doc
+        run: make html
+
+      - name: Publish warnings
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: warnings
+          path: doc/warnings.txt
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: documentation
+          path: doc/_build/html
