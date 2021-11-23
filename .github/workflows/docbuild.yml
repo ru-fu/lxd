@@ -21,6 +21,9 @@ jobs:
         working-directory: doc
         run: make html
 
+      - name: Print warnings
+        run: if [ -s doc/warnings.txt ]; then cat doc/warnings.txt; exit 1; fi
+
       - name: Publish warnings
         if: failure()
         uses: actions/upload-artifact@v2
@@ -29,6 +32,7 @@ jobs:
           path: doc/warnings.txt
 
       - name: Upload artifacts
+        if: always()
         uses: actions/upload-artifact@v2
         with:
           name: documentation

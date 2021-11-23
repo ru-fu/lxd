@@ -23,7 +23,6 @@ help:
 
 html:
 	. $(VENV); $(SPHINXBUILD) -b dirhtml . _build/html -w warnings.txt
-	if [ -s warnings.txt ]; then exit 1; fi
 
 run:
 	. $(VENV); sphinx-autobuild $(ALLSPHINXOPTS) --ignore ".git/*" --ignore "*.scss" . -b dirhtml -a _build/html --host 0.0.0.0 --port 8000
