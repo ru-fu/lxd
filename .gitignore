@@ -7,7 +7,9 @@ test/deps/devlxd-client
 test/macaroon-identity/macaroon-identity
 *~
 tags
-env/
+doc/env/
+doc/vanilla/
+doc/warnings.txt
 
 # For Atom ctags
 .tags

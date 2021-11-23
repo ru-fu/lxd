@@ -22,7 +22,8 @@ help:
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
 html:
-	. $(VENV); $(SPHINXBUILD) -b dirhtml . _build/html
+	. $(VENV); $(SPHINXBUILD) -b dirhtml . _build/html -w warnings.txt
+	if [ -s warnings.txt ]; then exit 1; fi
 
 run:
 	. $(VENV); sphinx-autobuild $(ALLSPHINXOPTS) --ignore ".git/*" --ignore "*.scss" . -b dirhtml -a _build/html --host 0.0.0.0 --port 8000
@@ -42,3 +43,14 @@ install:
       "enchant must be installed in order for pyenchant (and therefore \n" \
 	  "spelling checks) to work. \n" \
 	  "--------------------------------------------------------------- \n"
+
+theme: clean
+	@echo "Cloning theme repository"
+	git clone https://github.com/evildmp/vanilla-sphinx-test.git theme-repo
+	mv theme-repo/vanilla .
+	rm -rf theme-repo
+
+clean:
+	rm -rf _build
+	rm -rf vanilla
+	rm -rf theme-repo
