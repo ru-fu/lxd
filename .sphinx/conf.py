@@ -45,6 +45,13 @@ html_sidebars = {
     ]
 }
 
+html_context = {
+    "github_url": "https://github.com/lxc/lxd",
+    "github_version": "master",
+    "github_folder": "/doc/",
+    "github_filetype": "md"
+}
+
 source_suffix = ".md"
 
 # Setup redirects (https://documatt.gitlab.io/sphinx-reredirects/usage.html)
