@@ -579,3 +579,35 @@ You can define glossary terms in any file. Ideally, all terms should be collecte
 * - ``{term}`example term` ``
   - {term}`example term`
 `````
+
+
+## Test
+
+### Some heading
+
+#### Type: unix-char
+
+### Some heading
+
+#### A sub-heading
+
+- [Test](#some-heading) - ok - ok
+- [Test](#id1) - no - ok
+- [Test](#a-sub-heading) - ok - ok
+- [](#some-heading) - ok - no
+- [](#id1) - no - no
+- [](#a-sub-heading) - ok - no
+- {ref}`some-heading` - no - no
+- {ref}`id1` - no - no
+- {ref}`a-sub-heading` - no - no
+- {ref}`doc-cheat-sheet.md#some-heading` - ok - no
+- {ref}`doc-cheat-sheet.md#id1` - no - no
+- {ref}`doc-cheat-sheet.md#a-sub-heading` - ok - no
+- [Test](instances.md#type-unix-char) - ok - no
+- [Test](type-unix-char) - no - no
+- [](instances.md#type-unix-char) - ok - no
+- [](type-unix-char) - no - no
+- {ref}`instances.md#type-unix-char` - ok - no
+- {ref}`type-unix-char` - no - no
+- {ref}`doc-cheat-sheet.md#type-unix-char` - ok - no
+- [network forwards](network-forwards.md#network-bridge) - ok - no
