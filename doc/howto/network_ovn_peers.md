@@ -5,6 +5,11 @@ discourse: 12165
 (network-ovn-peers)=
 # How to create peer routing relationships
 
+```{note}
+- Rewrite as how-to
+- Why: Connections within OVN are fast. Connections between two OVN networks go via the uplink network, which is slow. Therefore, configure the OVN networks as peers so they can communicate directly (and fast).
+```
+
 Network peers allow the creation of routing relationships between two OVN networks.
 This allows for traffic between those two networks to stay within the OVN subsystem rather than having to transit
 via the uplink network.

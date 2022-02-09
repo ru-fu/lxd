@@ -1,6 +1,11 @@
 (network-bridge-firewalld)=
 # How to configure Firewalld
 
+```{note}
+- Add intro
+- Rewrite
+```
+
 ## Allow DHCP, DNS with Firewalld
 
 In order to allow instances to access the DHCP and DNS server that LXD runs on the host when using firewalld
