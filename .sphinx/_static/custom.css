@@ -114,3 +114,24 @@ abbr[title] {
     font-size: var(--font-size--small);
     display: block;
 }
+
+/** Discourse links block **/
+
+ul.discourse_links::before{
+    content: "Check out the following related posts in Discourse:"
+}
+
+ul.discourse_links {
+    display: block;
+    background-color: #FBDDD2;
+    padding: 15px;
+    font-size: var(--font-size--small);
+}
+
+ul.discourse_links a {
+    text-decoration: none;
+}
+
+ul.discourse_links li {
+    margin-left: 20px;
+}
