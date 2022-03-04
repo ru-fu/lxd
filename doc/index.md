@@ -45,3 +45,10 @@ restapi_landing
 internals
 external_resources
 ```
+
+
+```{discourse-links}
+11033: OVN high availability cluster tutorial
+9076: LXD cluster on Raspberry Pi 4
+7519: Running virtual machines with LXD 4.0
+```
