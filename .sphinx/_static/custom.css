@@ -135,3 +135,22 @@ ul.discourse_links a {
 ul.discourse_links li {
     margin-left: 20px;
 }
+
+ul.discourse-side::before{
+    content: "Related Discourse posts:"
+}
+ul.discourse-side {
+    background-color: #FBDDD2;
+    padding: 15px;
+    font-size: var(--font-size--small);
+}
+
+ul.discourse-side a {
+    text-decoration: none;
+    color:#111;
+}
+
+ul.discourse-side li {
+    margin-left: 20px;
+    margin-top: 5px;
+}

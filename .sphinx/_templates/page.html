@@ -1,8 +1,41 @@
 {% extends "furo/page.html" %}
 
+{% if meta and meta.discourse %}
+  {% set discourse = meta.discourse.split(";") %}
+{% else %}
+  {% set discourse = [] %}
+{% endif %}
+
 {% block footer %}
-   {% include "footer.html" %}
+{% include "footer.html" %}
 {% endblock footer %}
+
+{% block right_sidebar %}
+ {% if not furo_hide_toc %}
+  <div class="toc-sticky toc-scroll">
+    <div class="toc-title-container">
+      <span class="toc-title">
+        {{ _("Contents") }}
+      </span>
+    </div>
+    <div class="toc-tree-container">
+      <div class="toc-tree">
+        {{ toc }}
+      </div>
+    </div>
+    {% if meta.discourse %}
+      <ul class="discourse-side">
+        {% for one in discourse: %}
+        {% set link = one.split(",") %}
+        <li><a href="https://discuss.linuxcontainers.org/t/{{ link[0] }}">{{ link[1] }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+  {% endif %}
+{% endblock right_sidebar %}
+
+
 
 {% block body -%}
    {% include "header.html" %}
