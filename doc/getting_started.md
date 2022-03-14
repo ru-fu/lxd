@@ -1,3 +1,7 @@
+---
+disctest: 11033,9076,7519
+---
+
 # Getting started
 
 In addition to the documentation in this section, see the [Getting Started guide](https://linuxcontainers.org/lxd/getting-started-cli/) on the website.

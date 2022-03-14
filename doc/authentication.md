@@ -9,7 +9,6 @@ The following authentication methods are supported:
 - {ref}`authentication-candid`
 - {ref}`authentication-rbac`
 
-
 (authentication-tls-certs)=
 ## TLS client certificates
 

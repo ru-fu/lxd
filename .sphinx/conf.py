@@ -102,11 +102,18 @@ html_theme_options = {
     },
 }
 
+discourse_links = {
+    "index": ["11033","9076"],
+    "test/test": ["7519"],
+    "security": ["11033","9076","7519"]
+}
+
 html_context = {
     "github_url": "https://github.com/lxc/lxd",
     "github_version": "master",
     "github_folder": "/doc/",
-    "github_filetype": "md"
+    "github_filetype": "md",
+    "discourse_links": discourse_links
 }
 
 source_suffix = ".md"

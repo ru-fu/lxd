@@ -15,7 +15,7 @@
   <div class="toc-sticky toc-scroll">
     <div class="toc-title-container">
       <span class="toc-title">
-        {{ _("Contents") }}
+       CONTENT
       </span>
     </div>
     <div class="toc-tree-container">
@@ -23,6 +23,13 @@
         {{ toc }}
       </div>
     </div>
+    <div>
+      {{ testing }}
+      {{ pagename }}
+    </div>
+    {% if meta.disctest %}
+     {{ my_func(meta.disctest) }}
+    {% endif %}
     {% if meta.discourse %}
       <ul class="discourse-side">
         {% for one in discourse: %}

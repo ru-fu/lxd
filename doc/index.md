@@ -44,6 +44,7 @@ operation
 restapi_landing
 internals
 external_resources
+test/test
 ```
 
 
