@@ -1,3 +1,7 @@
+---
+diataxisCategory: reference
+---
+
 # Environment variables
 
 The LXD client and daemon respect some environment variables to adapt to

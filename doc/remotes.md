@@ -1,3 +1,7 @@
+---
+diataxisCategory: reference
+---
+
 # How to add remote servers
 
 Remote servers are a concept in the LXD command-line client.

@@ -1,3 +1,7 @@
+---
+diataxisCategory: reference
+---
+
 (daemon-behavior)=
 # Daemon behavior
 

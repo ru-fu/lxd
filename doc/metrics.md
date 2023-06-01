@@ -1,6 +1,7 @@
 ---
 discourse: 12281,11735
 relatedlinks: https://grafana.com/grafana/dashboards/19131-lxd/
+diataxisCategory: howto
 ---
 
 (metrics)=

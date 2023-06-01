@@ -1,3 +1,7 @@
+---
+diataxisCategory: howto
+---
+
 # How to debug LXD
 
 For information on debugging instance issues, see {ref}`instances-troubleshoot`.
