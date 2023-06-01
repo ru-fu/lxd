@@ -26,6 +26,7 @@ copyright = "2014-%s %s" % (datetime.date.today().year, author)
 with open("../shared/version/flex.go") as fd:
     version = fd.read().split("\n")[-2].split()[-1].strip("\"")
 
+sys.path.append(os.path.abspath("./.sphinx/_extensions"))
 # Extensions.
 extensions = [
     "myst_parser",
@@ -41,7 +42,8 @@ extensions = [
     "sphinx.ext.intersphinx",
     "terminal-output",
     "config-options",
-    "notfound.extension"
+    "notfound.extension",
+    "diataxis"
 ]
 
 myst_enable_extensions = [
