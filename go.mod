@@ -35,9 +35,9 @@ require (
 	github.com/mitchellh/mapstructure v1.5.0
 	github.com/oklog/ulid/v2 v2.1.0
 	github.com/olekukonko/tablewriter v0.0.5
-	github.com/openfga/api/proto v0.0.0-20240307175852-df09bc1e8e82
-	github.com/openfga/language/pkg/go v0.0.0-20240307152633-772cdd8b6a9c
-	github.com/openfga/openfga v1.5.0
+	github.com/openfga/api/proto v0.0.0-20240318145204-66b9e5cb403c
+	github.com/openfga/language/pkg/go v0.0.0-20240312214103-2c2688b46b9c
+	github.com/openfga/openfga v1.5.2
 	github.com/osrg/gobgp/v3 v3.24.0
 	github.com/pkg/sftp v1.13.6
 	github.com/pkg/xattr v0.4.9
@@ -86,7 +86,7 @@ require (
 	github.com/gorilla/handlers v1.5.2
 	github.com/gorilla/schema v1.2.1 // indirect
 	github.com/grpc-ecosystem/go-grpc-middleware v1.4.0 // indirect
-	github.com/grpc-ecosystem/go-grpc-middleware/v2 v2.0.1 // indirect
+	github.com/grpc-ecosystem/go-grpc-middleware/v2 v2.1.0 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.19.1 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-multierror v1.1.1 // indirect
