@@ -534,8 +534,6 @@ github.com/opencontainers/image-spec v1.1.0 h1:8SG7/vwALn54lVB/0yZ/MMwhFrPYtpEHQ
 github.com/opencontainers/image-spec v1.1.0/go.mod h1:W4s4sFTMaBeK1BQLXbG4AdM2szdn85PY75RI83NrTrM=
 github.com/openfga/api/proto v0.0.0-20240501220219-2b164f5813a7 h1:jYZ0Q/dTQ6KvGbWtYy4OJk731o2VCC3ZizrGhV3v22s=
 github.com/openfga/api/proto v0.0.0-20240501220219-2b164f5813a7/go.mod h1:5LtWOArDX4FlbcfDvBoJAzDEYJKLz/OEUoi+0S2tyM8=
-github.com/openfga/language/pkg/go v0.0.0-20240520084932-9e3bd7a03acb h1:RkuqdGtxlMp5RoHjGzcuN3zn8v6fFLN08AKxTJ6w8WA=
-github.com/openfga/language/pkg/go v0.0.0-20240520084932-9e3bd7a03acb/go.mod h1:mCwEY2IQvyNgfEwbfH0C0ERUwtL8z6UjSAF8zgn5Xbg=
 github.com/openfga/language/pkg/go v0.0.0-20240603163217-f5fc1d6b5f85 h1:TEJC/Pr2Q8dqy7qwRFBp4sMonBT+oHDDGZjOcaZmjPg=
 github.com/openfga/language/pkg/go v0.0.0-20240603163217-f5fc1d6b5f85/go.mod h1:mCwEY2IQvyNgfEwbfH0C0ERUwtL8z6UjSAF8zgn5Xbg=
 github.com/openfga/openfga v1.5.3 h1:Uynmlsx3iz/eiP7wW9n2dbwxDh/kiS/27W6C24Y7oyY=
@@ -831,8 +829,8 @@ golang.org/x/oauth2 v0.0.0-20210218202405-ba52d332ba99/go.mod h1:KelEdhl1UZF7XfJ
 golang.org/x/oauth2 v0.0.0-20210220000619-9bb904979d93/go.mod h1:KelEdhl1UZF7XfJ4dDtk6s++YSgaE7mD/BuKKDLBl4A=
 golang.org/x/oauth2 v0.0.0-20210313182246-cd4f82c27b84/go.mod h1:KelEdhl1UZF7XfJ4dDtk6s++YSgaE7mD/BuKKDLBl4A=
 golang.org/x/oauth2 v0.0.0-20210402161424-2e8d93401602/go.mod h1:KelEdhl1UZF7XfJ4dDtk6s++YSgaE7mD/BuKKDLBl4A=
-golang.org/x/oauth2 v0.20.0 h1:4mQdhULixXKP1rwYBW0vAijoXnkTG0BLCDRzfe1idMo=
-golang.org/x/oauth2 v0.20.0/go.mod h1:XYTD2NtWslqkgxebSiOHnXEap4TF09sJSc7H1sXbhtI=
+golang.org/x/oauth2 v0.21.0 h1:tsimM75w1tF/uws5rbeHzIWxEqElMehnc+iW793zsZs=
+golang.org/x/oauth2 v0.21.0/go.mod h1:XYTD2NtWslqkgxebSiOHnXEap4TF09sJSc7H1sXbhtI=
 golang.org/x/sync v0.0.0-20180314180146-1d60e4601c6f/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=
 golang.org/x/sync v0.0.0-20181108010431-42b317875d0f/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=
 golang.org/x/sync v0.0.0-20181221193216-37e7f081c4d4/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=
