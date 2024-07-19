@@ -1,0 +1,39 @@
+# .readthedocs.yaml
+# Read the Docs configuration file
+# See https://docs.readthedocs.io/en/stable/config-file/v2.html for details
+
+# Required
+version: 2
+
+# Set the version of Python and other tools you might need
+build:
+  os: ubuntu-22.04
+  tools:
+    golang: "1.22"
+    python: "3.12"
+  jobs:
+    pre_install:
+      - pip install gitpython pyyaml
+      - cd doc && python3 .sphinx/build_requirements.py
+      - git fetch --unshallow || true
+    pre_build:
+      - go build -ldflags "-s -w" -o trimpath -o lxc.bin ./lxc
+      - cd doc && wget https://raw.githubusercontent.com/ru-fu/microcloud/LXD-1097-build-separately-subprojects/doc/.sphinx/_integration/integrate-docs.py
+      - cd doc && python3 integrate-docs.py --project lxd
+    post_build:
+      - cd _readthedocs/html; python -m sphinx.ext.intersphinx 'objects.inv' > objects.inv.txt
+
+# Build documentation in the docs/ directory with Sphinx
+sphinx:
+  builder: dirhtml
+  configuration: doc/conf.py
+  fail_on_warning: true
+
+# If using Sphinx, optionally build your docs in additional formats such as PDF
+formats:
+   - pdf
+
+# Optionally declare the Python requirements required to build your docs
+python:
+   install:
+   - requirements: doc/.sphinx/requirements.txt

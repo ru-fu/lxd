@@ -208,7 +208,8 @@ custom_extensions = [
 custom_required_modules = [
     'gitpython',
     'pyyaml',
-    'sphinx-remove-toctrees'
+    'sphinx-remove-toctrees',
+    'wget'
 ]
 
 # Add files or directories that should be excluded from processing.
